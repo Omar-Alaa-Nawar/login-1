@@ -6,14 +6,22 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { RoleGuard } from './role.guard';
+import { NotFoundComponent } from './not-found/not-found.component'; // 404 component
+import { ManagerGuard } from './manager.guard';
+import { AdminGuard } from './admin.guard';
+import { EmployeeGuard } from './employee.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [RoleGuard] },
-  { path: 'manager-dashboard', component: ManagerDashboardComponent, canActivate: [RoleGuard] },
-  { path: 'employee-dashboard', component: EmployeeDashboardComponent, canActivate: [RoleGuard] },
-  { path: '**', redirectTo: '/login' },
+  
+  // Role-based guards on dashboards
+  { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard] },
+  { path: 'manager-dashboard', component: ManagerDashboardComponent, canActivate: [ManagerGuard] },
+  { path: 'employee-dashboard', component: EmployeeDashboardComponent, canActivate: [EmployeeGuard] },
+  
+  // 404 route for unrecognized paths
+  { path: '**', component: NotFoundComponent },
 ];
