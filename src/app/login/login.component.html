@@ -8,18 +8,34 @@
             <p class="text-white-50 mb-4">Please enter your login and password!</p>
 
             <form (ngSubmit)="login()">
-              <div class="form-outline form-white mb-3">
-                <input type="email" id="typeEmailX" class="form-control form-control-lg" 
-                       [(ngModel)]="loginData.email" name="email" required 
-                       aria-label="Email" />
-                <label class="form-label" for="typeEmailX">Email</label>
+              <!-- Email Field with Floating Label -->
+              <div class="form-floating mb-3">
+                <input 
+                  type="email" 
+                  id="typeEmailX" 
+                  class="form-control form-control-lg bg-dark text-white" 
+                  [(ngModel)]="loginData.email" 
+                  name="email" 
+                  required 
+                  placeholder="Email"
+                  aria-label="Email" 
+                />
+                <label for="typeEmailX">Email</label>
               </div>
 
-              <div class="form-outline form-white mb-3">
-                <input type="password" id="typePasswordX" class="form-control form-control-lg" 
-                       [(ngModel)]="loginData.password" name="password" required 
-                       aria-label="Password" />
-                <label class="form-label" for="typePasswordX">Password</label>
+              <!-- Password Field with Floating Label -->
+              <div class="form-floating mb-3">
+                <input 
+                  type="password" 
+                  id="typePasswordX" 
+                  class="form-control form-control-lg bg-dark text-white" 
+                  [(ngModel)]="loginData.password" 
+                  name="password" 
+                  required 
+                  placeholder="Password"
+                  aria-label="Password" 
+                />
+                <label for="typePasswordX">Password</label>
               </div>
 
               <p class="small mb-4">
@@ -37,7 +53,6 @@
             </div>
 
             <div>
-
               <p class="small mb-4">Don't have an account?
                 <button type="button" (click)="onRegisterClick()" class="btn btn-link">Register</button>
               </p>

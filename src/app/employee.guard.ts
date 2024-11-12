@@ -15,7 +15,7 @@ export class EmployeeGuard implements CanActivate {
 
     console.log('EmployeeGuard Check:', { role, isAuthenticated, url });
 
-    if (isAuthenticated && role === 'employee') {
+    if (isAuthenticated &&(role === 'manager' || role === 'admin'||role === 'employee') ) {
       // Employee can access only the employee-dashboard
       if (url.includes('employee-dashboard')) {
         return true;

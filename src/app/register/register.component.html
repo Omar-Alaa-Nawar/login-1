@@ -1,51 +1,108 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+
 <section class="vh-100 gradient-custom d-flex align-items-center">
   <div class="container py-4 px-3">
     <div class="row justify-content-center">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card bg-dark text-white" style="border-radius: 0.95rem;">
+        <div class="card bg-dark text-white position-relative" style="border-radius: 0.95rem;">
+          <button
+            type="button"
+            class="btn btn-link text-white position-absolute"
+            (click)="previousStep()"
+            aria-label="Go Back"
+            style="top: 0.5rem; left: 0.5rem; font-size: 1.5rem; z-index: 10;"
+          >
+            <i class="bi bi-arrow-left-circle-fill"></i>
+          </button>
+
           <div class="card-body p-4 text-center">
             <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
             <p class="text-white-50 mb-4">Please fill in your details to create an account!</p>
 
-            <form (ngSubmit)="register()">
+            <!-- Success message section inside the container -->
+            <div *ngIf="registrationSuccess" class="alert alert-success" role="alert">
+              Registration successful! Your information has been saved.
+            </div>
 
-              <!-- Step 1 -->
+            <!-- Registration Form -->
+            <form (ngSubmit)="register()" #registrationForm="ngForm">
+              <!-- Step 1 with Floating Labels -->
               <div *ngIf="step === 1">
-                <div class="form-outline form-white mb-3">
-                  <input type="text" id="name" class="form-control form-control-lg" 
-                         [(ngModel)]="registerData.name" name="name" required 
-                         aria-label="Your Name" />
-                  <label class="form-label" for="name">Your Name</label>
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    id="name"
+                    class="form-control form-control-lg bg-dark text-white"
+                    [(ngModel)]="registerData.name"
+                    name="name"
+                    #name="ngModel"
+                    required
+                    placeholder="Your Name"
+                    aria-label="Your Name"
+                  />
+                  <label for="name">Your Name</label>
+                  <div *ngIf="name.invalid && name.touched" class="text-danger">Name is required.</div>
                 </div>
-                <div class="form-outline form-white mb-3">
-                  <input type="email" id="email" class="form-control form-control-lg" 
-                         [(ngModel)]="registerData.email" name="email" required 
-                         aria-label="Your Email" />
-                  <label class="form-label" for="email">Your Email</label>
+
+                <div class="form-floating mb-3">
+                  <input
+                    type="email"
+                    id="email"
+                    class="form-control form-control-lg bg-dark text-white"
+                    [(ngModel)]="registerData.email"
+                    name="email"
+                    #email="ngModel"
+                    required
+                    email
+                    placeholder="Your Email"
+                    aria-label="Your Email"
+                  />
+                  <label for="email">Your Email</label>
+                  <div *ngIf="email.invalid && email.touched" class="text-danger">Valid email is required.</div>
                 </div>
-                <div class="form-outline form-white mb-3">
-                  <input type="text" id="company" class="form-control form-control-lg" 
-                         [(ngModel)]="registerData.company" name="company" required 
-                         aria-label="Company Name" />
-                  <label class="form-label" for="company">Company Name</label>
+
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    id="company"
+                    class="form-control form-control-lg bg-dark text-white"
+                    [(ngModel)]="registerData.company"
+                    name="company"
+                    #company="ngModel"
+                    required
+                    placeholder="Company Name"
+                    aria-label="Company Name"
+                  />
+                  <label for="company">Company Name</label>
+                  <div *ngIf="company.invalid && company.touched" class="text-danger">Company name is required.</div>
                 </div>
-                <div class="form-outline flex-fill mb-4">
-                  <label for="role">User Role</label>
-                  <select class="form-control form-control-lg" id="role" 
-                          [(ngModel)]="registerData.role" name="role" required>
+
+                <div class="form-floating mb-4">
+                  <select
+                    class="form-select bg-dark text-white"
+                    id="role"
+                    [(ngModel)]="registerData.role"
+                    name="role"
+                    #role="ngModel"
+                    required
+                    aria-label="User Role"
+                  >
                     <option value="" disabled selected>Select a role</option>
                     <option value="admin">Admin</option>
                     <option value="manager">Manager</option>
                     <option value="employee">Employee</option>
                   </select>
+                  <label for="role">User Role</label>
+                  <div *ngIf="role.invalid && role.touched" class="text-danger">Role selection is required.</div>
                 </div>
-                <button type="button" class="btn btn-primary btn-lg w-100 mb-3" (click)="nextStep()">Next</button>
+
+                <button type="button" class="btn btn-primary btn-lg w-100 mb-3" (click)="nextStep()" [disabled]="!registrationForm.valid">Next</button>
               </div>
 
-              <!-- Step 2 -->
+              <!-- Step 2 with Floating Labels -->
               <div *ngIf="step === 2">
                 <div class="form-group mb-4">
-                  <label class="text-white" for="employees">Number of Employees</label>
+                  <label class="text-white mb-2" for="employees">Number of Employees</label>
                   <div>
                     <label class="radio-inline me-3">
                       <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="1-10" required> 1-10
@@ -60,35 +117,65 @@
                       <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="200+" required> 200+
                     </label>
                   </div>
+                  <div *ngIf="!registerData.employees && step === 2" class="text-danger">Number of employees is required.</div>
                 </div>
-                <div class="form-outline flex-fill mb-4">
-                  <input type="text" id="industry" class="form-control form-control-lg" 
-                         [(ngModel)]="registerData.industry" name="industry" required 
-                         aria-label="Industry" />
-                  <label class="form-label" for="industry">Industry</label>
+
+                <div class="form-floating mb-4">
+                  <input
+                    type="text"
+                    id="industry"
+                    class="form-control form-control-lg bg-dark text-white"
+                    [(ngModel)]="registerData.industry"
+                    name="industry"
+                    #industry="ngModel"
+                    required
+                    placeholder="Industry"
+                    aria-label="Industry"
+                  />
+                  <label for="industry">Industry</label>
+                  <div *ngIf="industry.invalid && industry.touched" class="text-danger">Industry is required.</div>
                 </div>
-                <button type="button" class="btn btn-primary w-100 mb-3" (click)="previousStep()">Previous</button>
-                <button type="button" class="btn btn-primary w-100" (click)="nextStep()">Next</button>
+
+                <button type="button" class="btn btn-primary w-100 mb-3" (click)="nextStep()" [disabled]="!registrationForm.valid">Next</button>
               </div>
 
-              <!-- Step 3 -->
+              <!-- Step 3 with Floating Labels for Password -->
               <div *ngIf="step === 3">
-                <div class="form-outline form-white mb-3">
-                  <input type="password" id="password" class="form-control form-control-lg" 
-                         [(ngModel)]="registerData.password" name="password" required 
-                         aria-label="Password" />
-                  <label class="form-label" for="password">Password</label>
+                <div class="form-floating mb-3">
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control form-control-lg bg-dark text-white"
+                    [(ngModel)]="registerData.password"
+                    name="password"
+                    #password="ngModel"
+                    required
+                    placeholder="Password"
+                    aria-label="Password"
+                  />
+                  <label for="password">Password</label>
+                  <div *ngIf="password.invalid && password.touched" class="text-danger">Password is required.</div>
                 </div>
-                <div class="form-outline form-white mb-3">
-                  <input type="password" id="confirmPassword" class="form-control form-control-lg" 
-                         [(ngModel)]="registerData.confirmPassword" name="confirmPassword" required 
-                         aria-label="Confirm Password" />
-                  <label class="form-label" for="confirmPassword">Confirm Password</label>
-                </div>
-                <button type="button" class="btn btn-primary w-100 mb-3" (click)="previousStep()">Previous</button>
-                <button type="submit" class="btn btn-success btn-lg w-100">Register</button>
-              </div>
 
+                <div class="form-floating mb-3">
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    class="form-control form-control-lg bg-dark text-white"
+                    [(ngModel)]="registerData.confirmPassword"
+                    name="confirmPassword"
+                    #confirmPassword="ngModel"
+                    required
+                    placeholder="Confirm Password"
+                    aria-label="Confirm Password"
+                  />
+                  <label for="confirmPassword">Confirm Password</label>
+                  <div *ngIf="confirmPassword.invalid && confirmPassword.touched" class="text-danger">Please confirm your password.</div>
+                  <div *ngIf="registerData.password && registerData.confirmPassword && registerData.password !== registerData.confirmPassword" class="text-danger">Passwords must match.</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="!registrationForm.valid">Submit</button>
+              </div>
             </form>
 
             <button class="btn btn-link mt-3" (click)="goToLogin()">Back to Login</button>
