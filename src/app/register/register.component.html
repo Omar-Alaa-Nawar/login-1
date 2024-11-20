@@ -19,14 +19,14 @@
             <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
             <p class="text-white-50 mb-4">Please fill in your details to create an account!</p>
 
-            <!-- Success message section inside the container -->
+            <!-- Success message section -->
             <div *ngIf="registrationSuccess" class="alert alert-success" role="alert">
               Registration successful! Your information has been saved.
             </div>
 
             <!-- Registration Form -->
             <form (ngSubmit)="register()" #registrationForm="ngForm">
-              <!-- Step 1 with Floating Labels -->
+              <!-- Step 1 -->
               <div *ngIf="step === 1">
                 <div class="form-floating mb-3">
                   <input
@@ -38,10 +38,11 @@
                     #name="ngModel"
                     required
                     placeholder="Your Name"
-                    aria-label="Your Name"
                   />
                   <label for="name">Your Name</label>
-                  <div *ngIf="name.invalid && name.touched" class="text-danger">Name is required.</div>
+                  <div *ngIf="name.invalid && name.touched && !registrationSuccess" class="text-danger">
+                    Name is required.
+                  </div>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -53,12 +54,12 @@
                     name="email"
                     #email="ngModel"
                     required
-                    email
                     placeholder="Your Email"
-                    aria-label="Your Email"
                   />
                   <label for="email">Your Email</label>
-                  <div *ngIf="email.invalid && email.touched" class="text-danger">Valid email is required.</div>
+                  <div *ngIf="email.invalid && email.touched && !registrationSuccess" class="text-danger">
+                    Valid email is required.
+                  </div>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -71,10 +72,11 @@
                     #company="ngModel"
                     required
                     placeholder="Company Name"
-                    aria-label="Company Name"
                   />
                   <label for="company">Company Name</label>
-                  <div *ngIf="company.invalid && company.touched" class="text-danger">Company name is required.</div>
+                  <div *ngIf="company.invalid && company.touched && !registrationSuccess" class="text-danger">
+                    Company name is required.
+                  </div>
                 </div>
 
                 <div class="form-floating mb-4">
@@ -85,7 +87,6 @@
                     name="role"
                     #role="ngModel"
                     required
-                    aria-label="User Role"
                   >
                     <option value="" disabled selected>Select a role</option>
                     <option value="admin">Admin</option>
@@ -93,13 +94,15 @@
                     <option value="employee">Employee</option>
                   </select>
                   <label for="role">User Role</label>
-                  <div *ngIf="role.invalid && role.touched" class="text-danger">Role selection is required.</div>
+                  <div *ngIf="role.invalid && role.touched && !registrationSuccess" class="text-danger">
+                    Role selection is required.
+                  </div>
                 </div>
 
                 <button type="button" class="btn btn-primary btn-lg w-100 mb-3" (click)="nextStep()" [disabled]="!registrationForm.valid">Next</button>
               </div>
 
-              <!-- Step 2 with Floating Labels -->
+              <!-- Step 2 -->
               <div *ngIf="step === 2">
                 <div class="form-group mb-4">
                   <label class="text-white mb-2" for="employees">Number of Employees</label>
@@ -117,7 +120,9 @@
                       <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="200+" required> 200+
                     </label>
                   </div>
-                  <div *ngIf="!registerData.employees && step === 2" class="text-danger">Number of employees is required.</div>
+                  <div *ngIf="!registerData.employees && step === 2 && !registrationSuccess" class="text-danger">
+                    Number of employees is required.
+                  </div>
                 </div>
 
                 <div class="form-floating mb-4">
@@ -130,16 +135,17 @@
                     #industry="ngModel"
                     required
                     placeholder="Industry"
-                    aria-label="Industry"
                   />
                   <label for="industry">Industry</label>
-                  <div *ngIf="industry.invalid && industry.touched" class="text-danger">Industry is required.</div>
+                  <div *ngIf="industry.invalid && industry.touched && !registrationSuccess" class="text-danger">
+                    Industry is required.
+                  </div>
                 </div>
 
                 <button type="button" class="btn btn-primary w-100 mb-3" (click)="nextStep()" [disabled]="!registrationForm.valid">Next</button>
               </div>
 
-              <!-- Step 3 with Floating Labels for Password -->
+              <!-- Step 3 (Password) -->
               <div *ngIf="step === 3">
                 <div class="form-floating mb-3">
                   <input
@@ -151,10 +157,11 @@
                     #password="ngModel"
                     required
                     placeholder="Password"
-                    aria-label="Password"
                   />
                   <label for="password">Password</label>
-                  <div *ngIf="password.invalid && password.touched" class="text-danger">Password is required.</div>
+                  <div *ngIf="password.invalid && password.touched && !registrationSuccess" class="text-danger">
+                    Password is required.
+                  </div>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -167,11 +174,14 @@
                     #confirmPassword="ngModel"
                     required
                     placeholder="Confirm Password"
-                    aria-label="Confirm Password"
                   />
                   <label for="confirmPassword">Confirm Password</label>
-                  <div *ngIf="confirmPassword.invalid && confirmPassword.touched" class="text-danger">Please confirm your password.</div>
-                  <div *ngIf="registerData.password && registerData.confirmPassword && registerData.password !== registerData.confirmPassword" class="text-danger">Passwords must match.</div>
+                  <div *ngIf="confirmPassword.invalid && confirmPassword.touched && !registrationSuccess" class="text-danger">
+                    Please confirm your password.
+                  </div>
+                  <div *ngIf="!registrationSuccess && registerData.password !== registerData.confirmPassword" class="text-danger">
+                    Passwords must match.
+                  </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="!registrationForm.valid">Submit</button>

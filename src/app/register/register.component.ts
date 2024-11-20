@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 
@@ -68,10 +68,13 @@ export class RegisterComponent {
   }
 
   // Register the user and save to local storage
-  register() {
+  register(form?: NgForm) {
     console.log("Registration process started.");
 
+    // Retrieve existing users from local storage
     const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+
+    // Add new user to the list
     existingUsers.push(this.registerData);
     localStorage.setItem('users', JSON.stringify(existingUsers));
 
@@ -91,10 +94,15 @@ export class RegisterComponent {
       confirmPassword: ''
     };
 
+    // Reset the form state
+    if (form) {
+      form.reset();
+    }
+
     // Redirect to login page after registration
     setTimeout(() => {
       this.router.navigate(['/login']);
-    }, 2000); // Delay navigation to allow user to see the success message
+    }, 3000); // Delay navigation to allow user to see the success message
   }
 
   // Check if the email is already registered
