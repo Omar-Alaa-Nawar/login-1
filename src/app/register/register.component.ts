@@ -16,6 +16,7 @@ export class RegisterComponent {
   registrationSuccess: boolean = false; // Flag to indicate successful registration
   message: string = ''; // To store success or error messages
   errorMessage: string = ''; // To store error messages
+  emailExists: boolean = false; // Flag to track if the email is already registered
   registerData = {
     name: '',
     email: '',
@@ -24,7 +25,8 @@ export class RegisterComponent {
     employees: '',
     industry: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    otherRole: ''  // Added property for 'otherRole'
   };
 
   constructor(private router: Router) {}
@@ -32,33 +34,37 @@ export class RegisterComponent {
   // Proceed to the next step of the registration process
   nextStep() {
     this.errorMessage = ''; // Reset error message at each step
+  
+    // Validate Step 1 fields (Name, Email, Company, Role)
     if (this.step === 1) {
-      // Step 1: Check if required fields are filled
       if (this.registerData.name && this.registerData.email && this.registerData.company && this.registerData.role) {
         this.step++;
       } else {
         this.errorMessage = 'Please fill all fields in Step 1.';
       }
-    } else if (this.step === 2) {
-      // Step 2: Check if required fields are filled
+    }
+  
+    // Validate Step 2 fields (Employees, Industry)
+    else if (this.step === 2) {
       if (this.registerData.employees && this.registerData.industry) {
         this.step++;
       } else {
         this.errorMessage = 'Please fill all fields in Step 2.';
       }
-    } else if (this.step === 3) {
-      // Step 3: Validate password match and check if email is already registered
-      if (this.registerData.password === this.registerData.confirmPassword) {
-        if (this.isEmailRegistered(this.registerData.email)) {
-          this.errorMessage = 'This email is already registered. Please use a different email.';
-        } else {
-          this.register(); // Save to local storage when the last step is valid
-        }
-      } else {
+    }
+  
+    // Validate Step 3 fields (Password, Confirm Password, Email)
+    else if (this.step === 3) {
+      if (this.registerData.password !== this.registerData.confirmPassword) {
         this.errorMessage = 'Passwords do not match. Please try again.';
+      } else if (this.isEmailRegistered(this.registerData.email)) {
+        this.errorMessage = 'This email is already registered. Please use a different email.';
+      } else {
+        this.register(); // Save to local storage when the last step is valid
       }
     }
   }
+  
 
   // Go to the previous step of the registration process
   previousStep() {
@@ -71,7 +77,19 @@ export class RegisterComponent {
   register(form?: NgForm) {
     console.log("Registration process started.");
 
-    // Retrieve existing users from local storage
+    // Check if passwords match before proceeding
+    if (this.registerData.password !== this.registerData.confirmPassword) {
+      this.errorMessage = 'Passwords do not match. Please try again.';
+      return; // Stop the registration process if passwords do not match
+    }
+
+    // Check if the email is already registered
+    if (this.isEmailRegistered(this.registerData.email)) {
+      this.errorMessage = 'This email is already registered. Please use a different email.';
+      return; // Stop the registration process if the email is already registered
+    }
+
+    // If validation passes, proceed to save the data
     const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
 
     // Add new user to the list
@@ -91,7 +109,8 @@ export class RegisterComponent {
       employees: '',
       industry: '',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
+      otherRole: ''  // Reset the 'otherRole' field
     };
 
     // Reset the form state
@@ -112,8 +131,12 @@ export class RegisterComponent {
     return existingUsers.some((user: { email: string }) => user.email === email);
   }
 
-  // Navigate to login page
-  goToLogin() {
-    this.router.navigate(['/login']);
+  // Check email as the user types
+  onEmailChange() {
+    this.emailExists = this.isEmailRegistered(this.registerData.email);
   }
+    // Navigate to login page
+    goToLogin() {
+      this.router.navigate(['/login']);
+    }
 }

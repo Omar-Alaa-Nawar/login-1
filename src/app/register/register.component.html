@@ -1,197 +1,281 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roundo&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap"
+  rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Nunito:wght@300;400;600;700&display=swap"
+  rel="stylesheet">
 
-<section class="vh-100 gradient-custom d-flex align-items-center">
-  <div class="container py-4 px-3">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card bg-dark text-white position-relative" style="border-radius: 0.95rem;">
-          <button
-            type="button"
-            class="btn btn-link text-white position-absolute"
-            (click)="previousStep()"
-            aria-label="Go Back"
-            style="top: 0.5rem; left: 0.5rem; font-size: 1.5rem; z-index: 10;"
-          >
-            <i class="bi bi-arrow-left-circle-fill"></i>
-          </button>
+<section class="vh-100 d-flex align-items-center" style="background-color: #121212; color: #ffffff;">
+  <div class="row w-100 m-0">
+    <!-- Registration Form (70%) -->
+    <div class="col-12 col-md-8 col-lg-7 col-xl-7 p-0">
+      <div class="row h-100 m-0">
+        <!-- Form Section (75% of the 70%) -->
+        <div class="col-12 col-md-9 col-lg-9 p-4 text-start">
 
-          <div class="card-body p-4 text-center">
-            <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
-            <p class="text-white-50 mb-4">Please fill in your details to create an account!</p>
-
-            <!-- Success message section -->
-            <div *ngIf="registrationSuccess" class="alert alert-success" role="alert">
-              Registration successful! Your information has been saved.
+          <!-- Stepper Section -->
+          <div class="mb-4">
+            <div class="d-flex justify-content-between mb-3">
+              <!-- Step Number in White -->
+              <span class="step-text" style="color: #ffffff; font-size: 16px;">{{ step }} of 3</span>
+            </div>
+            <div class="progress"
+              style="height: 10px; margin-bottom: 20px; background-color: #444444; border-radius: 5px;">
+              <!-- Progress Bar with Darker Grey Background and Slightly Darker Blue Fill -->
+              <div class="progress-bar" role="progressbar" [style.width]="(step / 3) * 100 + '%'" aria-valuenow="step"
+                aria-valuemin="0" aria-valuemax="3" style="background-color: #87CEFA; border-radius: 5px;">
+              </div>
             </div>
 
-            <!-- Registration Form -->
-            <form (ngSubmit)="register()" #registrationForm="ngForm">
-              <!-- Step 1 -->
-              <div *ngIf="step === 1">
-                <div class="form-floating mb-3">
-                  <input
-                    type="text"
-                    id="name"
-                    class="form-control form-control-lg bg-dark text-white"
-                    [(ngModel)]="registerData.name"
-                    name="name"
-                    #name="ngModel"
-                    required
-                    placeholder="Your Name"
-                  />
-                  <label for="name">Your Name</label>
-                  <div *ngIf="name.invalid && name.touched && !registrationSuccess" class="text-danger">
-                    Name is required.
-                  </div>
-                </div>
+            <!-- Header for Step 1 -->
+            <div *ngIf="step === 1" class="mb-4" style="margin-top: 60px;">
+              <!-- Adjusted margin for two lines of space -->
+              <h2 class="fw-bold mb-2 text-uppercase"
+                style="font-family: 'Roundo', sans-serif; font-size: 24px; color: #ffffff;">
+                Setup Your Company Account
+              </h2>
+            </div>
 
-                <div class="form-floating mb-3">
-                  <input
-                    type="email"
-                    id="email"
-                    class="form-control form-control-lg bg-dark text-white"
-                    [(ngModel)]="registerData.email"
-                    name="email"
-                    #email="ngModel"
-                    required
-                    placeholder="Your Email"
-                  />
-                  <label for="email">Your Email</label>
-                  <div *ngIf="email.invalid && email.touched && !registrationSuccess" class="text-danger">
-                    Valid email is required.
-                  </div>
-                </div>
+            <!-- Back to Login Button -->
+            <div *ngIf="step === 1" class="d-flex align-items-center mb-2" style="margin-top: -10px;">
+              <p class="mb-0 me-2" style="font-family: 'Roundo', sans-serif; font-size: 14px; color: #D3D3D3;">Already
+                have an account?</p> <!-- Changed to light gray -->
+              <button type="button" class="btn btn-link text-orange p-0" (click)="goToLogin()"
+                style="color: #FF8C00; text-decoration: none; font-weight: bold; font-size: 14px; font-family: 'Roundo', sans-serif;">
+                Login
+              </button>
+            </div>
 
-                <div class="form-floating mb-3">
-                  <input
-                    type="text"
-                    id="company"
-                    class="form-control form-control-lg bg-dark text-white"
-                    [(ngModel)]="registerData.company"
-                    name="company"
-                    #company="ngModel"
-                    required
-                    placeholder="Company Name"
-                  />
-                  <label for="company">Company Name</label>
-                  <div *ngIf="company.invalid && company.touched && !registrationSuccess" class="text-danger">
-                    Company name is required.
-                  </div>
-                </div>
 
-                <div class="form-floating mb-4">
-                  <select
-                    class="form-select bg-dark text-white"
-                    id="role"
-                    [(ngModel)]="registerData.role"
-                    name="role"
-                    #role="ngModel"
-                    required
-                  >
-                    <option value="" disabled selected>Select a role</option>
-                    <option value="admin">Admin</option>
-                    <option value="manager">Manager</option>
-                    <option value="employee">Employee</option>
-                  </select>
-                  <label for="role">User Role</label>
-                  <div *ngIf="role.invalid && role.touched && !registrationSuccess" class="text-danger">
-                    Role selection is required.
-                  </div>
-                </div>
 
-                <button type="button" class="btn btn-primary btn-lg w-100 mb-3" (click)="nextStep()" [disabled]="!registrationForm.valid">Next</button>
+
+            <!-- Step 2 Header and Back Arrow -->
+            <div *ngIf="step === 2" class="mb-4">
+              <!-- Increased space between back arrow and stepper -->
+              <button type="button" class="btn btn-link p-0 mb-3" (click)="previousStep()"
+                style="font-family: 'Roundo', sans-serif; font-size: 14px; color: #FF8C00; text-decoration: none; border: none;">
+                <i class="bi bi-arrow-left"></i> Back
+              </button>
+              <h2 class="fw-bold mb-2 text-uppercase"
+                style="font-family: 'Roundo', sans-serif; font-size: 24px; color: #ffffff;">
+                Hey, Now We Need To Know More About Your Company!
+              </h2>
+            </div>
+
+            <!-- Step 3 Header and Back Arrow -->
+            <div *ngIf="step === 3" class="mb-4">
+              <!-- Increased space between back arrow and stepper -->
+              <button type="button" class="btn btn-link p-0 mb-3" (click)="previousStep()"
+                style="font-family: 'Roundo', sans-serif; font-size: 14px; color: #FF8C00; text-decoration: none; border: none;">
+                <i class="bi bi-arrow-left"></i> Back
+              </button>
+              <h2 class="fw-bold mb-2 text-uppercase"
+                style="font-family: 'Roundo', sans-serif; font-size: 24px; color: #ffffff;">
+                Now The Last Step, Create A Password To Your Account
+              </h2>
+            </div>
+
+
+
+
+
+          </div>
+
+          <!-- Step 1 -->
+          <div *ngIf="step === 1">
+            <form (ngSubmit)="register()" #registrationForm="ngForm" class="registration-form">
+              <div class="form-floating mb-3">
+                <input type="text" id="name" class="form-control form-control-lg bg-dark text-light"
+                  [(ngModel)]="registerData.name" name="name" #name="ngModel" required placeholder="Your Name"
+                  style="font-family: 'Roundo', sans-serif;" />
+                <label for="name" class="floating-label">Full Name</label>
+                <div *ngIf="name.invalid && name.touched && !registrationSuccess" class="text-danger">
+                  Name is required.
+                </div>
               </div>
 
-              <!-- Step 2 -->
-              <div *ngIf="step === 2">
-                <div class="form-group mb-4">
-                  <label class="text-white mb-2" for="employees">Number of Employees</label>
-                  <div>
-                    <label class="radio-inline me-3">
-                      <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="1-10" required> 1-10
-                    </label>
-                    <label class="radio-inline me-3">
-                      <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="11-50" required> 11-50
-                    </label>
-                    <label class="radio-inline me-3">
-                      <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="51-200" required> 51-200
-                    </label>
-                    <label class="radio-inline me-3">
-                      <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="200+" required> 200+
-                    </label>
-                  </div>
-                  <div *ngIf="!registerData.employees && step === 2 && !registrationSuccess" class="text-danger">
-                    Number of employees is required.
-                  </div>
+              <div class="form-floating mb-3">
+                <input type="email" id="email" class="form-control form-control-lg bg-dark text-light"
+                  [(ngModel)]="registerData.email" name="email" #email="ngModel" required placeholder="Your Email"
+                  style="font-family: 'Roundo', sans-serif;" (ngModelChange)="onEmailChange()" />
+                <label for="email" class="floating-label">Your Email</label>
+                <div *ngIf="email.invalid && email.touched && !registrationSuccess" class="text-danger">
+                  Valid email is required.
                 </div>
-
-                <div class="form-floating mb-4">
-                  <input
-                    type="text"
-                    id="industry"
-                    class="form-control form-control-lg bg-dark text-white"
-                    [(ngModel)]="registerData.industry"
-                    name="industry"
-                    #industry="ngModel"
-                    required
-                    placeholder="Industry"
-                  />
-                  <label for="industry">Industry</label>
-                  <div *ngIf="industry.invalid && industry.touched && !registrationSuccess" class="text-danger">
-                    Industry is required.
-                  </div>
+                <div *ngIf="emailExists && !registrationSuccess" class="text-danger">
+                  This email is already registered. Please use a different email.
                 </div>
-
-                <button type="button" class="btn btn-primary w-100 mb-3" (click)="nextStep()" [disabled]="!registrationForm.valid">Next</button>
               </div>
 
-              <!-- Step 3 (Password) -->
-              <div *ngIf="step === 3">
-                <div class="form-floating mb-3">
-                  <input
-                    type="password"
-                    id="password"
-                    class="form-control form-control-lg bg-dark text-white"
-                    [(ngModel)]="registerData.password"
-                    name="password"
-                    #password="ngModel"
-                    required
-                    placeholder="Password"
-                  />
-                  <label for="password">Password</label>
-                  <div *ngIf="password.invalid && password.touched && !registrationSuccess" class="text-danger">
-                    Password is required.
-                  </div>
+              <div class="form-floating mb-3">
+                <input type="text" id="company" class="form-control form-control-lg bg-dark text-light"
+                  [(ngModel)]="registerData.company" name="company" #company="ngModel" required
+                  placeholder="Company Name" style="font-family: 'Roundo', sans-serif;" />
+                <label for="company" class="floating-label">Company Name</label>
+                <div *ngIf="company.invalid && company.touched && !registrationSuccess" class="text-danger">
+                  Company name is required.
                 </div>
-
-                <div class="form-floating mb-3">
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    class="form-control form-control-lg bg-dark text-white"
-                    [(ngModel)]="registerData.confirmPassword"
-                    name="confirmPassword"
-                    #confirmPassword="ngModel"
-                    required
-                    placeholder="Confirm Password"
-                  />
-                  <label for="confirmPassword">Confirm Password</label>
-                  <div *ngIf="confirmPassword.invalid && confirmPassword.touched && !registrationSuccess" class="text-danger">
-                    Please confirm your password.
-                  </div>
-                  <div *ngIf="!registrationSuccess && registerData.password !== registerData.confirmPassword" class="text-danger">
-                    Passwords must match.
-                  </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="!registrationForm.valid">Submit</button>
               </div>
+
+              <div class="form-floating mb-4">
+                <select class="form-select bg-black text-white" id="role" [(ngModel)]="registerData.role" name="role"
+                  #role="ngModel" required style="font-family: 'Roundo', sans-serif;">
+                  <option value="" disabled selected>Select a role</option>
+                  <option value="admin">Admin</option>
+                  <option value="manager">Manager</option>
+                  <option value="employee">Employee</option>
+                  <option value="other">Other</option>
+                </select>
+                <label for="role" class="floating-label">User Role</label>
+                <div *ngIf="role.invalid && role.touched && !registrationSuccess" class="text-danger">
+                  Role selection is required.
+                </div>
+              </div>
+
+              <div *ngIf="registerData.role === 'other'" class="form-floating mb-3">
+                <input type="text" id="otherRole" class="form-control form-control-lg bg-dark text-light"
+                  [(ngModel)]="registerData.otherRole" name="otherRole" required placeholder="Specify Role"
+                  style="font-family: 'Roundo', sans-serif;" />
+                <label for="otherRole" class="floating-label">Specify Role</label>
+                <div *ngIf="registerData.otherRole && registerData.otherRole.length < 3" class="text-danger">
+                  Please specify a valid role (at least 3 characters).
+                </div>
+              </div>
+
+              <!-- Next Button -->
+              <button type="button" class="btn next-button" (click)="nextStep()"
+                [disabled]="!registrationForm.valid || emailExists || (registerData.role === 'other' && !registerData.otherRole)"
+                [ngClass]="{ 'btn-orange': registrationForm.valid && !emailExists && !(registerData.role === 'other' && !registerData.otherRole) }"
+                style="padding: 0.5rem 1rem; margin-left: 0; font-size: 14px; text-align: center; display: flex; justify-content: center; align-items: center;">
+                Next
+              </button>
+            </form>
+          </div>
+
+          <!-- Step 2 -->
+          <div *ngIf="step === 2">
+            <form #registrationForm="ngForm" (ngSubmit)="register(registrationForm)">
+
+
+              <!-- Add the sentence above the radio buttons -->
+              <div class="form-group mb-4">
+                <label class="text-white mb-2" for="employeesSize" style="font-family: 'Roundo', sans-serif;">
+                  What is your company size?
+                </label>
+              </div>
+
+
+              <div class="radio-wrapper">
+                <div class="radio-container">
+                  <label class="radio-inline">
+                    <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="1-10" required
+                      #employees="ngModel">
+                    1-10
+                  </label>
+                </div>
+                <div class="radio-container">
+                  <label class="radio-inline">
+                    <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="11-50" required
+                      #employees="ngModel">
+                    11-50
+                  </label>
+                </div>
+                <div class="radio-container">
+                  <label class="radio-inline">
+                    <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="51-200" required
+                      #employees="ngModel">
+                    51-200
+                  </label>
+                </div>
+                <div class="radio-container">
+                  <label class="radio-inline">
+                    <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="201+" required
+                      #employees="ngModel">
+                    201+
+                  </label>
+                </div>
+              </div>
+
+              <div *ngIf="employees.invalid && employees.touched && !registerData.employees" class="text-danger">
+                Please select the number of employees.
+              </div>
+
+              <!-- Industry Field -->
+              <div class="form-floating mb-4">
+                <input type="text" class="form-control bg-dark text-light" id="industry"
+                  [(ngModel)]="registerData.industry" name="industry" required placeholder="Industry"
+                  #industry="ngModel" style="font-family: 'Roundo', sans-serif;" />
+                <label for="industry" class="floating-label">Industry</label>
+                <div *ngIf="industry.invalid && industry.touched && !registerData.industry" class="text-danger">
+                  Industry is required.
+                </div>
+              </div>
+
+              <!-- Next Button for Step 2 -->
+              <button type="button" class="btn next-button" (click)="nextStep()"
+                [disabled]="!registrationForm.valid || !registerData.employees || !registerData.industry || emailExists"
+                [ngClass]="{ 'btn-orange': registrationForm.valid && registerData.employees && registerData.industry && !emailExists }"
+                style="padding: 0.5rem 1rem; margin-left: 0; font-size: 14px; text-align: center; display: flex; justify-content: center; align-items: center;">
+                Next
+              </button>
+
             </form>
 
-            <button class="btn btn-link mt-3" (click)="goToLogin()">Back to Login</button>
+          </div>
+
+          <!-- Step 3 -->
+          <div *ngIf="step === 3">
+            <form (ngSubmit)="register()" #registrationForm="ngForm">
+              <div class="form-floating mb-3">
+                <input type="password" id="password" class="form-control form-control-lg bg-dark text-light"
+                  [(ngModel)]="registerData.password" name="password" #password="ngModel" required
+                  placeholder="Password" style="font-family: 'Roundo', sans-serif;" />
+                <label for="password" class="floating-label">Password</label>
+                <div *ngIf="password.invalid && password.touched && !registrationSuccess" class="text-danger">
+                  Password is required.
+                </div>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="password" id="confirmPassword" class="form-control form-control-lg bg-dark text-light"
+                  [(ngModel)]="registerData.confirmPassword" name="confirmPassword" #confirmPassword="ngModel" required
+                  placeholder="Confirm Password" style="font-family: 'Roundo', sans-serif;" />
+                <label for="confirmPassword" class="floating-label">Confirm Password</label>
+                <div *ngIf="confirmPassword.invalid && confirmPassword.touched && !registrationSuccess"
+                  class="text-danger">
+                  Confirm password is required.
+                </div>
+                <div *ngIf="registerData.password !== registerData.confirmPassword && confirmPassword.touched"
+                  class="text-danger">
+                  Passwords do not match.
+                </div>
+              </div>
+
+              <button type="submit" class="btn next-button" [ngClass]="{
+                  'btn-light-up': registerData.password && registerData.confirmPassword && registerData.password === registerData.confirmPassword && registerData.password.length >= 6
+                }"
+                [disabled]="!registerData.password || !registerData.confirmPassword || registerData.password !== registerData.confirmPassword"
+                style="padding: 0.5rem 1rem; margin-left: 0; font-size: 14px; text-align: center; display: flex; justify-content: center; align-items: center;">
+                Create Account
+              </button>
+            </form>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Image Section on the Right (30%) -->
+    <div class="col-12 col-md-5 col-lg-5 col-xl-4 p-0">
+      <div class="position-relative w-99.95 h-99.95">
+        <!-- Icon at the top left of the image -->
+        <img src="assets/Frame 2244.png" alt="Icon" class="position-absolute"
+          style="top: 60px; left: 40px; width: 270px; height: 150px;">
+        <img src="assets/Group 2328.png" alt="Image" class="w-100 h-100 object-fit-cover">
+      </div>
+    </div>
   </div>
+
 </section>
