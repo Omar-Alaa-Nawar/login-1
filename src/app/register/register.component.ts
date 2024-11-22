@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -17,6 +18,11 @@ export class RegisterComponent {
   message: string = ''; // To store success or error messages
   errorMessage: string = ''; // To store error messages
   emailExists: boolean = false; // Flag to track if the email is already registered
+  passwordLength: boolean = false; // Flag to track password length requirement
+  hasLowercase: boolean = false; // Flag for lowercase character requirement
+  hasUppercase: boolean = false; // Flag for uppercase character requirement
+  hasNumber: boolean = false; // Flag for number requirement
+  
   registerData = {
     name: '',
     email: '',
@@ -34,7 +40,7 @@ export class RegisterComponent {
   // Proceed to the next step of the registration process
   nextStep() {
     this.errorMessage = ''; // Reset error message at each step
-  
+
     // Validate Step 1 fields (Name, Email, Company, Role)
     if (this.step === 1) {
       if (this.registerData.name && this.registerData.email && this.registerData.company && this.registerData.role) {
@@ -43,7 +49,7 @@ export class RegisterComponent {
         this.errorMessage = 'Please fill all fields in Step 1.';
       }
     }
-  
+
     // Validate Step 2 fields (Employees, Industry)
     else if (this.step === 2) {
       if (this.registerData.employees && this.registerData.industry) {
@@ -52,7 +58,7 @@ export class RegisterComponent {
         this.errorMessage = 'Please fill all fields in Step 2.';
       }
     }
-  
+
     // Validate Step 3 fields (Password, Confirm Password, Email)
     else if (this.step === 3) {
       if (this.registerData.password !== this.registerData.confirmPassword) {
@@ -64,7 +70,6 @@ export class RegisterComponent {
       }
     }
   }
-  
 
   // Go to the previous step of the registration process
   previousStep() {
@@ -135,8 +140,22 @@ export class RegisterComponent {
   onEmailChange() {
     this.emailExists = this.isEmailRegistered(this.registerData.email);
   }
-    // Navigate to login page
-    goToLogin() {
-      this.router.navigate(['/login']);
-    }
+
+  // Check password requirements as the user types
+  checkPasswordStrength() {
+    this.passwordLength = this.registerData.password.length >= 8;
+    this.hasLowercase = /[a-z]/.test(this.registerData.password);
+    this.hasUppercase = /[A-Z]/.test(this.registerData.password);
+    this.hasNumber = /\d/.test(this.registerData.password);
+  }
+
+  // Getter for all password requirements
+  get allRequirementsFulfilled(): boolean {
+    return this.passwordLength && this.hasLowercase && this.hasUppercase && this.hasNumber;
+  }
+
+  // Navigate to login page
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
 }

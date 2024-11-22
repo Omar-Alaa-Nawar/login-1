@@ -15,7 +15,7 @@
       <div class="row h-100 m-0">
         <!-- Form Section (75% of the 70%) -->
         <div class="col-12 col-md-9 col-lg-9 p-4 text-start">
-
+        
           <!-- Stepper Section -->
           <div class="mb-4">
             <div class="d-flex justify-content-between mb-3">
@@ -77,10 +77,10 @@
                 Now The Last Step, Create A Password To Your Account
               </h2>
             </div>
-            <!-- Success message section -->
-            <div *ngIf="registrationSuccess" class="alert alert-success" role="alert">
-              Registration successful! Your information has been saved.
-            </div>
+<!-- Success message just above the "Create Account" button -->
+<div *ngIf="registrationSuccess" class="success-text">
+  Registration successful! Your information has been saved.
+</div>
 
 
 
@@ -143,7 +143,7 @@
                 <input type="text" id="otherRole" class="form-control form-control-lg bg-dark text-light"
                   [(ngModel)]="registerData.otherRole" name="otherRole" required placeholder="Specify Role"
                   style="font-family: 'Roundo', sans-serif;" />
-                <label for="otherRole" class="floating-label">Specify Role</label>
+                <label for="otherRole" class="floating-label">Write Your Role</label>
                 <div *ngIf="registerData.otherRole && registerData.otherRole.length < 3" class="text-danger">
                   Please specify a valid role (at least 3 characters).
                 </div>
@@ -177,28 +177,35 @@
                   <label class="radio-inline">
                     <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="1-10" required
                       #employees="ngModel">
-                    1-10
+                    1-9
                   </label>
                 </div>
                 <div class="radio-container">
                   <label class="radio-inline">
                     <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="11-50" required
                       #employees="ngModel">
-                    11-50
+                    11-49
                   </label>
                 </div>
                 <div class="radio-container">
                   <label class="radio-inline">
                     <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="51-200" required
                       #employees="ngModel">
-                    51-200
+                    50-99
                   </label>
                 </div>
                 <div class="radio-container">
                   <label class="radio-inline">
-                    <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="201+" required
+                    <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="100-299" required
                       #employees="ngModel">
-                    201+
+                    100-299
+                  </label>
+                </div>
+                <div class="radio-container">
+                  <label class="radio-inline">
+                    <input type="radio" name="employees" [(ngModel)]="registerData.employees" value="300+" required
+                      #employees="ngModel">
+                    300+
                   </label>
                 </div>
               </div>
@@ -233,16 +240,18 @@
           <!-- Step 3 -->
           <div *ngIf="step === 3">
             <form (ngSubmit)="register()" #registrationForm="ngForm">
+              <!-- Password Field -->
               <div class="form-floating mb-3">
                 <input type="password" id="password" class="form-control form-control-lg bg-dark text-light"
                   [(ngModel)]="registerData.password" name="password" #password="ngModel" required
-                  placeholder="Password" style="font-family: 'Roundo', sans-serif;" />
+                  placeholder="Password" style="font-family: 'Roundo', sans-serif;" (input)="checkPasswordStrength()" />
                 <label for="password" class="floating-label">Password</label>
                 <div *ngIf="password.invalid && password.touched && !registrationSuccess" class="text-danger">
                   Password is required.
                 </div>
               </div>
 
+              <!-- Confirm Password Field -->
               <div class="form-floating mb-3">
                 <input type="password" id="confirmPassword" class="form-control form-control-lg bg-dark text-light"
                   [(ngModel)]="registerData.confirmPassword" name="confirmPassword" #confirmPassword="ngModel" required
@@ -258,15 +267,34 @@
                 </div>
               </div>
 
-              <button type="submit" class="btn next-button" [ngClass]="{
-                  'btn-light-up': registerData.password && registerData.confirmPassword && registerData.password === registerData.confirmPassword && registerData.password.length >= 6
-                }"
-                [disabled]="!registerData.password || !registerData.confirmPassword || registerData.password !== registerData.confirmPassword"
-                style="padding: 0.5rem 1rem; margin-left: 0; font-size: 14px; text-align: center; display: flex; justify-content: center; align-items: center;">
-                Create Account
-              </button>
+              <!-- Password Requirements -->
+              <div class="password-requirements">
+                <div class="requirements-text">Your password must include:</div>
+                <div class="requirements-list">
+                  <!-- Left Bullet Points -->
+                  <ul class="left-requirements">
+                    <li [ngClass]="{ 'fulfilled': passwordLength }">At least 8 characters</li>
+                    <li [ngClass]="{ 'fulfilled': hasLowercase }">Lowercase characters</li>
+                  </ul>
+                  <!-- Right Bullet Points -->
+                  <ul class="right-requirements">
+                    <li [ngClass]="{ 'fulfilled': hasNumber }">Numbers</li>
+                    <li [ngClass]="{ 'fulfilled': hasUppercase }">Uppercase characters</li>
+                  </ul>
+                </div>
+              </div>
+
+<!-- Create Account Button -->
+<button type="submit" class="btn next-button"
+  [ngClass]="{
+    'btn-light-up': registerData.password && registerData.confirmPassword && registerData.password === registerData.confirmPassword && allRequirementsFulfilled
+  }"
+  [disabled]="!registerData.password || !registerData.confirmPassword || registerData.password !== registerData.confirmPassword || !allRequirementsFulfilled">
+  Create Account
+</button>
             </form>
           </div>
+
         </div>
       </div>
     </div>

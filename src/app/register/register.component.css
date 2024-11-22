@@ -1,172 +1,447 @@
 .next-button {
-    background-color: #FECBAF; /* Peach color */
-    color: white; /* White text */
-    font-family: 'Arial', sans-serif; /* Matching font */
-    font-size: 16px; /* Standard font size */
-    font-weight: 600; /* Bold text */
-    height: 48px; /* Consistent button height */
-    border: none; /* No border */
-    border-radius: 8px; /* Rounded corners */
-    cursor: pointer; /* Pointer on hover */
-    text-align: center; /* Center the text */
-    line-height: 48px; /* Align text vertically */
-    transition: all 0.3s ease; /* Smooth hover transition */
-  }
-  
-  .next-button:hover {
-    background-color: #FFB58D; /* Slightly darker peach on hover */
-  }
-  
-  .btn-orange {
-    background-color: #FF8C00; /* Orange color when form is valid */
-  }
-  
-  .btn-orange:hover {
-    background-color: #FF7000; /* Darker orange on hover */
-  }
-  
-  .create-account-button {
-    background-color: #FECBAF; /* Peach color */
-    color: white; /* White text */
-    font-family: 'Arial', sans-serif; /* Matching font */
-    font-size: 16px; /* Standard font size */
-    font-weight: 600; /* Bold text */
-    height: 48px; /* Consistent button height */
-    border: none; /* No border */
-    border-radius: 8px; /* Rounded corners */
-    cursor: pointer; /* Pointer on hover */
-    text-align: center; /* Center the text */
-    line-height: 48px; /* Align text vertically */
-    transition: all 0.3s ease; /* Smooth hover transition */
-  }
-  
-  .create-account-button:hover {
-    background-color: #FFB58D; /* Slightly darker peach on hover */
-  }
-  
-  .btn-orange {
-    background-color: #FF8C00; /* Orange color when form is valid */
-  }
-  
-  .btn-orange:hover {
-    background-color: #FF7000; /* Darker orange on hover */
-  }
+  background-color: #FECBAF;
+  /* Peach color */
+  color: white;
+  /* White text */
+  font-family: 'Arial', sans-serif;
+  /* Matching font */
+  font-size: 16px;
+  /* Standard font size */
+  font-weight: 600;
+  /* Bold text */
+  height: 48px;
+  /* Consistent button height */
+  border: none;
+  /* No border */
+  border-radius: 8px;
+  /* Rounded corners */
+  cursor: pointer;
+  /* Pointer on hover */
+  text-align: center;
+  /* Center the text */
+  line-height: 48px;
+  /* Align text vertically */
+  transition: all 0.3s ease;
+  /* Smooth hover transition */
+}
+
+.next-button:hover {
+  background-color: #FFB58D;
+  /* Slightly darker peach on hover */
+}
+
+.btn-orange {
+  background-color: #FF8C00;
+  /* Orange color when form is valid */
+}
+
+.btn-orange:hover {
+  background-color: #FF7000;
+  /* Darker orange on hover */
+}
+
+.create-account-button {
+  background-color: #FECBAF;
+  /* Peach color */
+  color: white;
+  /* White text */
+  font-family: 'Arial', sans-serif;
+  /* Matching font */
+  font-size: 16px;
+  /* Standard font size */
+  font-weight: 600;
+  /* Bold text */
+  height: 48px;
+  /* Consistent button height */
+  border: none;
+  /* No border */
+  border-radius: 8px;
+  /* Rounded corners */
+  cursor: pointer;
+  /* Pointer on hover */
+  text-align: center;
+  /* Center the text */
+  line-height: 48px;
+  /* Align text vertically */
+  transition: all 0.3s ease;
+  /* Smooth hover transition */
+}
+
+.create-account-button:hover {
+  background-color: #FFB58D;
+  /* Slightly darker peach on hover */
+}
+
+.btn-orange {
+  background-color: #FF8C00;
+  /* Orange color when form is valid */
+}
+
+.btn-orange:hover {
+  background-color: #FF7000;
+  /* Darker orange on hover */
+}
 
 /* Apply Roundo font to the entire registration page */
-body, .card-body {
-    font-family: 'Roundo', sans-serif;
-  }
-  
-  .btn {
-    font-family: 'Roundo', sans-serif;
-  }
-  
-  .text-orange {
-    color: #FF8C00;
-  }
-  
-  /* Style for form labels */
-  label {
-    font-family: 'Roundo', sans-serif;
-    font-size: 14px;
-  }
-  .btn-light-up {
-    background-color: #FF8C00; /* Blue background */
-    color: white;
-    border: none;
-    transition: background-color 0.3s ease; /* Smooth transition */
-  }
-  
-  .btn-light-up:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  .step-text {
-    font-family: 'Roundo', sans-serif;
-    font-size: 16px;
-    color: #333; /* Ensure text is visible */
-  }
-  
-  .progress {
-    height: 12px; /* Make the progress bar taller */
-    background-color: #f0f0f0;
-  }
-  
-  .progress-bar {
-    background-color: #4caf50; /* Green progress bar */
-  }
-  
-  /* Adjust image height and aspect ratio */
-  .position-relative {
-    height: 97vh; /* Adjust height to 80% of viewport height */
-    overflow: hidden;
-  }
-  
-  img.w-100.h-100.object-fit-cover {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
+body,
+.card-body {
+  font-family: 'Roundo', sans-serif;
+}
 
-  /* Adjust spacing between the label and radio button container */
+.btn {
+  font-family: 'Roundo', sans-serif;
+}
+
+.text-orange {
+  color: #FF8C00;
+}
+
+/* Style for form labels */
+label {
+  font-family: 'Roundo', sans-serif;
+  font-size: 14px;
+}
+
+.btn-light-up {
+  background-color: #FF8C00;
+  /* Blue background */
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+  /* Smooth transition */
+}
+
+.btn-light-up:hover {
+  background-color: #0056b3;
+  /* Darker blue on hover */
+}
+
+.step-text {
+  font-family: 'Roundo', sans-serif;
+  font-size: 16px;
+  color: #333;
+  /* Ensure text is visible */
+}
+
+.progress {
+  height: 12px;
+  /* Make the progress bar taller */
+  background-color: #f0f0f0;
+}
+
+.progress-bar {
+  background-color: #4caf50;
+  /* Green progress bar */
+}
+
+/* Adjust image height and aspect ratio */
+.position-relative {
+  height: 97vh;
+  /* Adjust height to 80% of viewport height */
+  overflow: hidden;
+}
+
+img.w-100.h-100.object-fit-cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Adjust spacing between the label and radio button container */
 .form-group.mb-4 {
-    margin-bottom: 15px; /* Reduced space between label and radio button containers */
-  }
+  margin-bottom: 15px;
+  /* Reduced space between label and radio button containers */
+}
+
 /* Radio button container wrapper */
 .radio-wrapper {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
-  }
-  
-  /* Radio button container style */
-  .radio-container {
-    position: relative;
-    padding: 10px 20px;
-    background-color: #333333;  /* Dark background color */
-    border: 2px solid #444444;  /* Slightly lighter border */
-    border-radius: 50px; /* Semi-circle sides */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    margin-bottom: 10px; /* Ensure the lines do not overflow the container */
-  }
-  
-  /* Top semi-circle effect */
-  .radio-container:before {
-    content: '';
-    position: absolute;
-    width: 30px; /* Semi-circle size */
-    height: 15px; /* Connecting lines height */
-    background-color: #333333; /* Match background color */
-    top: -7px; /* Position above */
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 0 0 30px 30px; /* Semi-circle effect at the top */
-  }
-  
-  /* Bottom semi-circle effect */
-  .radio-container:after {
-    content: '';
-    position: absolute;
-    width: 30px; /* Semi-circle size */
-    height: 15px; /* Connecting lines height */
-    background-color: #333333; /* Match background color */
-    bottom: -7px; /* Position below */
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 30px 30px 0 0; /* Semi-circle effect at the bottom */
-  }
-  
-  /* Radio button text */
-  .radio-inline label {
-    color: #333333; /* White text inside the radio container */
-    font-family: 'Roundo', sans-serif;
-  }
-  
-  /* Spacing between radio button and text */
-  .radio-inline input[type="radio"] {
-    margin-right: 10px;
-  }
-  
-  
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+/* Radio button container style */
+.radio-container {
+  position: relative;
+  padding: 10px 20px;
+  background-color: #000000;
+  /* Dark background color */
+  border: 2px solid #444444;
+  /* Default grey border */
+  border-radius: 50px;
+  /* Semi-circle sides */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  /* Smooth transition for border and background color */
+}
+
+/* Top semi-circle effect */
+.radio-container:before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  /* Semi-circle size */
+  height: 15px;
+  /* Connecting lines height */
+  background-color: #000000;
+  /* Match background color */
+  top: -7px;
+  /* Position above */
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0 0 30px 30px;
+  /* Semi-circle effect at the top */
+}
+
+/* Bottom semi-circle effect */
+.radio-container:after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  /* Semi-circle size */
+  height: 15px;
+  /* Connecting lines height */
+  background-color: #000000;
+  /* Match background color */
+  bottom: -7px;
+  /* Position below */
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 30px 30px 0 0;
+  /* Semi-circle effect at the bottom */
+}
+
+/* Radio button style */
+.radio-container input[type="radio"] {
+  background-color: black;
+  /* Inner circle black */
+  border: 2px solid #888888;
+  /* Thin grey border around the circle */
+  border-radius: 50%;
+  /* Make it circular */
+  width: 15px;
+  /* Set the size of the radio button */
+  height: 15px;
+  /* Set the size of the radio button */
+  appearance: none;
+  /* Remove default browser styling */
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* Smooth transition for button background */
+}
+
+/* When the radio button is checked */
+.radio-container input[type="radio"]:checked {
+  background-color: #66b3ff;
+  /* Lighter blue for inner circle */
+  border: 2px solid white;
+  /* Thin white border around the inner circle */
+}
+
+/* Label inside the circle */
+.radio-container label {
+  font-family: 'Roundo', sans-serif;
+  color: grey;
+  /* Set the number text color to grey */
+  font-size: 16px;
+  /* Keep the number text color and size the same */
+}
+
+/* Spacing between radio button and text */
+.radio-container input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* When radio is selected, turn the container's outer border and background color blue */
+.radio-container input[type="radio"]:checked+label {
+  color: grey;
+  /* Keep label color grey when selected */
+}
+
+/* Change outer container's border and background color to lighter blue when selected */
+.radio-container input[type="radio"]:checked {
+  border-color: #66b3ff;
+  /* Outer border turns lighter blue */
+  background-color: #66b3ff;
+  /* Outer container turns lighter blue */
+}
+
+/* Floating label positioned at the top-left */
+.floating-label {
+  position: absolute;
+  top: -8px;
+  /* Align closer to the top of the container */
+  left: -2px;
+  /* Align near the left border */
+  color: #888888;
+  /* Grey color for the label */
+  font-size: 0.8rem;
+  /* Smaller font size */
+  transition: all 0.2s ease;
+  /* Smooth transition for focus state */
+  pointer-events: none;
+  /* Prevent interaction with the label */
+}
+
+/* Input container with relative positioning */
+.input-container {
+  position: relative;
+  /* Ensures the label is positioned relative to the container */
+  border: 1px solid #ffffff;
+  /* Thin white border around the input box */
+  border-radius: 4px;
+  /* Slightly rounded corners */
+  padding-top: 25px;
+  /* Space for the label above the input */
+  margin-bottom: 1rem;
+  /* Add spacing between fields */
+}
+
+/* Input box styling */
+.input-box {
+  background-color: #000000;
+  /* Black background */
+  color: #ffffff;
+  /* White text */
+  border: none;
+  /* Remove input borders */
+  width: 100%;
+  /* Full width for the input */
+  padding: 12px;
+  /* Inner padding for better usability */
+  font-family: 'Roundo', sans-serif;
+  /* Custom font */
+}
+
+/* Focused state: Adjust label position and color */
+.input-box:focus~.floating-label,
+.input-box:not(:placeholder-shown)~.floating-label {
+  top: 3px;
+  /* Keep it near the top */
+  left: 8px;
+  /* Align slightly left */
+  font-size: 0.7rem;
+  /* Even smaller font for compactness */
+  color: #ffffff;
+  /* Highlight the label when focused */
+}
+
+/* Select box consistency */
+select.input-box {
+  appearance: none;
+  /* Remove default dropdown styling */
+  background-color: #000000;
+  /* Black background */
+  color: #ffffff;
+  /* White text */
+  border: none;
+  padding: 12px;
+  /* Inner padding for consistency */
+}
+
+select.input-box:focus~.floating-label,
+select.input-box:not([value=""])~.floating-label {
+  top: 3px;
+  /* Consistent top position */
+  left: 8px;
+  font-size: 0.7rem;
+  color: #ffffff;
+}
+
+/* Password Requirements Section */
+.password-requirements {
+  margin-top: 1rem;
+}
+
+/* Text for password requirements */
+.requirements-text {
+  margin-bottom: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Layout for the requirements (left and right bullet points) */
+.requirements-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-requirements,
+.right-requirements {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.left-requirements li,
+.right-requirements li {
+  color: #888888;
+  /* Grey color for inactive bullet points */
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.left-requirements li::before,
+.right-requirements li::before {
+  content: '•';
+  /* Bullet point */
+  color: white;
+  margin-right: 8px;
+}
+
+/* Change color of bullet points to green when fulfilled */
+.left-requirements li.fulfilled,
+.right-requirements li.fulfilled {
+  color: #4CAF50;
+  /* Green color for fulfilled requirements */
+}
+
+/* Ensure the left and right bullet points are aligned properly */
+.left-requirements {
+  margin-right: 20px;
+}
+
+.right-requirements {
+  margin-left: 20px;
+}
+
+/* Button active class */
+.btn-light-up {
+  background-color: #FF8C00;
+  /* Green color when all requirements are met */
+  border: 1px solid #FF8C00;
+}
+
+.success-text {
+  color: green;
+  /* Green text color */
+  font-size: 14px;
+  /* Smaller font size */
+  text-align: center;
+  margin-bottom: 10px;
+  /* Space between the message and the button */
+  display: inline-block;
+  /* Make it an inline-block so it doesn’t take full width */
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  /* Centers text horizontally */
+  align-items: center;
+  /* Centers text vertically */
+  padding: 0.5rem 1rem;
+  /* Adjust button padding as needed */
+  text-align: center;
+  /* Ensures text is centered */
+  font-size: 14px;
+  /* Optional: Adjust font size */
+}
