@@ -445,3 +445,64 @@ select.input-box:not([value=""])~.floating-label {
   font-size: 14px;
   /* Optional: Adjust font size */
 }
+
+/* Media query for mobile devices */
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  /* Hide the image on mobile */
+  .position-relative img.w-100.h-100.object-fit-cover {
+    display: none !important; /* Ensure the image is hidden */
+  }
+
+  /* Additional styles to remove any space the image might occupy */
+  .position-relative {
+    display: block; /* Ensure it's block level */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Hide anything overflowing */
+  }
+
+  /* Make sure the card-body stretches to fill the available space */
+  .card-body {
+    padding: 15px;
+    width: 100%; /* Full width */
+    height: 150%; /* Full height */
+    display: flex; /* Use flexbox to stretch content */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center the content vertically */
+  }
+
+  /* Ensure the form is visible and takes the full screen */
+  .position-relative {
+    height: auto; /* Remove fixed height */
+    overflow: visible; /* Allow content overflow */
+  }
+
+  /* Button size adjustments for mobile */
+  .next-button, .create-account-button, .btn-light-up {
+    width: 100%; /* Make buttons full width */
+    font-size: 14px; /* Adjust font size */
+  }
+
+  /* Ensure form inputs take full width */
+  .input-container, .form-group.mb-4 {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  /* Adjust radio buttons for mobile */
+  .radio-wrapper {
+    flex-direction: column; /* Stack radio buttons vertically */
+    gap: 10px;
+  }
+
+  /* Adjust label sizes for mobile */
+  label, .step-text {
+    font-size: 12px; /* Reduce font size for mobile */
+  }
+
+  /* Adjust the floating label for better spacing */
+  .floating-label {
+    font-size: 0.7rem;
+  }
+}

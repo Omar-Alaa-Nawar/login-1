@@ -15,7 +15,14 @@
       <div class="row h-100 m-0">
         <!-- Form Section (75% of the 70%) -->
         <div class="col-12 col-md-9 col-lg-9 p-4 text-start">
-        
+
+          <!-- Language Dropdown Component -->
+          <div *ngIf="step === 1 || step === 2 || step === 3" class="mb-4">
+
+            <app-language-dropdown [(selectedLanguage)]="registerData.selectedLanguage"></app-language-dropdown>
+          </div>
+
+
           <!-- Stepper Section -->
           <div class="mb-4">
             <div class="d-flex justify-content-between mb-3">
@@ -77,10 +84,10 @@
                 Now The Last Step, Create A Password To Your Account
               </h2>
             </div>
-<!-- Success message just above the "Create Account" button -->
-<div *ngIf="registrationSuccess" class="success-text">
-  Registration successful! Your information has been saved.
-</div>
+            <!-- Success message just above the "Create Account" button -->
+            <div *ngIf="registrationSuccess" class="success-text">
+              Registration successful! Your information has been saved.
+            </div>
 
 
 
@@ -284,14 +291,12 @@
                 </div>
               </div>
 
-<!-- Create Account Button -->
-<button type="submit" class="btn next-button"
-  [ngClass]="{
+              <!-- Create Account Button -->
+              <button type="submit" class="btn next-button" [ngClass]="{
     'btn-light-up': registerData.password && registerData.confirmPassword && registerData.password === registerData.confirmPassword && allRequirementsFulfilled
-  }"
-  [disabled]="!registerData.password || !registerData.confirmPassword || registerData.password !== registerData.confirmPassword || !allRequirementsFulfilled">
-  Create Account
-</button>
+  }" [disabled]="!registerData.password || !registerData.confirmPassword || registerData.password !== registerData.confirmPassword || !allRequirementsFulfilled">
+                Create Account
+              </button>
             </form>
           </div>
 
@@ -311,3 +316,11 @@
   </div>
 
 </section>
+
+<style>
+  @media screen and (max-width: 768px) {
+    .col-md-4 {
+      display: none;
+    }
+  }
+</style>

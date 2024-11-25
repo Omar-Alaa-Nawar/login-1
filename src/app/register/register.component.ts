@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
-
+import { SharedModule } from '../shared.module';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, SharedModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
@@ -23,6 +23,7 @@ export class RegisterComponent {
   hasUppercase: boolean = false; // Flag for uppercase character requirement
   hasNumber: boolean = false; // Flag for number requirement
   
+  // Register data with selectedLanguage
   registerData = {
     name: '',
     email: '',
@@ -32,7 +33,8 @@ export class RegisterComponent {
     industry: '',
     password: '',
     confirmPassword: '',
-    otherRole: ''  // Added property for 'otherRole'
+    otherRole: '',
+    selectedLanguage: 'en'  // Default language
   };
 
   constructor(private router: Router) {}
@@ -115,7 +117,8 @@ export class RegisterComponent {
       industry: '',
       password: '',
       confirmPassword: '',
-      otherRole: ''  // Reset the 'otherRole' field
+      otherRole: '',
+      selectedLanguage: 'en', // Default language
     };
 
     // Reset the form state
