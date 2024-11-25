@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { LeftSideComponent } from '../shared/left-side/left-side.component'; // Import LeftSideComponent
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
+  standalone: true,  // Standalone component
+  imports: [CommonModule, FormsModule, LeftSideComponent], // Add LeftSideComponent here
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
@@ -16,10 +16,9 @@ export class LoginComponent {
     email: '',
     password: ''
   };
-
   message: string = '';
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router) {}
 
   login() {
     const users = JSON.parse(localStorage.getItem('users') || '[]');
@@ -30,12 +29,8 @@ export class LoginComponent {
     );
 
     if (storedUser) {
-      console.log('Login successful', storedUser);
-      this.authService.setRole(storedUser.role);
-      this.authService.authenticate();
       this.router.navigate([`/${storedUser.role}-dashboard`]);
     } else {
-      console.error('Login failed');
       this.message = 'Either email or password is not correct. Please try again.';
     }
   }

@@ -1,65 +1,72 @@
-<section class="vh-100 gradient-custom d-flex align-items-center">
-  <div class="container py-4 px-3">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card bg-dark text-white" style="border-radius: 0.95rem;">
-          <div class="card-body p-4 text-center">
-            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-            <p class="text-white-50 mb-4">Please enter your login and password!</p>
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roundo&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap"
+  rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Nunito:wght@300;400;600;700&display=swap"
+  rel="stylesheet">
 
-            <form (ngSubmit)="login()">
-              <!-- Email Field with Floating Label -->
-              <div class="form-floating mb-3">
-                <input 
-                  type="email" 
-                  id="typeEmailX" 
-                  class="form-control form-control-lg bg-dark text-white" 
-                  [(ngModel)]="loginData.email" 
-                  name="email" 
-                  required 
-                  placeholder="Email"
-                  aria-label="Email" 
-                />
-                <label for="typeEmailX">Email</label>
-              </div>
+<section class="vh-100 d-flex align-items-center" style="background-color: #121212; color: #ffffff;">
+  <div class="row w-100 m-0">
+    <!-- Login Form on the Left -->
+    <div class="col-12 col-md-7 col-lg-7 col-xl-8 p-0 d-flex justify-content-start align-items-center">
+      <div class="col-12 col-md-9 col-lg-9 p-4 text-start">
+        <h2 class="fw-bold mb-2 text-uppercase"
+          style="font-family: 'Roundo', sans-serif; font-size: 24px; color: #ffffff;">
+          Welcome Back!
+        </h2>
+        <p style="font-family: 'Roundo', sans-serif; font-size: 16px; color: #D3D3D3;">
+          Don’t have an account?
+          <button type="button" (click)="onRegisterClick()" class="btn btn-link"
+            style="font-family: 'Roundo', sans-serif; font-size: 14px; color: #FF8C00;">
+            Create Account
+          </button>
+        </p>
 
-              <!-- Password Field with Floating Label -->
-              <div class="form-floating mb-3">
-                <input 
-                  type="password" 
-                  id="typePasswordX" 
-                  class="form-control form-control-lg bg-dark text-white" 
-                  [(ngModel)]="loginData.password" 
-                  name="password" 
-                  required 
-                  placeholder="Password"
-                  aria-label="Password" 
-                />
-                <label for="typePasswordX">Password</label>
-              </div>
-
-              <p class="small mb-4">
-                <button type="button" (click)="forgotPassword()" class="btn btn-link">Forgot Password?</button>
-              </p>
-
-              <button class="btn btn-outline-light btn-lg px-4" type="submit">Login</button>
-              <p *ngIf="message" class="text-danger mt-3">{{ message }}</p>
-            </form>
-
-            <div class="d-flex justify-content-center text-center mt-3">
-              <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-              <a href="#!" class="text-white mx-3"><i class="fab fa-twitter fa-lg"></i></a>
-              <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
-            </div>
-
-            <div>
-              <p class="small mb-4">Don't have an account?
-                <button type="button" (click)="onRegisterClick()" class="btn btn-link">Register</button>
-              </p>
+        <form (ngSubmit)="login()" #loginForm="ngForm">
+          <!-- Email Field -->
+          <div class="form-floating mb-3">
+            <input type="email" id="typeEmailX" class="form-control form-control-lg bg-dark text-light"
+              [(ngModel)]="loginData.email" name="email" #email="ngModel" required placeholder="Your Email" />
+            <label for="typeEmailX" class="floating-label">Your Email</label>
+            <div *ngIf="email.invalid && email.touched" class="text-danger">
+              Valid email is required.
             </div>
           </div>
-        </div>
+
+          <!-- Password Field -->
+          <div class="form-floating mb-3">
+            <input type="password" id="typePasswordX" class="form-control form-control-lg bg-dark text-light"
+              [(ngModel)]="loginData.password" name="password" #password="ngModel" required placeholder="Password" />
+            <label for="typePasswordX" class="floating-label">Password</label>
+            <div *ngIf="password.invalid && password.touched" class="text-danger">
+              Password is required.
+            </div>
+          </div>
+
+          <!-- Login Button -->
+          <button type="submit" class="btn next-button" [disabled]="!loginForm.valid"
+            style="padding: 0.5rem 1rem; font-size: 14px; margin-bottom: 10px;">
+            Login
+          </button>
+
+          <!-- Forgot Password Link -->
+          <p class="small">
+            <button type="button" (click)="forgotPassword()" class="btn btn-link"
+              style="font-family: 'Roundo', sans-serif; font-size: 14px; color: #FF8C00;">
+              Forgot Password?
+            </button>
+          </p>
+          <p *ngIf="message" class="text-danger mt-3">{{ message }}</p>
+        </form>
       </div>
+    </div>
+
+    <!-- Right Side: LeftSideComponent -->
+    <div class="col-12 col-md-5 col-lg-5 col-xl-4 p-0">
+      <app-left-side></app-left-side>
     </div>
   </div>
 </section>
