@@ -2,21 +2,24 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LeftSideComponent } from '../shared/left-side/left-side.component'; // Import LeftSideComponent
+import { LeftSideComponent } from '../shared/left-side/left-side.component';
+import { SharedModule } from '../shared.module'; // Import SharedModule
 
 @Component({
   selector: 'app-login',
-  standalone: true,  // Standalone component
-  imports: [CommonModule, FormsModule, LeftSideComponent], // Add LeftSideComponent here
+  standalone: true,
+  imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule], // Use SharedModule to access LanguageDropdownComponent
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   loginData = {
     email: '',
-    password: ''
+    password: '',
+    selectedLanguage: 'en', // Default language = 
   };
   message: string = '';
+  
 
   constructor(private router: Router) {}
 
@@ -42,4 +45,6 @@ export class LoginComponent {
   onRegisterClick() {
     this.router.navigate(['/register']);
   }
+
+  
 }

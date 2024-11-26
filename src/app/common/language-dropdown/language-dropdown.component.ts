@@ -6,13 +6,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./language-dropdown.component.css']
 })
 export class LanguageDropdownComponent {
-  @Input() selectedLanguage: string = 'en';  // Default to English
-  @Output() selectedLanguageChange = new EventEmitter<string>();  // Emit changes to the parent
+  @Input() selectedLanguage: string = 'en'; // Default to English
+  @Output() selectedLanguageChange = new EventEmitter<string>(); // Notify parent on change
 
   onLanguageChange(event: Event): void {
     const selectedValue = (event.target as HTMLSelectElement).value;
-    this.selectedLanguageChange.emit(selectedValue);  // Emit the selected value
+    this.selectedLanguageChange.emit(selectedValue); // Emit new language to parent
     console.log(`Language changed to: ${selectedValue}`);
-    // Implement additional logic here, e.g., updating a translation service
   }
 }

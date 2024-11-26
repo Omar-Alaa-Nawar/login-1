@@ -1,13 +1,14 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { LeftSideComponent } from '../shared/left-side/left-side.component';
+import { SharedModule } from '../shared.module'; // Import SharedModule
 
 @Component({
   selector: 'app-reset-password',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, LeftSideComponent],
+  imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule], // Use SharedModule to access LanguageDropdownComponent
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.css'],
 })
@@ -19,6 +20,7 @@ export class ResetPasswordComponent {
   passwordMatchError: string = '';
   showSuccessMessage: boolean = false;
   isChangePasswordFlow: boolean = false;
+  selectedLanguage: string = 'en'; // Add selectedLanguage property
 
   passwordRequirements = {
     length: false,
@@ -31,6 +33,12 @@ export class ResetPasswordComponent {
   showConfirmPassword: boolean = false;
 
   constructor(private router: Router) {}
+
+  // Language change handler
+  onLanguageChange(newLanguage: string) {
+    this.selectedLanguage = newLanguage;
+    console.log(`Language changed to: ${newLanguage}`);
+  }
 
   // Toggle password visibility
   togglePasswordVisibility() {
