@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LeftSideComponent } from '../shared/left-side/left-side.component';
-import { SharedModule } from '../shared.module'; // Import SharedModule
+import { SharedModule } from '../shared.module'; // Import SharedModule to access LanguageDropdownComponent
 
 @Component({
   selector: 'app-reset-password',
