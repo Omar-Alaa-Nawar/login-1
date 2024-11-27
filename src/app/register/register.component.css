@@ -1,4 +1,3 @@
-
 .next-button {
   background-color: #FECBAF;
   /* Peach color */
@@ -24,9 +23,12 @@
   /* Align text vertically */
   transition: all 0.3s ease;
   /* Smooth hover transition */
-  padding: 12px 20px;  /* Adjusted padding */
-  width: 120px;  /* Smaller width */
-  height: 48px;  /* Smaller height */
+  padding: 12px 20px;
+  /* Adjusted padding */
+  width: 120px;
+  /* Smaller width */
+  height: 48px;
+  /* Smaller height */
 }
 
 
@@ -53,34 +55,56 @@
 }
 
 .create-account-button {
-  background-color: #FECBAF; /* Peach color */
-  color: white; /* White text */
-  font-family: 'Arial', sans-serif; /* Font style */
-  font-size: 14px; /* Font size */
-  font-weight: 600; /* Bold text */
-  height: 48px; /* Button height */
-  border: none; /* No border */
-  border-radius: 8px; /* Rounded corners */
-  cursor: pointer; /* Pointer on hover */
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Center text vertically */
-  justify-content: center; /* Center text horizontally */
-  text-align: center; /* Ensure text alignment */
-  line-height: 1; /* Ensure proper text centering */
-  padding: 0 20px; /* Horizontal padding for spacing */
-  width: 120px; /* Button width */
-  box-sizing: border-box; /* Include padding in the button's width */
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  background-color: #FECBAF;
+  /* Peach color */
+  color: white;
+  /* White text */
+  font-family: 'Arial', sans-serif;
+  /* Font style */
+  font-size: 14px;
+  /* Font size */
+  font-weight: 600;
+  /* Bold text */
+  height: 48px;
+  /* Button height */
+  border: none;
+  /* No border */
+  border-radius: 8px;
+  /* Rounded corners */
+  cursor: pointer;
+  /* Pointer on hover */
+  display: flex;
+  /* Use flexbox for alignment */
+  align-items: center;
+  /* Center text vertically */
+  justify-content: center;
+  /* Center text horizontally */
+  text-align: center;
+  /* Ensure text alignment */
+  line-height: 1;
+  /* Ensure proper text centering */
+  padding: 0 20px;
+  /* Horizontal padding for spacing */
+  width: 120px;
+  /* Button width */
+  box-sizing: border-box;
+  /* Include padding in the button's width */
+  transition: all 0.3s ease;
+  /* Smooth transition for hover effects */
 }
 
 .create-account-button:hover {
-  background-color: #FECBAF; /* Keep the same peach color */
-  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  background-color: #FECBAF;
+  /* Keep the same peach color */
+  transform: scale(1.05);
+  /* Slightly enlarge the button on hover */
 }
 
 .create-account-button:focus {
-  outline: none; /* Remove focus outline */
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* Add subtle focus shadow */
+  outline: none;
+  /* Remove focus outline */
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  /* Add subtle focus shadow */
 }
 
 
@@ -124,10 +148,7 @@ label {
   /* Smooth transition */
 }
 
-.btn-light-up:hover {
-  background-color: #0056b3;
-  /* Darker blue on hover */
-}
+
 
 .step-text {
   font-family: 'Roundo', sans-serif;
@@ -178,7 +199,7 @@ img.w-100.h-100.object-fit-cover {
   position: relative;
   padding: 10px 20px;
   background-color: white;
-  /* Dark background color */
+  /* Default white background */
   border: 2px solid #444444;
   /* Default grey border */
   border-radius: 50px;
@@ -189,7 +210,13 @@ img.w-100.h-100.object-fit-cover {
   overflow: hidden;
   margin-bottom: 10px;
   transition: all 0.3s ease;
-  /* Smooth transition for border and background color */
+  /* Smooth transition for border color */
+}
+
+/* Focus effect when the radio button is focused */
+.radio-container:focus-within {
+  outline: 3px solid #2929F5;
+  /* Blue outline when focused */
 }
 
 /* Top semi-circle effect */
@@ -231,7 +258,7 @@ img.w-100.h-100.object-fit-cover {
 /* Radio button style */
 .radio-container input[type="radio"] {
   background-color: white;
-  /* Inner circle black */
+  /* Inner circle white */
   border: 2px solid black;
   /* Thin grey border around the circle */
   border-radius: 50%;
@@ -279,111 +306,189 @@ img.w-100.h-100.object-fit-cover {
 
 /* Change outer container's border and background color to lighter blue when selected */
 .radio-container input[type="radio"]:checked {
-  border-color: #66b3ff;
+  border-color: #2929F5;
   /* Outer border turns lighter blue */
-  background-color: #66b3ff;
+  background-color: #2929F5;
   /* Outer container turns lighter blue */
 }
 
-/* Floating label positioned at the top-left */
+
 .floating-label {
   position: absolute;
-  top: -8px; /* Align closer to the top of the container */
-  left: -2px; /* Align near the left border */
-  color: #888888; /* Grey color for the label by default */
-  font-family: 'Archia', sans-serif; /* Updated font to Archia */
-  font-size: 14px; /* Set font size to 14px */
-  font-weight: 400; /* Regular weight */
-  line-height: 22px; /* Set line height to 22px */
-  text-align: left; /* Align text to the left */
-  text-underline-position: from-font; /* Underline from font settings */
-  text-decoration-skip-ink: none; /* No ink skipping for text decorations */
-  transition: all 0.2s ease; /* Smooth transition for focus state */
-  pointer-events: none; /* Prevent interaction with the label */
-  background-color: transparent; /* Ensure label has a transparent background */
-  z-index: 1; /* Ensure the label stays on top of the input box */
+  top: -8px;
+  /* Align closer to the top of the container */
+  left: -2px;
+  /* Align near the left border */
+  color: #6D6D6D;
+  /* Grey color for the label by default */
+  font-family: 'Archia', sans-serif;
+  /* Use the Roboto font */
+  font-size: 14px;
+  /* Set font size to 14px */
+  font-weight: 400;
+  /* Regular weight */
+  line-height: 22px;
+  /* Set line height to 22px */
+  text-align: left;
+  /* Align text to the left */
+  text-underline-position: from-font;
+  /* Underline from font settings */
+  text-decoration-skip-ink: none;
+  /* No ink skipping for text decorations */
+  transition: all 0.2s ease;
+  /* Smooth transition for focus state */
+  pointer-events: none;
+  /* Prevent interaction with the label */
+  background-color: transparent;
+  /* Ensure label has a transparent background */
+  z-index: 1;
+  /* Ensure the label stays on top of the input box */
 }
+
+
 
 
 /* Input container with relative positioning */
 .input-container {
-  position: relative; /* Ensures the label is positioned relative to the container */
-  border: 1px solid #000000; /* Thin black border around the input box */
-  border-radius: 4px; /* Slightly rounded corners */
-  padding-top: 25px; /* Space for the label above the input */
-  margin-bottom: 1rem; /* Add spacing between fields */
-  background-color: #ffffff; /* White background for the container */
+  position: relative;
+  /* Ensures the label is positioned relative to the container */
+  border: 1px solid #B0B0B0;
+  /* Thin black border around the input box */
+  border-radius: 8px 0px 0px 0px;
+  /* Custom border radius (top-left rounded) */
+  padding-top: 25px;
+  /* Space for the label above the input */
+  margin-bottom: 1rem;
+  /* Add spacing between fields */
+  background-color: #ffffff;
+  /* White background for the container */
+  width: 559px;
+  /* Fixed width */
+  height: 66px;
+  /* Fixed height */
+  opacity: 1;
+  /* Ensure opacity is visible */
 }
 
 /* Input box styling */
+/* Updated input box style with Inter font */
 .input-box {
-  background-color: #ffffff; /* White background */
-  color: #000000; /* Black text */
-  border: none; /* Remove input borders */
-  width: 100%; /* Full width for the input */
-  padding: 12px; /* Inner padding for better usability */
-  font-family: 'Archia', sans-serif; /* Custom font from Archia */
-  font-size: 16px; /* Set font size to 16px */
-  font-weight: 400; /* Regular weight */
-  line-height: 24px; /* Line height */
-  text-align: left; /* Align text to the left */
-  text-underline-position: from-font; /* Underline from font settings */
-  text-decoration-skip-ink: none; /* No ink skipping for text decorations */
-  z-index: 0; /* Ensure input stays beneath the label */
-  border-radius: 4px; /* Slightly rounded corners for the input box */
-  transition: border 0.3s ease; /* Smooth transition for border color change */
+  background-color: #FFFFFF;
+  /* White background */
+  color: #171717;
+  /* Black text */
+  border: none;
+  /* Remove input borders */
+  width: 100%;
+  /* Full width for the input */
+  padding: 12px;
+  /* Inner padding for better usability */
+  font-family: 'Inter', sans-serif;
+  /* Set to Inter font */
+  font-size: 16px;
+  /* Set font size to 16px */
+  font-weight: 400;
+  /* Regular weight */
+  line-height: 24px;
+  /* Line height */
+  text-align: left;
+  /* Align text to the left */
+  text-underline-position: from-font;
+  /* Underline from font settings */
+  text-decoration-skip-ink: none;
+  /* No ink skipping for text decorations */
+  z-index: 0;
+  /* Ensure input stays beneath the label */
+  border-radius: 4px;
+  /* Slightly rounded corners for the input box */
+  transition: border 0.3s ease;
+  /* Smooth transition for border color change */
 }
+
+/* Focused input styling */
+.input-box:focus {
+  border: 1.5px solid var(--Input-Border-Focus, #2929F5);
+  /* Border color on focus */
+  outline: none;
+  /* Remove default outline */
+}
+
 
 /* Focused state: Adjust label position and color */
 .input-box:focus~.floating-label,
 .input-box:not(:placeholder-shown)~.floating-label {
-  top: 3px; /* Keep it near the top */
-  left: 8px; /* Align slightly left */
-  font-size: 0.7rem; /* Even smaller font for compactness */
-  color: #000000; /* Black label when focused */
-  background-color: #ffffff; /* Match the input background */
-  padding: 0 4px; /* Small padding to prevent label text from overlapping */
+  top: 3px;
+  /* Keep it near the top */
+  left: 8px;
+  /* Align slightly left */
+  font-size: 0.7rem;
+  /* Even smaller font for compactness */
+  color: #000000;
+  /* Black label when focused */
+  background-color: #ffffff;
+  /* Match the input background */
+  padding: 0 4px;
+  /* Small padding to prevent label text from overlapping */
 }
 
-/* Add blue border on focus for input box */
-.input-box:focus {
-  outline: none; /* Remove default focus outline */
-  border: 1px solid #007bff; /* Blue border when focused */
-}
+
+
 
 /* Select box consistency */
 select.input-box {
-  appearance: none; /* Remove default dropdown styling */
-  background-color: #ffffff; /* White background */
-  color: #000000; /* Black text */
-  border: none; /* Remove default select borders */
-  padding: 12px; /* Inner padding for consistency */
-  border-radius: 4px; /* Slightly rounded corners */
-  font-family: 'Archia', sans-serif; /* Custom font from Archia */
-  font-size: 16px; /* Set font size to 16px */
-  font-weight: 400; /* Regular weight */
-  line-height: 24px; /* Line height */
-  text-align: left; /* Align text to the left */
-  text-underline-position: from-font; /* Underline from font settings */
-  text-decoration-skip-ink: none; /* No ink skipping for text decorations */
+  appearance: none;
+  /* Remove default dropdown styling */
+  background-color: #ffffff;
+  /* White background */
+  color: #171717;
+  /* Black text */
+  border: none;
+  /* Remove default select borders */
+  padding: 12px;
+  /* Inner padding for consistency */
+  border-radius: 4px;
+  /* Slightly rounded corners */
+  font-family: 'Archia', sans-serif;
+  /* Custom font from Archia */
+  font-size: 16px;
+  /* Set font size to 16px */
+  font-weight: 400;
+  /* Regular weight */
+  line-height: 24px;
+  /* Line height */
+  text-align: left;
+  /* Align text to the left */
+  text-underline-position: from-font;
+  /* Underline from font settings */
+  text-decoration-skip-ink: none;
+  /* No ink skipping for text decorations */
 }
 
 /* Focused state for select box */
 select.input-box:focus~.floating-label,
 select.input-box:not([value=""])~.floating-label {
-  top: 3px; /* Consistent top position */
+  top: 3px;
+  /* Consistent top position */
   left: 8px;
   font-size: 0.7rem;
-  color: #000000; /* Black label */
-  background-color: #ffffff; /* Match the input background */
-  padding: 0 4px; /* Small padding to prevent label text from overlapping */
+  color: #000000;
+  /* Black label */
+  background-color: #ffffff;
+  /* Match the input background */
+  padding: 0 4px;
+  /* Small padding to prevent label text from overlapping */
 }
 
-/* Add blue border on focus for select box */
-select.input-box:focus {
-  outline: none; /* Remove default focus outline */
-  border: 1px solid #007bff; /* Blue border when focused */
+/* Input fields focus styles */
+input:focus,
+textarea:focus,
+select:focus {
+  border: 3px solid var(--Input-Border-Focus, #2929F5);
+  /* Adjust the border color and thickness */
+  outline: none;
+  /* Remove default focus outline */
 }
+
 
 
 
@@ -400,11 +505,16 @@ select.input-box:focus {
   color: black;
   font-size: 16px;
   font-weight: 500;
-  font-family: 'Archia', sans-serif; /* Use Archia font */
-  line-height: 24px; /* Line height for proper spacing */
-  text-align: left; /* Align text to the left */
-  text-underline-position: from-font; /* Underline follows font guidelines */
-  text-decoration-skip-ink: none; /* Ensures underline is continuous */
+  font-family: 'Archia', sans-serif;
+  /* Use Archia font */
+  line-height: 24px;
+  /* Line height for proper spacing */
+  text-align: left;
+  /* Align text to the left */
+  text-underline-position: from-font;
+  /* Underline follows font guidelines */
+  text-decoration-skip-ink: none;
+  /* Ensures underline is continuous */
 }
 
 /* Layout for the requirements (left and right bullet points) */
@@ -423,17 +533,22 @@ select.input-box:focus {
 .right-requirements li {
   color: gray;
   margin-bottom: 0.5rem;
-  font-size: 16px; /* Matches the font size */
-  font-family: 'Archia', sans-serif; /* Use Archia font */
-  font-weight: 500; /* Medium font weight */
-  line-height: 24px; /* Maintain consistent spacing */
+  font-size: 16px;
+  /* Matches the font size */
+  font-family: 'Archia', sans-serif;
+  /* Use Archia font */
+  font-weight: 500;
+  /* Medium font weight */
+  line-height: 24px;
+  /* Maintain consistent spacing */
   display: flex;
   align-items: center;
 }
 
 .left-requirements li::before,
 .right-requirements li::before {
-  content: '•'; /* Bullet point */
+  content: '•';
+  /* Bullet point */
   color: black;
   margin-right: 8px;
 }
@@ -441,9 +556,12 @@ select.input-box:focus {
 /* Change color of bullet points to a more prominent green when fulfilled */
 .left-requirements li.fulfilled,
 .right-requirements li.fulfilled {
-  color: #198632; /* Brighter and more prominent green for fulfilled requirements */
-  font-weight: bold; /* Optional: Make text bold for emphasis */
-  font-family: 'Archia', sans-serif; /* Ensure consistent font */
+  color: #198632;
+  /* Brighter and more prominent green for fulfilled requirements */
+  font-weight: bold;
+  /* Optional: Make text bold for emphasis */
+  font-family: 'Archia', sans-serif;
+  /* Ensure consistent font */
 }
 
 /* Ensure the left and right bullet points are aligned properly */
@@ -462,6 +580,7 @@ select.input-box:focus {
   /* Green color when all requirements are met */
   border: 1px solid #FF8C00;
 }
+
 .header-step {
   font-family: 'Roundo', sans-serif;
   font-size: 32px;
@@ -470,13 +589,19 @@ select.input-box:focus {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: black;
-  width: 618px; /* Set width as per layout */
-  height: 80px; /* Set height as per layout */
-  display: flex; /* Use flex for proper alignment */
-  align-items: center; /* Vertically align text */
-  gap: 0px; /* No gap between elements */
-  opacity: 1; /* Fully visible (0 was likely for testing or transitions) */
+  color: #3D3D3D;
+  width: 618px;
+  /* Set width as per layout */
+  height: 80px;
+  /* Set height as per layout */
+  display: flex;
+  /* Use flex for proper alignment */
+  align-items: center;
+  /* Vertically align text */
+  gap: 0px;
+  /* No gap between elements */
+  opacity: 1;
+  /* Fully visible (0 was likely for testing or transitions) */
 }
 
 .back-to-login {
@@ -490,20 +615,24 @@ select.input-box:focus {
   width: 237px;
   height: 26px;
   gap: 0px;
-  opacity: 1; /* Set to 1 for visibility */
+  opacity: 1;
+  /* Set to 1 for visibility */
 }
 
 .back-to-login p {
   margin-bottom: 0;
-  margin-right: 8px; /* Adjust the space between text and button */
-  color: #454545; /* Set the text color to #454545 */
+  margin-right: 8px;
+  /* Adjust the space between text and button */
+  color: #454545;
+  /* Set the text color to #454545 */
 }
 
 .back-to-login button {
-  color: #FF8C00;
+  color: #F04D1F;
   text-decoration: none;
   font-weight: bold;
-  font-size: 15px; /* Same font size as the text */
+  font-size: 15px;
+  /* Same font size as the text */
   font-family: 'Archia', sans-serif;
 }
 
@@ -539,16 +668,19 @@ select.input-box:focus {
 
 /* Red border for mismatched passwords */
 .border-danger .form-control {
-  border: 2px solid #dc3545; /* Bootstrap danger red */
+  border: 2px solid #dc3545;
+  /* Bootstrap danger red */
 }
 
 /* Green border for matching passwords */
 .border-success .form-control {
-  border: 2px solid #28a745; /* Bootstrap success green */
+  border: 2px solid #28a745;
+  /* Bootstrap success green */
 }
+
 /* Add this in your styles.css or component's style */
 .back-button {
-  color: #FF8C00;
+  color: #F04D1F;
   text-decoration: none;
   font-family: 'Archia', sans-serif;
   font-size: 18px;
@@ -560,15 +692,17 @@ select.input-box:focus {
 }
 
 .back-button i {
-  margin-right: 5px; /* Small space between the arrow and the text */
+  margin-right: 5px;
+  /* Small space between the arrow and the text */
 }
 
 
 
 
 
-  /* Media query for mobile devices */
+/* Media query for mobile devices */
 @media (max-width: 768px) {
+
   /* Hide the image on mobile */
   .position-relative img.w-100.h-100.object-fit-cover {
     display: none !important;
@@ -599,13 +733,18 @@ select.input-box:focus {
   }
 
   /* Button size adjustments for mobile */
-  .next-button, .create-account-button, .btn-light-up {
-    width: 100%; /* Make buttons full width */
-    font-size: 14px; /* Adjust font size */
+  .next-button,
+  .create-account-button,
+  .btn-light-up {
+    width: 100%;
+    /* Make buttons full width */
+    font-size: 14px;
+    /* Adjust font size */
   }
 
   /* Ensure form inputs take full width */
-  .input-container, .form-group.mb-4 {
+  .input-container,
+  .form-group.mb-4 {
     width: 100%;
     margin-bottom: 1rem;
   }
@@ -617,8 +756,10 @@ select.input-box:focus {
   }
 
   /* Adjust label sizes for mobile */
-  label, .step-text {
-    font-size: 12px; /* Reduce font size for mobile */
+  label,
+  .step-text {
+    font-size: 12px;
+    /* Reduce font size for mobile */
   }
 
   /* Adjust the floating label for better spacing */
@@ -639,59 +780,90 @@ select.input-box:focus {
   }
 
   /* Make input fields more responsive */
-  input[type="text"], input[type="password"], input[type="email"], textarea {
-    width: 100%; /* Ensure inputs take the full width */
-    padding: 10px; /* Add padding for better touch interaction */
-    font-size: 14px; /* Adjust font size */
-    border-radius: 4px; /* Add border radius for rounded corners */
-    border: 1px solid #ccc; /* Add border color */
-    box-sizing: border-box; /* Ensure padding is included in width calculation */
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    /* Ensure inputs take the full width */
+    padding: 10px;
+    /* Add padding for better touch interaction */
+    font-size: 14px;
+    /* Adjust font size */
+    border-radius: 4px;
+    /* Add border radius for rounded corners */
+    border: 1px solid #ccc;
+    /* Add border color */
+    box-sizing: border-box;
+    /* Ensure padding is included in width calculation */
   }
 
-  /* Input field focus styles */
-  input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus {
-    border-color: #007bff; /* Change border color on focus */
-    outline: none; /* Remove default outline */
+  /* Input fields focus styles */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border: 1.5px solid var(--Input-Border-Focus, #2929F5);
+    /* Adjust the border color and thickness */
+    outline: none;
+    /* Remove default focus outline */
   }
+
 
   /* Additional styling for form groups */
   .form-group {
-    margin-bottom: 1rem; /* Add spacing between form groups */
+    margin-bottom: 1rem;
+    /* Add spacing between form groups */
   }
 }
+
 /* Media query for mobile devices */
 @media (max-width: 768px) {
+
   /* Dropdown container */
   .dropdown {
-    width: 100%; /* Ensure dropdown takes full width */
+    width: 100%;
+    /* Ensure dropdown takes full width */
   }
 
   /* Dropdown button */
   .dropdown-toggle {
-    width: 100%; /* Make the dropdown button full width on mobile */
-    padding: 10px; /* Add padding for easier interaction */
-    font-size: 14px; /* Adjust font size */
-    text-align: left; /* Align text to the left */
+    width: 100%;
+    /* Make the dropdown button full width on mobile */
+    padding: 10px;
+    /* Add padding for easier interaction */
+    font-size: 14px;
+    /* Adjust font size */
+    text-align: left;
+    /* Align text to the left */
   }
 
   /* Dropdown menu */
   .dropdown-menu {
-    width: 100%; /* Make the dropdown menu span full width */
-    box-sizing: border-box; /* Ensure padding doesn't overflow */
-    font-size: 14px; /* Adjust font size */
-    padding: 5px 0; /* Reduce padding for better compactness */
+    width: 100%;
+    /* Make the dropdown menu span full width */
+    box-sizing: border-box;
+    /* Ensure padding doesn't overflow */
+    font-size: 14px;
+    /* Adjust font size */
+    padding: 5px 0;
+    /* Reduce padding for better compactness */
   }
 
   /* Dropdown items */
   .dropdown-item {
-    width: 100%; /* Ensure dropdown items are full width */
-    padding: 10px; /* Add padding to make items clickable */
-    font-size: 14px; /* Adjust font size */
-    text-align: left; /* Align text to the left */
+    width: 100%;
+    /* Ensure dropdown items are full width */
+    padding: 10px;
+    /* Add padding to make items clickable */
+    font-size: 14px;
+    /* Adjust font size */
+    text-align: left;
+    /* Align text to the left */
   }
 
   /* Hover effect for dropdown items */
   .dropdown-item:hover {
-    background-color: #f8f9fa; /* Change background color on hover */
+    background-color: #f8f9fa;
+    /* Change background color on hover */
   }
 }
