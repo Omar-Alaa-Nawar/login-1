@@ -1,79 +1,61 @@
-/* Apply a lighter theme */
-body, .vh-100 {
-  font-family: 'Roundo', sans-serif !important;
-}
-
-/* Full-page white background */
-.vh-100 {
-  background-color: #ffffff !important; /* Change background to white */
-  color: #121212 !important; /* Dark text for better contrast */
-}
-
-/* Form and text styling */
+/* Form and Input Styling */
 .card-body {
   padding: 4rem 2rem;
 }
 
-/* Adjust spacing for "Don’t have an account?" paragraph */
 h2 {
-  margin-bottom: 10px !important; /* Space under the header */
-  color: #121212 !important; /* Dark text color for heading */
+  margin-bottom: 10px !important;
+  color: #121212 !important;
 }
 
 p {
-  margin-bottom: 20px !important; /* Space under paragraphs */
-  color: #555 !important; /* Lighter text color for paragraphs */
+  margin-bottom: 20px !important;
+  color: #555 !important;
 }
 
+/* Floating Label Styling */
 .floating-label {
   position: absolute;
-  top: -8px;
+  top: 0;
   left: 12px;
   font-size: 14px;
   color: #888 !important;
   transition: all 0.3s ease;
   pointer-events: none;
+  transform: translateY(25px);
 }
 
-/* Style for the input fields */
+/* Input Styling */
 .form-control.form-control-lg {
-  background-color: #f9f9f9 !important; /* Lighter background for inputs */
-  border: 1px solid #ccc !important; /* Light border */
-  color: #121212 !important; /* Dark text color */
+  background-color: #f9f9f9 !important;
+  border: 1px solid #ccc !important;
+  color: #121212 !important;
   font-family: 'Roundo', sans-serif !important;
-  padding: 18px 12px !important; /* Increase padding for larger height */
-  font-size: 18px !important; /* Increase font size for the input text */
+  padding: 18px 12px !important;
+  font-size: 18px !important;
   border-radius: 8px !important;
   width: 100% !important;
-  height: 50px !important; /* Adjust the height of the input fields */
+  height: 50px !important;
+  transition: padding-top 0.3s ease;
 }
 
-/* Focused state for input */
-.form-control.form-control-lg:focus {
-  border-color: #FF8C00 !important; /* Highlight border color on focus */
-  outline: none !important; /* Remove default outline */
+/* Apply focus styles */
+.input-focused {
+  border-color: #FF8C00 !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25) !important;
 }
 
-.form-control.form-control-lg:focus ~ .floating-label,
-.form-control.form-control-lg:not(:placeholder-shown) ~ .floating-label {
-  top: -18px !important;
-  left: 12px !important;
-  font-size: 14px !important;
-  color: #FF8C00 !important; /* Color when focused */
-}
-
-/* Label positioning when input is focused or contains text */
-.form-floating input:focus ~ label,
-.form-floating input:not(:placeholder-shown) ~ label {
-  top: -18px !important;
-  left: 12px !important;
-  font-size: 12px !important;
+/* Move label above the input when typing */
+input:focus + .floating-label,
+input:not(:placeholder-shown) + .floating-label {
+  top: -20px;
+  font-size: 12px;
   color: #FF8C00 !important;
 }
 
-/* Button styling */
+/* Buttons */
 .next-button {
-  background-color: #FF8C00 !important; /* Change button color to a bright orange */
+  background-color: #FF8C00 !important;
   color: white !important;
   font-family: 'Roundo', sans-serif !important;
   font-size: 16px !important;
@@ -86,10 +68,15 @@ p {
 }
 
 .next-button:hover {
-  background-color: #FF7000 !important; /* Darken button color on hover */
+  background-color: #FF7000 !important;
 }
 
-/* Links */
+.next-button:disabled {
+  background-color: #f5f5f5 !important;
+  color: #aaa !important;
+  border: 1px solid #ccc !important;
+}
+
 .btn-link {
   color: #FF8C00 !important;
   font-family: 'Roundo', sans-serif !important;
@@ -101,55 +88,14 @@ p {
   color: #FF7000 !important;
 }
 
-/* Right-side image styling */
-.position-relative {
-  height: 100% !important;
-  overflow: hidden !important;
-}
-
-img.w-100.h-100.object-fit-cover {
-  object-fit: cover !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* Ensure both left and right sides are aligned properly */
-.row.w-100.m-0 {
-  margin: 0 !important;
-}
-
-/* Add spacing between the login button and forgot password link */
-.next-button {
-  margin-bottom: 10px !important; /* Space between button and forgot password */
-}
-
-.small {
-  margin-top: 10px !important; /* Optional spacing above forgot password link */
-}
-
-/* Center the left-side form vertically and horizontally */
-.col-md-7 {
-  display: flex !important;
-  justify-content: flex-start !important; /* Align the form to the left */
-  align-items: center !important; /* Center vertically */
-  height: 100% !important;
-  padding-left: 20px !important; /* Add some padding to the left side */
-}
-
-/* Ensure the form content doesn't stretch unnecessarily */
-.col-12.col-md-9 {
-  width: 100% !important; /* Ensure the form content takes full width */
-}
-
-/* Responsive adjustments for smaller screens */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .col-md-7 {
-    justify-content: flex-start !important; /* Align the form to the top on small screens */
-    padding-left: 0 !important; /* Remove left padding */
-    padding-top: 20px !important; /* Add some padding for small screens */
+    padding-left: 0 !important;
+    padding-top: 20px !important;
   }
 
   .col-md-5 {
-    margin-bottom: 20px !important; /* Space between the left and right sections on small screens */
+    margin-bottom: 20px !important;
   }
 }

@@ -8,7 +8,7 @@
   href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Nunito:wght@300;400;600;700&display=swap"
   rel="stylesheet">
 
-<section class="vh-100 d-flex align-items-center" style="background-color: #121212; color: #ffffff;">
+<section class="vh-100 d-flex align-items-center" style="background-color: #ffffff; color: #121212;">
   <div class="row w-100 m-0">
     <!-- Login Form on the Left -->
     <div class="col-12 col-md-7 col-lg-7 col-xl-8 p-0 d-flex justify-content-start align-items-center">
@@ -17,53 +17,72 @@
         <div class="mb-4">
           <app-language-dropdown [(selectedLanguage)]="loginData.selectedLanguage"></app-language-dropdown>
         </div>
-        
-        
-        
-        
-        <h2 class="fw-bold mb-2 text-uppercase"
-          style="font-family: 'Roundo', sans-serif; font-size: 24px; color: #ffffff;">
-          Welcome Back!
-        </h2>
-        <p style="font-family: 'Roundo', sans-serif; font-size: 16px; color: #D3D3D3;">
+
+        <h2 class="fw-bold mb-2 text-uppercase">Welcome Back!</h2>
+        <p>
           Don’t have an account?
-          <button type="button" (click)="onRegisterClick()" class="btn btn-link"
-            style="font-family: 'Roundo', sans-serif; font-size: 14px; color: #FF8C00;">
-            Create Account
-          </button>
+          <button type="button" (click)="onRegisterClick()" class="btn btn-link">Create Account</button>
         </p>
 
         <form (ngSubmit)="login()" #loginForm="ngForm">
           <!-- Email Field -->
-          <div class="form-floating mb-3">
-            <input type="email" id="typeEmailX" class="form-control form-control-lg bg-dark text-light"
-              [(ngModel)]="loginData.email" name="email" #email="ngModel" required placeholder="Your Email" />
-            <label for="typeEmailX" class="floating-label">Your Email</label>
-            <div *ngIf="email.invalid && email.touched" class="text-danger">
-              Valid email is required.
-            </div>
-          </div>
+         <!-- Email Field -->
+<div class="form-floating mb-3">
+  <input
+    type="email"
+    id="typeEmailX"
+    class="form-control form-control-lg"
+    [(ngModel)]="loginData.email"
+    name="email"
+    #email="ngModel"
+    required
+    placeholder="Your Email"
+    (focus)="onFocus($event)"
+    (blur)="onBlur($event)"
+    [ngClass]="{'input-focused': isEmailFocused}" />
+  <label for="typeEmailX" class="floating-label">Your Email</label>
+  <div *ngIf="email.invalid && email.touched" class="text-danger">
+    Valid email is required.
+  </div>
+</div>
 
-          <!-- Password Field -->
-          <div class="form-floating mb-3">
-            <input type="password" id="typePasswordX" class="form-control form-control-lg bg-dark text-light"
-              [(ngModel)]="loginData.password" name="password" #password="ngModel" required placeholder="Password" />
-            <label for="typePasswordX" class="floating-label">Password</label>
-            <div *ngIf="password.invalid && password.touched" class="text-danger">
-              Password is required.
-            </div>
-          </div>
+<!-- Password Field -->
+<div class="form-floating mb-3">
+  <input
+    type="password"
+    id="typePasswordX"
+    class="form-control form-control-lg"
+    [(ngModel)]="loginData.password"
+    name="password"
+    #password="ngModel"
+    required
+    placeholder="Password"
+    (focus)="onFocus($event)"
+    (blur)="onBlur($event)"
+    [ngClass]="{'input-focused': isPasswordFocused}" />
+  <label for="typePasswordX" class="floating-label">Password</label>
+  <div *ngIf="password.invalid && password.touched" class="text-danger">
+    Password is required.
+  </div>
+</div>
+
 
           <!-- Login Button -->
-          <button type="submit" class="btn next-button" [disabled]="!loginForm.valid"
-            style="padding: 0.5rem 1rem; font-size: 14px; margin-bottom: 10px;">
+          <button
+            type="submit"
+            class="btn next-button"
+            [disabled]="!loginForm.valid"
+          >
             Login
           </button>
 
           <!-- Forgot Password Link -->
           <p class="small">
-            <button type="button" (click)="forgotPassword()" class="btn btn-link"
-              style="font-family: 'Roundo', sans-serif; font-size: 14px; color: #FF8C00;">
+            <button
+              type="button"
+              (click)="forgotPassword()"
+              class="btn btn-link"
+            >
               Forgot Password?
             </button>
           </p>
