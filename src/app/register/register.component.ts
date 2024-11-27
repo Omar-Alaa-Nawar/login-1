@@ -22,7 +22,7 @@ export class RegisterComponent {
   hasLowercase: boolean = false; // Flag for lowercase character requirement
   hasUppercase: boolean = false; // Flag for uppercase character requirement
   hasNumber: boolean = false; // Flag for number requirement
-  
+
   // Register data with selectedLanguage
   registerData = {
     name: '',
@@ -37,7 +37,7 @@ export class RegisterComponent {
     selectedLanguage: 'en'  // Default language
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   // Proceed to the next step of the registration process
   nextStep() {

@@ -7,11 +7,13 @@
 <link
   href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Nunito:wght@300;400;600;700&display=swap"
   rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
 
-<section class="vh-100 d-flex align-items-center" style="background-color: #121212; color: #ffffff;">
+
+<section class="vh-100 d-flex align-items-center" style="background-color: #ffffff; color: #ffffff;">
   <div class="row w-100 m-0">
-    <!-- Registration Form (70%) -->
-    <div class="col-12 col-md-8 col-lg-7 col-xl-7 p-0">
+    <!-- Registration Form (80%) -->
+    <div class="col-12 col-md-8 col-lg-8 col-xl-8 p-0">
       <div class="row h-100 m-0">
         <!-- Form Section (75% of the 70%) -->
         <div class="col-12 col-md-9 col-lg-9 p-4 text-start">
@@ -27,63 +29,51 @@
           <div class="mb-4">
             <div class="d-flex justify-content-between mb-3">
               <!-- Step Number in White -->
-              <span class="step-text" style="color: #ffffff; font-size: 16px;">{{ step }} of 3</span>
+              <span class="step-text" style="color: black; font-size: 16px;">{{ step }} of 3</span>
             </div>
             <div class="progress"
-              style="height: 10px; margin-bottom: 20px; background-color: #444444; border-radius: 5px;">
+              style="height: 10px; margin-bottom: 20px; background-color: #F0F0F8; border-radius: 5px;">
               <!-- Progress Bar with Darker Grey Background and Slightly Darker Blue Fill -->
               <div class="progress-bar" role="progressbar" [style.width]="(step / 3) * 100 + '%'" aria-valuenow="step"
-                aria-valuemin="0" aria-valuemax="3" style="background-color: #87CEFA; border-radius: 5px;">
+                aria-valuemin="0" aria-valuemax="3" style="background-color: #5462FF; border-radius: 5px;">
               </div>
             </div>
 
             <!-- Header for Step 1 -->
             <div *ngIf="step === 1" class="mb-4" style="margin-top: 60px;">
-              <!-- Adjusted margin for two lines of space -->
-              <h2 class="fw-bold mb-2 text-uppercase"
-                style="font-family: 'Roundo', sans-serif; font-size: 24px; color: #ffffff;">
-                Setup Your Company Account
-              </h2>
+              <h2 class="header-step">Setup Your Company Account</h2>
             </div>
+
+            <!-- Step 2 Header -->
+            <div *ngIf="step === 2" class="mb-4" style="margin-top: 60px;">
+              <button type="button" class="btn btn-link p-0 mb-3 back-button" (click)="previousStep()">
+                <i class="bi bi-arrow-left" style="margin-right: 5px;"></i> Back
+              </button>
+              <h2 class="header-step">Hey, Now We Need To Know More About Your Company!</h2>
+            </div>
+
+            <!-- Step 3 Header -->
+            <div *ngIf="step === 3" class="mb-4" style="margin-top: 60px;">
+              <button type="button" class="btn btn-link p-0 mb-3 back-button" (click)="previousStep()">
+                <i class="bi bi-arrow-left" style="margin-right: 5px;"></i> Back
+              </button>
+              <h2 class="header-step">Now The Last Step, Create A Password To Your Account</h2>
+            </div>
+
+
+
+
 
             <!-- Back to Login Button -->
-            <div *ngIf="step === 1" class="d-flex align-items-center mb-2" style="margin-top: -10px;">
-              <p class="mb-0 me-2" style="font-family: 'Roundo', sans-serif; font-size: 14px; color: #D3D3D3;">Already
-                have an account?</p> <!-- Changed to light gray -->
-              <button type="button" class="btn btn-link text-orange p-0" (click)="goToLogin()"
-                style="color: #FF8C00; text-decoration: none; font-weight: bold; font-size: 14px; font-family: 'Roundo', sans-serif;">
-                Login
-              </button>
+            <div *ngIf="step === 1" class="d-flex align-items-center mb-2 back-to-login" style="margin-top: -10px;">
+              <p class="mb-0 me-2">Already have an account?</p>
+              <button type="button" class="btn btn-link p-0" (click)="goToLogin()">Login</button>
             </div>
 
 
 
 
-            <!-- Step 2 Header and Back Arrow -->
-            <div *ngIf="step === 2" class="mb-4">
-              <!-- Increased space between back arrow and stepper -->
-              <button type="button" class="btn btn-link p-0 mb-3" (click)="previousStep()"
-                style="font-family: 'Roundo', sans-serif; font-size: 14px; color: #FF8C00; text-decoration: none; border: none;">
-                <i class="bi bi-arrow-left"></i> Back
-              </button>
-              <h2 class="fw-bold mb-2 text-uppercase"
-                style="font-family: 'Roundo', sans-serif; font-size: 24px; color: #ffffff;">
-                Hey, Now We Need To Know More About Your Company!
-              </h2>
-            </div>
 
-            <!-- Step 3 Header and Back Arrow -->
-            <div *ngIf="step === 3" class="mb-4">
-              <!-- Increased space between back arrow and stepper -->
-              <button type="button" class="btn btn-link p-0 mb-3" (click)="previousStep()"
-                style="font-family: 'Roundo', sans-serif; font-size: 14px; color: #FF8C00; text-decoration: none; border: none;">
-                <i class="bi bi-arrow-left"></i> Back
-              </button>
-              <h2 class="fw-bold mb-2 text-uppercase"
-                style="font-family: 'Roundo', sans-serif; font-size: 24px; color: #ffffff;">
-                Now The Last Step, Create A Password To Your Account
-              </h2>
-            </div>
             <!-- Success message just above the "Create Account" button -->
             <div *ngIf="registrationSuccess" class="success-text">
               Registration successful! Your information has been saved.
@@ -98,8 +88,8 @@
           <!-- Step 1 -->
           <div *ngIf="step === 1">
             <form (ngSubmit)="register()" #registrationForm="ngForm" class="registration-form">
-              <div class="form-floating mb-3">
-                <input type="text" id="name" class="form-control form-control-lg bg-dark text-light"
+              <div class="form-floating mb-4">
+                <input type="text" id="name" class="form-control form-control-lg text-dark"
                   [(ngModel)]="registerData.name" name="name" #name="ngModel" required placeholder="Your Name"
                   style="font-family: 'Roundo', sans-serif;" />
                 <label for="name" class="floating-label">Full Name</label>
@@ -108,8 +98,8 @@
                 </div>
               </div>
 
-              <div class="form-floating mb-3">
-                <input type="email" id="email" class="form-control form-control-lg bg-dark text-light"
+              <div class="form-floating mb-4">
+                <input type="email" id="email" class="form-control form-control-lg text-dark"
                   [(ngModel)]="registerData.email" name="email" #email="ngModel" required placeholder="Your Email"
                   style="font-family: 'Roundo', sans-serif;" (ngModelChange)="onEmailChange()" />
                 <label for="email" class="floating-label">Your Email</label>
@@ -121,8 +111,8 @@
                 </div>
               </div>
 
-              <div class="form-floating mb-3">
-                <input type="text" id="company" class="form-control form-control-lg bg-dark text-light"
+              <div class="form-floating mb-4">
+                <input type="text" id="company" class="form-control form-control-lg text-dark"
                   [(ngModel)]="registerData.company" name="company" #company="ngModel" required
                   placeholder="Company Name" style="font-family: 'Roundo', sans-serif;" />
                 <label for="company" class="floating-label">Company Name</label>
@@ -131,23 +121,24 @@
                 </div>
               </div>
 
-              <div class="form-floating mb-4">
-                <select class="form-select bg-black text-white" id="role" [(ngModel)]="registerData.role" name="role"
+              <div class="form-floating mb-3">
+                <select class="form-select bg-white text-black" id="role" [(ngModel)]="registerData.role" name="role"
                   #role="ngModel" required style="font-family: 'Roundo', sans-serif;">
-                  <option value="" disabled selected>Select a role</option>
+
                   <option value="admin">Admin</option>
                   <option value="manager">Manager</option>
                   <option value="employee">Employee</option>
                   <option value="other">Other</option>
                 </select>
-                <label for="role" class="floating-label">User Role</label>
+                <label for="role" class="floating-label">Role</label>
                 <div *ngIf="role.invalid && role.touched && !registrationSuccess" class="text-danger">
                   Role selection is required.
                 </div>
               </div>
 
+
               <div *ngIf="registerData.role === 'other'" class="form-floating mb-3">
-                <input type="text" id="otherRole" class="form-control form-control-lg bg-dark text-light"
+                <input type="text" id="otherRole" class="form-control form-control-lg bg-da text-light"
                   [(ngModel)]="registerData.otherRole" name="otherRole" required placeholder="Specify Role"
                   style="font-family: 'Roundo', sans-serif;" />
                 <label for="otherRole" class="floating-label">Write Your Role</label>
@@ -173,7 +164,7 @@
 
               <!-- Add the sentence above the radio buttons -->
               <div class="form-group mb-4">
-                <label class="text-white mb-2" for="employeesSize" style="font-family: 'Roundo', sans-serif;">
+                <label class="text-black mb-2" for="employeesSize" style="font-family: 'Roundo', sans-serif;">
                   What is your company size?
                 </label>
               </div>
@@ -223,7 +214,7 @@
 
               <!-- Industry Field -->
               <div class="form-floating mb-4">
-                <input type="text" class="form-control bg-dark text-light" id="industry"
+                <input type="text" class="form-control form-control-lg text-dark" id="industry"
                   [(ngModel)]="registerData.industry" name="industry" required placeholder="Industry"
                   #industry="ngModel" style="font-family: 'Roundo', sans-serif;" />
                 <label for="industry" class="floating-label">Industry</label>
@@ -249,7 +240,7 @@
             <form (ngSubmit)="register()" #registrationForm="ngForm">
               <!-- Password Field -->
               <div class="form-floating mb-3">
-                <input type="password" id="password" class="form-control form-control-lg bg-dark text-light"
+                <input type="password" id="password" class="form-control form-control-lg text-dark"
                   [(ngModel)]="registerData.password" name="password" #password="ngModel" required
                   placeholder="Password" style="font-family: 'Roundo', sans-serif;" (input)="checkPasswordStrength()" />
                 <label for="password" class="floating-label">Password</label>
@@ -259,8 +250,11 @@
               </div>
 
               <!-- Confirm Password Field -->
-              <div class="form-floating mb-3">
-                <input type="password" id="confirmPassword" class="form-control form-control-lg bg-dark text-light"
+              <div class="form-floating mb-3" [ngClass]="{
+       'border-danger': registerData.password !== registerData.confirmPassword && confirmPassword.touched,
+       'border-success': registerData.password === registerData.confirmPassword && confirmPassword.touched
+     }">
+                <input type="password" id="confirmPassword" class="form-control form-control-lg text-dark"
                   [(ngModel)]="registerData.confirmPassword" name="confirmPassword" #confirmPassword="ngModel" required
                   placeholder="Confirm Password" style="font-family: 'Roundo', sans-serif;" />
                 <label for="confirmPassword" class="floating-label">Confirm Password</label>
@@ -273,6 +267,7 @@
                   Passwords do not match.
                 </div>
               </div>
+
 
               <!-- Password Requirements -->
               <div class="password-requirements">
@@ -292,9 +287,10 @@
               </div>
 
               <!-- Create Account Button -->
-              <button type="submit" class="btn next-button" [ngClass]="{
-    'btn-light-up': registerData.password && registerData.confirmPassword && registerData.password === registerData.confirmPassword && allRequirementsFulfilled
-  }" [disabled]="!registerData.password || !registerData.confirmPassword || registerData.password !== registerData.confirmPassword || !allRequirementsFulfilled">
+              <button type="submit" class="create-account-button" [ngClass]="{
+                'btn-light-up': registerData.password && registerData.confirmPassword && registerData.password === registerData.confirmPassword && allRequirementsFulfilled
+              }"
+                [disabled]="!registerData.password || !registerData.confirmPassword || registerData.password !== registerData.confirmPassword || !allRequirementsFulfilled">
                 Create Account
               </button>
             </form>
@@ -304,15 +300,30 @@
       </div>
     </div>
 
-    <!-- Image Section on the Right (30%) -->
-    <div class="col-12 col-md-5 col-lg-5 col-xl-4 p-0">
-      <div class="position-relative w-99.95 h-99.95">
+    <!-- Image Section on the Right (20%) -->
+    <div class="col-12 d-none d-lg-block col-md-4 col-lg-4 col-xl-4 p-0" style="height: 100vh; position: relative;">
+      <div class="position-relative w-100 h-100"
+        style="background-image: url('assets/Group 2328.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <!-- Icon at the top left of the image -->
         <img src="assets/Frame 2244.png" alt="Icon" class="position-absolute"
-          style="top: 60px; left: 40px; width: 270px; height: 150px;">
-        <img src="assets/Group 2328.png" alt="Image" class="w-100 h-100 object-fit-cover">
+          style="top: 60px; left: 40px; width: 270px; height: 150px; opacity: 1;">
+      </div>
+
+      <!-- The same icon was duplicated, removed second instance -->
+      <div class="image-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0;">
+        <!-- Add your image or other content here -->
       </div>
     </div>
+
+
+
+
+
+
+
+
+    <!--background image on the div background size cover-->
+
   </div>
 
 </section>
