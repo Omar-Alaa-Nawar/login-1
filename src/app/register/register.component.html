@@ -148,12 +148,14 @@
               </div>
 
               <!-- Next Button -->
-              <button type="button" class="btn next-button" (click)="nextStep()"
-                [disabled]="!registrationForm.valid || emailExists || (registerData.role === 'other' && !registerData.otherRole)"
-                [ngClass]="{ 'btn-orange': registrationForm.valid && !emailExists && !(registerData.role === 'other' && !registerData.otherRole) }"
-                style="padding: 0.5rem 1rem; margin-left: 0; font-size: 14px; text-align: center; display: flex; justify-content: center; align-items: center;">
-                Next
-              </button>
+<!-- Next Button -->
+<button 
+  *ngIf="step < 3" 
+  class="btn next-button" 
+  [disabled]="!isNextStepValid()" 
+  (click)="nextStep()">
+  Next
+</button>
             </form>
           </div>
 
@@ -223,14 +225,14 @@
                 </div>
               </div>
 
-              <!-- Next Button for Step 2 -->
-              <button type="button" class="btn next-button" (click)="nextStep()"
-                [disabled]="!registrationForm.valid || !registerData.employees || !registerData.industry || emailExists"
-                [ngClass]="{ 'btn-orange': registrationForm.valid && registerData.employees && registerData.industry && !emailExists }"
-                style="padding: 0.5rem 1rem; margin-left: 0; font-size: 14px; text-align: center; display: flex; justify-content: center; align-items: center;">
+              <!-- Next Button -->
+              <button type="button" class="btn next-button" (click)="nextStep()" [disabled]="!isNextStepValid()"
+                [ngClass]="{
+    'btn-orange': isNextStepValid(),
+    'btn-disabled': !isNextStepValid()
+  }">
                 Next
               </button>
-
             </form>
 
           </div>
@@ -287,10 +289,11 @@
               </div>
 
               <!-- Create Account Button -->
-              <button type="submit" class="create-account-button" [ngClass]="{
-                'btn-light-up': registerData.password && registerData.confirmPassword && registerData.password === registerData.confirmPassword && allRequirementsFulfilled
-              }"
-                [disabled]="!registerData.password || !registerData.confirmPassword || registerData.password !== registerData.confirmPassword || !allRequirementsFulfilled">
+              <button type="submit" class="btn create-account-button" (click)="register()"
+                [disabled]="!isCreateAccountValid()" [ngClass]="{
+    'btn-orange': isCreateAccountValid(),
+    'btn-disabled': !isCreateAccountValid()
+  }">
                 Create Account
               </button>
             </form>

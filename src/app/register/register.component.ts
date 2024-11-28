@@ -157,6 +157,37 @@ export class RegisterComponent {
     return this.passwordLength && this.hasLowercase && this.hasUppercase && this.hasNumber;
   }
 
+// Validate "Next" button state
+isNextStepValid(): boolean {
+  if (this.step === 1) {
+    // Ensure that all required fields are filled and email is not already registered
+    return (
+      this.registerData.name !== '' &&
+      this.registerData.email !== '' &&
+      this.registerData.company !== '' &&
+      this.registerData.role !== '' &&
+      !this.emailExists
+    );
+  } else if (this.step === 2) {
+    // Ensure that employees and industry are filled
+    return this.registerData.employees !== '' && this.registerData.industry !== '';
+  } else if (this.step === 3) {
+    // Ensure passwords match and all password requirements are fulfilled
+    return (
+      this.registerData.password === this.registerData.confirmPassword &&
+      this.allRequirementsFulfilled &&
+      !this.emailExists
+    );
+  }
+  return false;
+}
+
+
+  // Validate "Create Account" button state
+  isCreateAccountValid(): boolean {
+    return this.registerData.password === this.registerData.confirmPassword && this.allRequirementsFulfilled && !this.emailExists;
+  }
+
   // Navigate to login page
   goToLogin() {
     this.router.navigate(['/login']);

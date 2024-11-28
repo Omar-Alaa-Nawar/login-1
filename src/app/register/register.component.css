@@ -1,152 +1,79 @@
-.next-button {
-  background-color: #FECBAF;
-  /* Peach color */
-  color: white;
-  /* White text */
-  font-family: 'Arial', sans-serif;
-  /* Matching font */
-  font-size: 16px;
-  /* Standard font size */
-  font-weight: 600;
-  /* Bold text */
-  height: 48px;
-  /* Consistent button height */
-  border: none;
-  /* No border */
-  border-radius: 8px;
-  /* Rounded corners */
-  cursor: pointer;
-  /* Pointer on hover */
-  text-align: center;
-  /* Center the text */
-  line-height: 48px;
-  /* Align text vertically */
-  transition: all 0.3s ease;
-  /* Smooth hover transition */
-  padding: 12px 20px;
-  /* Adjusted padding */
-  width: 120px;
-  /* Smaller width */
-  height: 48px;
-  /* Smaller height */
-}
-
-
-
-
-
-
-
-
-
-.next-button:hover {
-  background-color: #FFB58D;
-  /* Slightly darker peach on hover */
-}
-
-.btn-orange {
-  background-color: #FF8C00;
-  /* Orange color when form is valid */
-}
-
-.btn-orange:hover {
-  background-color: #FF7000;
-  /* Darker orange on hover */
-}
-
-.create-account-button {
-  background-color: #FECBAF;
-  /* Peach color */
-  color: white;
-  /* White text */
-  font-family: 'Arial', sans-serif;
-  /* Font style */
-  font-size: 14px;
-  /* Font size */
-  font-weight: 600;
-  /* Bold text */
-  height: 48px;
-  /* Button height */
-  border: none;
-  /* No border */
-  border-radius: 8px;
-  /* Rounded corners */
-  cursor: pointer;
-  /* Pointer on hover */
-  display: flex;
-  /* Use flexbox for alignment */
-  align-items: center;
-  /* Center text vertically */
-  justify-content: center;
-  /* Center text horizontally */
-  text-align: center;
-  /* Ensure text alignment */
-  line-height: 1;
-  /* Ensure proper text centering */
-  padding: 0 20px;
-  /* Horizontal padding for spacing */
-  width: 120px;
-  /* Button width */
-  box-sizing: border-box;
-  /* Include padding in the button's width */
-  transition: all 0.3s ease;
-  /* Smooth transition for hover effects */
-}
-
-.create-account-button:hover {
-  background-color: #FECBAF;
-  /* Keep the same peach color */
-  transform: scale(1.05);
-  /* Slightly enlarge the button on hover */
-}
-
-.create-account-button:focus {
-  outline: none;
-  /* Remove focus outline */
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-  /* Add subtle focus shadow */
-}
-
-
-
-.btn-orange {
-  background-color: #FF8C00;
-  /* Orange color when form is valid */
-}
-
-.btn-orange:hover {
-  background-color: #FF7000;
-  /* Darker orange on hover */
-}
-
-/* Apply Roundo font to the entire registration page */
-body,
-.card-body {
-  font-family: 'Roundo', sans-serif;
-}
-
+/* General Button Styling (Bootstrap btn base) */
 .btn {
+  font-family: 'Roundo', sans-serif; /* Figma font */
+  border: none; /* No border */
+  border-radius: 8px; /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth hover effects */
+  display: flex; /* Flexbox for alignment */
+  justify-content: center; /* Center content */
+  align-items: center; /* Center content */
+  text-align: center; /* Ensure text alignment */
+}
+
+/* Next Button Specific Styling */
+.next-button {
+  background-color: #F04D1F; /* Orange-red color */
+  color: white; /* White text */
+  font-size: 16px; /* Font size */
+  font-weight: 600; /* Bold text */
+  padding: 12px 20px; /* Padding */
+  width: 120px; /* Fixed width */
+  height: 48px; /* Fixed height */
+  line-height: 48px; /* Vertical alignment */
+}
+
+/* Create Account Button Specific Styling */
+.create-account-button {
+  background-color: #F04D1F; /* Orange-red color */
+  color: white; /* White text */
+  font-size: 14px; /* Font size */
+  font-weight: 600; /* Bold text */
+  padding: 0 20px; /* Padding */
+  width: 120px; /* Fixed width */
+  height: 48px; /* Fixed height */
+  line-height: 1; /* Ensure proper text centering */
+  box-sizing: border-box; /* Include padding in dimensions */
+}
+
+/* Hover Effect for Buttons */
+.btn:hover:not(.btn-disabled) {
+  background-color: #D8431B; /* Slightly darker on hover */
+}
+
+/* Disabled Button State */
+.btn-disabled {
+  background-color: #D8431B !important; /* Disabled state color */
+  color: white; /* Ensure the text is white when disabled */
+  cursor: not-allowed; /* Disable the pointer cursor */
+  opacity: 0.7; /* Optional: Make it appear slightly faded */
+}
+
+/* Focus State for Buttons */
+.btn:focus {
+  outline: none; /* Remove focus outline */
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Dynamic Button State */
+.btn-orange {
+  background-color: #F04D1F; /* Valid state color */
+  color: white; /* White text */
+}
+
+.btn-orange:hover {
+  background-color: #D8431B; /* Darker on hover */
+}
+
+/* Apply Figma Font Globally */
+body, .card-body {
   font-family: 'Roundo', sans-serif;
 }
 
-.text-orange {
-  color: #FF8C00;
-}
-
-/* Style for form labels */
 label {
   font-family: 'Roundo', sans-serif;
   font-size: 14px;
 }
 
-.btn-light-up {
-  background-color: #FF8C00;
-  /* Blue background */
-  color: white;
-  border: none;
-  transition: background-color 0.3s ease;
-  /* Smooth transition */
-}
 
 
 
