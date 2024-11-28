@@ -41,9 +41,11 @@ export class LoginComponent {
     );
 
     if (storedUser) {
+      localStorage.setItem('role', storedUser.role);
+      localStorage.setItem('isAuthenticated', 'true');
       this.router.navigate([`/${storedUser.role}-dashboard`]);
     } else {
-      this.message = 'Either email or password is not correct. Please try again.';
+      this.message = 'Invalid email or password.';
     }
   }
 
