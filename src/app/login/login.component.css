@@ -41,7 +41,7 @@ p {
 
 /* Apply focus styles */
 .input-focused {
-  border-color: #FF8C00 !important;
+  border-color: #f26433 !important;
   box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25) !important;
 }
 
@@ -78,14 +78,14 @@ input:not(:placeholder-shown) + .floating-label {
 }
 
 .btn-link {
-  color: #FF8C00 !important;
+  color: #f04d1f !important;
   font-family: 'Roundo', sans-serif !important;
   font-size: 14px !important;
 }
 
 .btn-link:hover {
   text-decoration: none !important;
-  color: #FF7000 !important;
+  color: #f04d1f !important;
 }
 
 /* Responsive Adjustments */
