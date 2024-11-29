@@ -554,13 +554,24 @@ select:focus {
   /* Set the text color to #454545 */
 }
 
+/* Default styles for the back-to-login button */
 .back-to-login button {
   color: #F04D1F;
   text-decoration: none;
   font-weight: bold;
   font-size: 15px;
-  /* Same font size as the text */
   font-family: 'Archia', sans-serif;
+  background: none; /* Ensure no background is applied */
+  border: none; /* Ensure no border around the button */
+  outline: none; /* Remove outline on focus/hover */
+  cursor: pointer; /* Keep pointer cursor on hover */
+}
+
+/* Remove any hover effects */
+.back-to-login button:hover {
+  background: none; /* No background color change on hover */
+  border: none; /* Ensure no border appears on hover */
+  color: #F04D1F; /* Keep text color consistent */
 }
 
 
@@ -577,19 +588,7 @@ select:focus {
   /* Make it an inline-block so it doesn’t take full width */
 }
 
-.btn {
-  display: flex;
-  justify-content: center;
-  /* Centers text horizontally */
-  align-items: center;
-  /* Centers text vertically */
-  padding: 0.5rem 1rem;
-  /* Adjust button padding as needed */
-  text-align: center;
-  /* Ensures text is centered */
-  font-size: 14px;
-  /* Optional: Adjust font size */
-}
+
 
 
 
@@ -605,22 +604,29 @@ select:focus {
   /* Bootstrap success green */
 }
 
-/* Add this in your styles.css or component's style */
+/* Default styles for the back-button */
 .back-button {
   color: #F04D1F;
   text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
   font-family: 'Archia', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 26px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
+  background: none; /* Ensure no background is applied */
+  border: none; /* Ensure no border around the button */
+  outline: none; /* Remove outline on focus/hover */
+  cursor: pointer; /* Keep pointer cursor on hover */
 }
 
+/* Remove any hover effects for the back-button */
+.back-button:hover {
+  background: none; /* No background color change on hover */
+  border: none; /* Ensure no border appears on hover */
+  color: #F04D1F; /* Keep text color consistent */
+}
+
+/* Icon inside the back-button */
 .back-button i {
-  margin-right: 5px;
-  /* Small space between the arrow and the text */
+  margin-right: 5px; /* Small space between the arrow and the text */
 }
 
 

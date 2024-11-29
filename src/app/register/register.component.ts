@@ -39,6 +39,11 @@ export class RegisterComponent {
 
   constructor(private router: Router) { }
 
+    // Update to use RoleSelectorComponent data
+    onRoleChange(selectedRole: string): void {
+      this.registerData.role = selectedRole;
+    }
+
   // Proceed to the next step of the registration process
   nextStep() {
     this.errorMessage = ''; // Reset error message at each step

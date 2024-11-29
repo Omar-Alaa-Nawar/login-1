@@ -1,73 +1,98 @@
-/* Apply the gooey effect filter */
+/* Styling for the dropdown select */
 .language-dropdown {
-    width: 120px;
-    padding-right: 0;
-    border: none;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#454545" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat;
-    background-position: calc(100% - 3px) 65%;
-    background-size: 20px 20px;
-    font-family: 'Archia', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 26px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    color: #454545;
-    text-align: center;
-    border-radius: 20px;
-    overflow: hidden;
-    filter: url(#goo); /* Gooey effect */
-  }
-  /* Position arrow using Flexbox */
-.language-selector i.arrow-icon {
-    position: absolute;
-    top: 15px;
-    right: 5px; /* Change this to move the arrow further right */
-  }
-  /* Style for the options container */
-  .language-dropdown option {
-    background: white;
-    color: black;
-    border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 15px;
-  }
-  
-/* Styling for the arrow icon (removing duplicate custom arrow) */
-.language-dropdown::-ms-expand {
-    display: none;
+  width: 120px;
+  padding-right: 0;
+  border: none;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#454545" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat;
+  background-position: calc(100% - 3px) 65%;
+  background-size: 20px 20px;
+  font-family: 'Archia', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  gap: 100px;
+  /* Space between the globe icon and the language text */
+  text-align: left;
+  appearance: none;
+  color: #454545;
+  position: relative;
+  /* Relative positioning for dropdown alignment */
+  text-align: center;
+  border-radius: 20px;
+  overflow: hidden;
+  filter: url(#goo);
+  /* Gooey effect */
 }
-  
-  .language-dropdown + .arrow-icon {
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-bottom: 2px solid #000;
-    border-right: 2px solid #000;
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: rotate(45deg);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-  }
-  
-  /* Hover effect for the dropdown */
-  .language-dropdown:hover {
-    filter: none; /* Remove gooey effect on hover */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Soft shadow for hover effect */
-  }
-  
-  .language-dropdown option:hover {
-    background-color: #007bff;
-    color: white;
-  }
-  
+
+.language-selector .globe-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Dropdown options styled as a "mine box" */
+.language-dropdown option {
+  background: #FFFFFF;
+  color: #454545;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  margin: 4px 0;
+  /* Add space between options */
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1), 0px 8px 32px rgba(0, 0, 0, 0.04);
+  /* Mine box shadow */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for dropdown options */
+.language-dropdown option:hover {
+  background: #007bff;
+  color: #FFFFFF;
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.15), 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Position arrow using Flexbox */
+.language-selector i.arrow-icon {
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  /* Adjust to move arrow further right */
+}
+
+/* Remove the default arrow for IE/Edge */
+.language-dropdown::-ms-expand {
+  display: none;
+}
+
+/* Custom arrow icon styling */
+.language-dropdown+.arrow-icon {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: rotate(45deg);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+.language-selector.open .arrow-icon {
+  transform: rotate(180deg); /* Rotate the arrow 180 degrees */
+}
+/* Hover effect for the dropdown itself */
+.language-selector .arrow-icon {
+  margin-left: auto; /* Push the arrow to the far right */
+}
+.language-dropdown:hover {
+  filter: none;
+  /* Remove gooey effect on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  /* Soft shadow for hover effect */
+}
+
+/* Styling for the language selector container */
+
   .language-selector {
     position: absolute;
     top: 20px;
@@ -76,45 +101,221 @@
     align-items: center;
     z-index: 10;
   }
-  
-  .language-selector select {
-    margin-left: -35px;
+
+
+/* Adjust spacing for the dropdown */
+.language-selector select {
+  margin-left: -35px;
+}
+.arrow-icon {
+  width: 18px; /* Set the width to match the original icon */
+  height: 18px; /* Set the height to match the original icon */
+  transition: transform 0.3s ease; /* Smooth rotation transition */
+}
+/* Globe icon styling */
+.globe-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .language-selector {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    z-index: 10;
   }
-  
-  .globe-icon {
-    width: 20px;
-    height: 20px;
-    right: -100px;
-    transition: transform 0.3s ease;
+
+  .language-dropdown {
+    width: 120px;
+    padding-right: 0;
+    border: none;
+    background: url('/assets/black-arrow.png') no-repeat;
+    background-position: calc(100% - 10px) 50%;
+    background-size: 16px 16px;
   }
-  
-  @media (max-width: 768px) {
-    .language-selector {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      display: flex;
-      align-items: center;
-      z-index: 10;
-    }
-  
-    .language-dropdown {
-      width: 120px;
-      padding-right: 0;
-      border: none;
-      background: url('/assets/black-arrow.png') no-repeat;
-      background-position: calc(100% - 10px) 50%;
-      background-size: 16px 16px;
-    }
-  
-    .language-dropdown {
-      border-radius: 20px;
-    }
-  
-    .language-dropdown option {
-      background: white;
-      color: black;
-      border: none;
-      outline: none;
-    }
+
+  .language-dropdown {
+    border-radius: 20px;
   }
+
+  .language-dropdown option {
+    background: white;
+    color: black;
+    border: none;
+    outline: none;
+  }
+}
+
+/* Dropdown Menu Container Styling (Modified for Hug width, height, and positioning) */
+.language-dropdown-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: 8%;
+  /* Align dropdown directly below the selector */
+  left: 51.5%;
+  /* Center the dropdown */
+  transform: translateX(-50%);
+  /* Center the dropdown horizontally */
+  margin-top: 4px;
+  /* Tiny space between selector and dropdown */
+  width: 180px;
+  height: auto;
+  border: 0.1px  #ddd; /* Light border around the dropdown */
+  /* Adjust to the height of the content */
+  background: #FFFFFF;
+  /* White background */
+  border-radius: 12px; /* Smooth rounded corners */
+  visibility: hidden; /* Hidden by default */
+  opacity: 0;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1); /* Light shadow */
+  /* Light shadows */
+  border-radius: 8px;
+  /* Rounded corners */
+  z-index: 10;
+  /* Ensure dropdown is above other content */
+  opacity: 1;
+  gap: 0px;
+  display: block;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.language-selector.open + .language-dropdown-wrapper {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Dropdown options styling with margin, padding, and shadows */
+.language-dropdown-wrapper .language-dropdown option {
+  background: #FFFFFF; /* White background for options */
+  color: #454545; /* Text color */
+  padding: 12px 16px; /* Padding for the options */
+  border: none; /* No border */
+  border-radius: 8px; /* Rounded corners for individual options */
+  margin: 4px 8px; /* Add slight spacing around options */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+.language-dropdown-wrapper .language-dropdown-option.selected {
+  background: #e0eaff; /* Light blue for active state */
+  color: #0a0a0a; /* Primary color for text */
+  font-weight: normal; /* Emphasize the selected option */
+}
+/* Show dropdown when visible */
+.language-selector.open+.language-dropdown-wrapper {
+  opacity: 1;
+  visibility: visible;
+}
+.language-dropdown-wrapper.open {
+  transform: translateX(-50%) translateY(10px); /* Slight downward animation */
+}
+/* Hover effect for dropdown options */
+.language-dropdown-wrapper .language-dropdown option:hover {
+  background: #007bff;
+  /* Blue background on hover */
+  color: #ffffff;
+  /* White text color on hover */
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.15), 0px 4px 20px rgba(0, 0, 0, 0.1);
+  /* Shadow on hover */
+}
+
+/* Dropdown visibility toggle */
+.language-dropdown-wrapper {
+  opacity: 1;
+  display: block;
+  z-index: 10;
+}
+
+/* Active option styling */
+.active-option {
+  background: #007bff;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Add transition for smoother experience */
+.language-dropdown-option {
+  background: #FFFFFF; /* White background for options */
+  color: #000;
+  padding: 12px 16px; /* Padding for the options */
+  border: 0.1px #ddd; /* Light border for each option */
+  border-radius: 8px; /* Rounded corners for options */
+  margin: 4px 8px; /* Add slight spacing around options */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  cursor: pointer; /* Change cursor to pointer */}
+
+/* Hover effect remains intact */
+.language-dropdown-option:hover {
+  background-color: #f6f6f6;
+  color: rgb(5, 5, 5);
+}
+
+/* Style for selected language option */
+.language-dropdown-option.selected {
+  background-color: #080808;
+  color: #333; 
+  font-weight: bold;
+  
+}
+
+.language-dropdown-option.hovered-option {
+  background-color: #e5f1ff;
+  color: #060606;
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.15), 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.language-selector:hover {
+  background-color: #f9f9f9;
+  border-color: #0f0f10;
+}
+
+.language-selector .arrow-icon {
+  font-size: 12px;
+  margin-left: auto;
+  /* Push arrow to the far right */
+  transition: transform 0.3s ease;
+}
+
+.language-selector.open .arrow-icon {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+  .language-selector {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .language-dropdown-wrapper {
+    width: 140px;
+  }
+
+  .language-dropdown-option {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
+
+.language-selector .selected-language {
+  font-weight: bold;
+  /* Bold text for the selected language */
+  color: #333;
+}
+/* General font styles */
+
+.selected-language {
+  font-weight: normal; /* Default font weight */
+  font-size: 16px; /* Default font size */
+  color: #454545;
+  transition: font-weight 0.3s ease, font-size 0.3s ease; /* Smooth transition for font change */
+}
+
+.selected-language.selected {
+  font-weight: bold; /* Bold font when selected */
+  font-size: 18px; /* Larger font size when selected */
+}

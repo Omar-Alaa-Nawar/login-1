@@ -1,0 +1,20 @@
+<div class="dropdown-container">
+    <!-- Role Selector -->
+    <div class="role-selector" (click)="toggleDropdown()" [ngClass]="{ open: dropdownVisible }">
+      <span class="selected-role" [ngClass]="{ 'selected': selectedRole }">
+        {{ getRoleLabel(selectedRole) }}
+      </span>
+      <img src="assets/black arrow.png" alt="Arrow Icon" class="arrow-icon" />
+    </div>
+  
+    <!-- Dropdown Menu -->
+    <div *ngIf="dropdownVisible" class="role-dropdown-wrapper">
+      <div *ngFor="let role of roles" 
+           class="role-dropdown-option"
+           [ngClass]="{ selected: role.value === selectedRole }"
+           (click)="onRoleChange(role.value)">
+        {{ role.label }}
+      </div>
+    </div>
+  </div>
+  
