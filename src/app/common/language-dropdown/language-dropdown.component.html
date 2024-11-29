@@ -1,29 +1,26 @@
-<div class="language-selector d-flex align-items-center">
-  <img src="assets/globe.png" alt="Globe Icon" class="globe-icon me-2">
-  <select 
-    class="form-select language-dropdown" 
-    [(ngModel)]="selectedLanguage" 
-    (change)="onLanguageChange($event)">
-    <option 
-      *ngFor="let lang of languages" 
-      [value]="lang.value" 
-      [ngClass]="{'selected-option': lang.value === selectedLanguage}">
-      {{ lang.label }}
-    </option>
-  </select>
-  <i class="arrow-icon"></i>
+<div 
+  class="language-selector" 
+  (click)="toggleDropdown()" 
+  [ngClass]="{ open: dropdownVisible }">
+  <img src="assets/globe.png" alt="Globe Icon" class="globe-icon" />
+  <span 
+    class="selected-language" 
+    [ngClass]="{ 'selected': selectedLanguage }">
+    {{ getLanguageLabel(selectedLanguage) }}
+  </span>
+  <img src="assets/black-arrow.ico" alt="Arrow Icon" class="arrow-icon" /> <!-- Replaced with image -->
 </div>
 
-<div *ngIf="dropdownVisible" class="language-dropdown-wrapper">
-  <select 
-    class="form-select language-dropdown" 
-    [(ngModel)]="selectedLanguage" 
-    (change)="onLanguageChange($event)">
-    <option 
-      *ngFor="let lang of languages" 
-      [value]="lang.value" 
-      [ngClass]="{'hovered-option': lang.value === hoveredLanguage}">
-      {{ lang.label }}
-    </option>
-  </select>
+<div 
+  *ngIf="dropdownVisible" 
+  class="language-dropdown-wrapper">
+  <div 
+    *ngFor="let lang of languages" 
+    class="language-dropdown-option"
+    [ngClass]="{
+      selected: lang.value === selectedLanguage
+    }"
+    (click)="onLanguageChange(lang.value)">
+    {{ lang.label }}
+  </div>
 </div>

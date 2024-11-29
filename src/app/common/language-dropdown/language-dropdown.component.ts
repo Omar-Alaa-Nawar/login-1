@@ -6,11 +6,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./language-dropdown.component.css'],
 })
 export class LanguageDropdownComponent {
-  @Input() selectedLanguage: string = 'en';
+  @Input() selectedLanguage: string = 'en'; // Default language
   @Output() selectedLanguageChange = new EventEmitter<string>();
 
   dropdownVisible: boolean = false;
-  hoveredLanguage: string | null = null;
+  hoveredLanguage: string | null = null; // To track the hovered language
 
   // Language options
   languages = [
@@ -19,17 +19,26 @@ export class LanguageDropdownComponent {
     { value: 'ar', label: 'Arabic' },
   ];
 
-  onLanguageChange(event: Event): void {
-    const selectedValue = (event.target as HTMLSelectElement).value;
-    this.selectedLanguage = selectedValue;
-    this.selectedLanguageChange.emit(selectedValue);
-  }
-
+  // Toggle the visibility of the dropdown
   toggleDropdown(): void {
     this.dropdownVisible = !this.dropdownVisible;
   }
 
-  setHoveredLanguage(lang: string): void {
+  // Handle selection change
+  onLanguageChange(lang: string): void {
+    this.selectedLanguage = lang;
+    this.selectedLanguageChange.emit(lang);
+    this.dropdownVisible = false;  // Hide dropdown after selection
+  }
+
+  // Set the hovered language for styling
+  setHoveredLanguage(lang: string | null): void {
     this.hoveredLanguage = lang;
+  }
+
+  // Get the language label by its code (added method)
+  getLanguageLabel(langCode: string): string {
+    const language = this.languages.find(lang => lang.value === langCode);
+    return language ? language.label : '';
   }
 }

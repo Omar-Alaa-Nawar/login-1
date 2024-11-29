@@ -22,6 +22,7 @@
     "@angular/platform-server": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@angular/ssr": "^18.2.9",
+    "@ng-select/ng-select": "^14.1.0",
     "@syncfusion/ej2-angular-splitbuttons": "^27.2.2",
     "bootstrap": "^5.3.3",
     "express": "^4.18.2",
