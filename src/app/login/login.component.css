@@ -16,13 +16,13 @@ p {
 /* Floating Label Styling */
 .floating-label {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 12px;
   font-size: 14px;
   color: #888 !important;
   transition: all 0.3s ease;
   pointer-events: none;
-  transform: translateY(25px);
+  transform: translateY(-50%);
 }
 
 /* Input Styling */
@@ -31,11 +31,16 @@ p {
   border: 1px solid #ccc !important;
   color: #121212 !important;
   font-family: 'Roundo', sans-serif !important;
-  padding: 18px 12px !important;
+  padding: 0px 12px !important;
   font-size: 18px !important;
   border-radius: 8px !important;
   width: 100% !important;
+  text-align: left !important; /* Align text to the left */
   height: 50px !important;
+  line-height: 50px !important; /* Align text vertically */
+  display: block; /* Make the input a flex container */
+  box-sizing: border-box; /* Include padding in width/height */
+  align-items: center; /* Vertically center the text */
   transition: padding-top 0.3s ease;
 }
 
@@ -48,7 +53,7 @@ p {
 /* Move label above the input when typing */
 input:focus + .floating-label,
 input:not(:placeholder-shown) + .floating-label {
-  top: -20px;
+  top: -10px;
   font-size: 12px;
   color: #FF8C00 !important;
 }
@@ -98,4 +103,9 @@ input:not(:placeholder-shown) + .floating-label {
   .col-md-5 {
     margin-bottom: 20px !important;
   }
+}
+* Validation Error Message Styling */
+.text-danger {
+  font-size: 12px;
+  margin-top: 5px;
 }

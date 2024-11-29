@@ -62,26 +62,29 @@ export class ResetPasswordComponent {
 
   confirmEmail() {
     const trimmedEmail = this.email.trim();
-
+  
     if (!trimmedEmail) {
       this.errorMessage = 'Please enter your email.';
       return;
     }
-
+  
     const users = JSON.parse(localStorage.getItem('users') || '[]');
     const user = users.find((u: any) => u.email === trimmedEmail);
-
+  
     if (user) {
       this.errorMessage = '';
       this.showSuccessMessage = true;
-      setTimeout(() => {
-        this.isChangePasswordFlow = true;
-        this.showSuccessMessage = false;
-      }, 3000);
+      // Do not automatically switch to the next step
     } else {
       this.errorMessage = 'Email not found.';
     }
   }
+  
+  moveToResetPassword() {
+    this.showSuccessMessage = false;
+    this.isChangePasswordFlow = true;
+  }
+  
 
   resetPassword() {
     const trimmedPassword = this.password.trim();
@@ -119,8 +122,4 @@ export class ResetPasswordComponent {
     }
   }
 
-  moveToResetPassword() {
-    this.showSuccessMessage = false;
-    this.isChangePasswordFlow = true;
-  }
 }
