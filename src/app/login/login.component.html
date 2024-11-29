@@ -1,13 +1,3 @@
-<link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Roundo&display=swap" rel="stylesheet">
-<link
-  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap"
-  rel="stylesheet">
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Nunito:wght@300;400;600;700&display=swap"
-  rel="stylesheet">
-
 <section class="vh-100 d-flex align-items-center" style="background-color: #ffffff; color: #121212;">
   <div class="row w-100 m-0">
     <!-- Login Form on the Left -->
@@ -26,46 +16,44 @@
 
         <form (ngSubmit)="login()" #loginForm="ngForm">
           <!-- Email Field -->
-         <!-- Email Field -->
-<div class="form-floating mb-3">
-  <input
-    type="email"
-    id="typeEmailX"
-    class="form-control form-control-lg"
-    [(ngModel)]="loginData.email"
-    name="email"
-    #email="ngModel"
-    required
-    placeholder="Your Email"
-    (focus)="onFocus($event)"
-    (blur)="onBlur($event)"
-    [ngClass]="{'input-focused': isEmailFocused}" />
-  <label for="typeEmailX" class="floating-label">Your Email</label>
-  <div *ngIf="email.invalid && email.touched" class="text-danger">
-    Valid email is required.
-  </div>
-</div>
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              id="typeEmailX"
+              class="form-control form-control-lg"
+              [(ngModel)]="loginData.email"
+              name="email"
+              #email="ngModel"
+              required
+              placeholder="Your Email"
+              (focus)="onFocus($event)"
+              (blur)="onBlur($event)"
+              [ngClass]="{'input-focused': isEmailFocused}" />
+            <label for="typeEmailX" class="floating-label"> Email</label>
+            <div *ngIf="email.invalid && email.touched" class="text-danger">
+              Valid email is required.
+            </div>
+          </div>
 
-<!-- Password Field -->
-<div class="form-floating mb-3">
-  <input
-    type="password"
-    id="typePasswordX"
-    class="form-control form-control-lg"
-    [(ngModel)]="loginData.password"
-    name="password"
-    #password="ngModel"
-    required
-    placeholder="Password"
-    (focus)="onFocus($event)"
-    (blur)="onBlur($event)"
-    [ngClass]="{'input-focused': isPasswordFocused}" />
-  <label for="typePasswordX" class="floating-label">Password</label>
-  <div *ngIf="password.invalid && password.touched" class="text-danger">
-    Password is required.
-  </div>
-</div>
-
+          <!-- Password Field -->
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              id="typePasswordX"
+              class="form-control form-control-lg"
+              [(ngModel)]="loginData.password"
+              name="password"
+              #password="ngModel"
+              required
+              placeholder="Password"
+              (focus)="onFocus($event)"
+              (blur)="onBlur($event)"
+              [ngClass]="{'input-focused': isPasswordFocused}" />
+            <label for="typePasswordX" class="floating-label">Password</label>
+            <div *ngIf="password.invalid && password.touched" class="text-danger">
+              Password is required.
+            </div>
+          </div>
 
           <!-- Login Button -->
           <button
@@ -86,6 +74,7 @@
               Forgot Password?
             </button>
           </p>
+
           <p *ngIf="message" class="text-danger mt-3">{{ message }}</p>
         </form>
       </div>
