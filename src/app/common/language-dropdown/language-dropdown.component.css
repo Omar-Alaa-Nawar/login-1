@@ -1,3 +1,31 @@
+/* Styling for the language selector */
+.language-selector {
+  position: absolute;
+  top: 20px;
+  right: 650px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* Globe icon styling */
+.language-selector .globe-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px; /* Adds space between the globe icon and the language text */
+}
+
+/* Selected language text styling */
+.language-selector .selected-language {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  color: #454545;
+  margin-right: 10px; /* Adds space between the language text and the arrow */
+  text-align: left;
+}
+
 /* Styling for the dropdown select */
 .language-dropdown {
   width: 120px;
@@ -10,23 +38,15 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
-  gap: 100px;
-  /* Space between the globe icon and the language text */
+  gap: 10px;
   text-align: left;
   appearance: none;
   color: #454545;
   position: relative;
-  /* Relative positioning for dropdown alignment */
-  text-align: center;
   border-radius: 20px;
   overflow: hidden;
   filter: url(#goo);
   /* Gooey effect */
-}
-
-.language-selector .globe-icon {
-  width: 18px;
-  height: 18px;
 }
 
 /* Dropdown options styled as a "mine box" */
@@ -37,9 +57,7 @@
   border: none;
   border-radius: 8px;
   margin: 4px 0;
-  /* Add space between options */
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1), 0px 8px 32px rgba(0, 0, 0, 0.04);
-  /* Mine box shadow */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -48,19 +66,6 @@
   background: #007bff;
   color: #FFFFFF;
   box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.15), 0px 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Position arrow using Flexbox */
-.language-selector i.arrow-icon {
-  position: absolute;
-  top: 15px;
-  right: 5px;
-  /* Adjust to move arrow further right */
-}
-
-/* Remove the default arrow for IE/Edge */
-.language-dropdown::-ms-expand {
-  display: none;
 }
 
 /* Custom arrow icon styling */
@@ -72,51 +77,35 @@
   border-right: 2px solid #000;
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 5px; /* Adjust this value to move the arrow further to the right */
   transform: rotate(45deg);
   transform-origin: right;
   transition: transform 0.3s ease;
 }
+
+/* Rotate arrow when dropdown is open */
 .language-selector.open .arrow-icon {
-  transform: rotate(180deg); /* Rotate the arrow 180 degrees */
+  transform: rotate(180deg);
 }
-/* Hover effect for the dropdown itself */
-.language-selector .arrow-icon {
+
+/* Arrow icon styling */
+.arrow-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease; /* Smooth rotation transition */
   margin-left: auto; /* Push the arrow to the far right */
 }
+
+/* Hover effect for the dropdown itself */
 .language-dropdown:hover {
   filter: none;
-  /* Remove gooey effect on hover */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   /* Soft shadow for hover effect */
 }
 
-/* Styling for the language selector container */
-
-  .language-selector {
-    position: absolute;
-    top: 20px;
-    right: 650px;
-    display: flex;
-    align-items: center;
-    z-index: 10;
-  }
-
-
-/* Adjust spacing for the dropdown */
-.language-selector select {
-  margin-left: -35px;
-}
-.arrow-icon {
-  width: 18px; /* Set the width to match the original icon */
-  height: 18px; /* Set the height to match the original icon */
-  transition: transform 0.3s ease; /* Smooth rotation transition */
-}
-/* Globe icon styling */
-.globe-icon {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.3s ease;
+/* Adjust the margin for the dropdown to ensure space between it and the globe */
+.language-dropdown {
+  margin-left: 10px; /* Adds space between dropdown and globe */
 }
 
 /* Responsive adjustments for smaller screens */
