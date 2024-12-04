@@ -151,6 +151,7 @@
     right: 10px;
     display: flex;
     align-items: center;
+    gap: 8px; /* Space between globe icon and text */
     z-index: 10;
   }
 
@@ -299,9 +300,12 @@
 }
 
 .language-selector .arrow-icon {
-  font-size: 12px;
-  margin-left: auto;
-  /* Push arrow to the far right */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust spacing from the right */
+  transform: translateY(-50%); /* Center vertically */
+  width: 18px;
+  height: 18px;
   transition: transform 0.3s ease;
 }
 
