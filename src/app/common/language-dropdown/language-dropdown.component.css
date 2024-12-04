@@ -27,6 +27,7 @@
 .language-selector .globe-icon {
   width: 18px;
   height: 18px;
+  margin-right: -1px; /* Space between globe icon and text */
 }
 
 /* Dropdown options styled as a "mine box" */
@@ -81,9 +82,18 @@
   transform: rotate(180deg); /* Rotate the arrow 180 degrees */
 }
 /* Hover effect for the dropdown itself */
-.language-selector .arrow-icon {
-  margin-left: auto; /* Push the arrow to the far right */
-}
+
+  .language-selector .arrow-icon {
+    position: absolute;
+    top: 50%;
+    right: -20px; /* Adjust spacing from the right */
+    transform: translateY(-50%); /* Center vertically */
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+  }
+  
+
 .language-dropdown:hover {
   filter: none;
   /* Remove gooey effect on hover */
@@ -94,13 +104,16 @@
 /* Styling for the language selector container */
 
   .language-selector {
-    position: absolute;
-    top: 20px;
-    right: 650px;
-    display: flex;
-    align-items: center;
-    z-index: 10;
-  }
+    
+      position: absolute;
+      top: 20px;
+      right: 650px;
+      display: flex;
+      align-items: center;
+      gap: 8px; /* Space between globe icon and text */
+      z-index: 10;
+    }
+  
 
 
 /* Adjust spacing for the dropdown */
