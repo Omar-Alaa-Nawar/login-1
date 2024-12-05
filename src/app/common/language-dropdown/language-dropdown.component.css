@@ -302,7 +302,7 @@
 .language-selector .arrow-icon {
   position: absolute;
   top: 50%;
-  right: 10px; /* Adjust spacing from the right */
+  right: -15px; /* Adjust spacing from the right */
   transform: translateY(-50%); /* Center vertically */
   width: 18px;
   height: 18px;
