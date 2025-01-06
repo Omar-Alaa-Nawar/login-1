@@ -49,6 +49,12 @@
   /* Gooey effect */
 }
 
+.language-selector .globe-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: -1px; /* Space between globe icon and text */
+}
+
 /* Dropdown options styled as a "mine box" */
 .language-dropdown option {
   background: #FFFFFF;
@@ -85,27 +91,56 @@
 
 /* Rotate arrow when dropdown is open */
 .language-selector.open .arrow-icon {
-  transform: rotate(180deg);
+  transform: rotate(180deg); /* Rotate the arrow 180 degrees */
 }
-
-/* Arrow icon styling */
-.arrow-icon {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.3s ease; /* Smooth rotation transition */
-  margin-left: auto; /* Push the arrow to the far right */
-}
-
 /* Hover effect for the dropdown itself */
+
+  .language-selector .arrow-icon {
+    position: absolute;
+    top: 50%;
+    right: -20px; /* Adjust spacing from the right */
+    transform: translateY(-50%); /* Center vertically */
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+  }
+  
+
 .language-dropdown:hover {
   filter: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   /* Soft shadow for hover effect */
 }
 
-/* Adjust the margin for the dropdown to ensure space between it and the globe */
-.language-dropdown {
-  margin-left: 10px; /* Adds space between dropdown and globe */
+/* Styling for the language selector container */
+
+  .language-selector {
+    
+      position: absolute;
+      top: 20px;
+      right: 650px;
+      display: flex;
+      align-items: center;
+      gap: 8px; /* Space between globe icon and text */
+      z-index: 10;
+    }
+  
+
+
+/* Adjust spacing for the dropdown */
+.language-selector select {
+  margin-left: -35px;
+}
+.arrow-icon {
+  width: 18px; /* Set the width to match the original icon */
+  height: 18px; /* Set the height to match the original icon */
+  transition: transform 0.3s ease; /* Smooth rotation transition */
+}
+/* Globe icon styling */
+.globe-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
 }
 
 /* Responsive adjustments for smaller screens */
@@ -116,6 +151,7 @@
     right: 10px;
     display: flex;
     align-items: center;
+    gap: 8px; /* Space between globe icon and text */
     z-index: 10;
   }
 
@@ -267,9 +303,12 @@
 }
 
 .language-selector .arrow-icon {
-  font-size: 12px;
-  margin-left: auto;
-  /* Push arrow to the far right */
+  position: absolute;
+  top: 50%;
+  right: -15px; /* Adjust spacing from the right */
+  transform: translateY(-50%); /* Center vertically */
+  width: 18px;
+  height: 18px;
   transition: transform 0.3s ease;
 }
 
