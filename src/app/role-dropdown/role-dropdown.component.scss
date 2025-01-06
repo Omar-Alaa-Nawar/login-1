@@ -12,12 +12,19 @@
     opacity: 1; /* Ensure opacity is visible */
     transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transition for shadow and border-color */
     margin-bottom: 15px; /* Add bottom margin to create space between dropdown container and menu */
-}
 
-/* Hover effect to change border color */
-.dropdown-container:hover {
-    border-color: #2929F5; /* Change border to blue on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow on hover */
+    &:hover {
+        border-color: #2929F5; /* Change border to blue on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow on hover */
+    }
+
+    /* Show the dropdown when visible */
+    .role-dropdown-wrapper {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        z-index: 9999; /* Ensure dropdown is on top of other content */
+    }
 }
 
 /* Role selector styles inside the container */
@@ -36,6 +43,12 @@
     transition: background-color 0.3s ease;
     width: 100%; /* Ensure it takes full width */
     height: 100%; /* Ensure it occupies the full height of the container */
+
+    &.open {
+        .arrow-icon {
+            transform: rotate(180deg); /* Rotate the arrow when open */
+        }
+    }
 }
 
 /* Label inside role selector, initially centered to the far left */
@@ -47,17 +60,15 @@
     font-size: 16px;
     color: #171717;
     transition: all 0.3s ease; /* Smooth transition for movement */
+
+    &.focused {
+        top: 5px;
+        font-size: 12px;
+        font-weight: bold;
+        transform: translateX(0%); /* Center horizontally */
+    }
 }
 
-/* Focused or clicked state: Move the label to the top */
-.dropdown-container:focus-within .selected-role,
-.role-selector.open .selected-role {
-    top: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    left: 12px; /* Keep label to the far left */
-    transform: translateX(0%); /* Center horizontally */
-}
 /* Arrow icon inside role selector, centered to the far right */
 .arrow-icon {
     width: 16px;
@@ -67,11 +78,6 @@
     right: 12px; /* Position the arrow to the far right */
     top: 50%; /* Vertically center the arrow */
     transform: translateY(-50%); /* Ensure the arrow is centered vertically */
-}
-
-
-.role-selector.open .arrow-icon {
-    transform: rotate(180deg); /* Rotate the arrow when open */
 }
 
 /* Dropdown menu wrapper */
@@ -85,41 +91,31 @@
     background-color: #ffffff; /* Background color for the dropdown */
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Shadow for dropdown */
-    visibility: hidden;
+    visibility: hidden; /* Initially hidden */
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 9999; /* Ensure dropdown is on top of other content */
-}
 
-/* Show the dropdown when visible */
-.dropdown-container .role-dropdown-wrapper {
-    visibility: visible;
-    opacity: 1;
-}
+    .role-dropdown-option {
+        padding: 12px 16px;
+        cursor: pointer;
+        font-size: 16px;
+        color: #171717; /* Text color */
+        border-radius: 4px; /* Rounded corners for options */
+        transition: background-color 0.3s ease;
 
-/* Role options inside dropdown */
-.role-dropdown-option {
-    padding: 12px 16px;
-    cursor: pointer;
-    font-size: 16px;
-    color: #171717; /* Text color */
-    border-radius: 4px; /* Rounded corners for options */
-    transition: background-color 0.3s ease;
-}
+        &:hover {
+            background-color: #DDE7FF; /* Highlight on hover */
+            color: #3D3D3D; /* White text on hover */
+        }
 
-/* Hover effect for role options */
-.role-dropdown-option:hover {
-    background-color: #DDE7FF; /* Highlight on hover */
-    color: #3D3D3D; /* White text on hover */
+        &.selected {
+            background-color: #DDE7FF; /* Highlight selected option */
+            color: #3D3D3D; /* White text for selected option */
+            font-weight: bold;
+        }
+    }
 }
-
-/* Selected option styling */
-.role-dropdown-option.selected {
-    background-color: #DDE7FF; /* Highlight selected option */
-    color: #3D3D3D; /* White text for selected option */
-    font-weight: bold;
-}
-
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
@@ -127,30 +123,27 @@
         width: 100%; /* Full width on small screens */
         margin: 10px 0; /* Adjust margins for smaller screens */
     }
+
     .role-selector {
-      position: fixed;
-      top: 10px;
-      right: 10px;
+        position: fixed;
+        top: 10px;
+        right: 10px;
     }
-  
+
     .role-dropdown {
-      width: 120px;
-      padding-right: 0;
-      border: none;
-      background: url('/assets/black-arrow.png') no-repeat;
-      background-position: calc(100% - 10px) 50%;
-      background-size: 16px 16px;
+        width: 120px;
+        padding-right: 0;
+        border: none;
+        background: url('/assets/black-arrow.png') no-repeat;
+        background-position: calc(100% - 10px) 50%;
+        background-size: 16px 16px;
+        border-radius: 20px;
+
+        option {
+            background: white;
+            color: black;
+            border: none;
+            outline: none;
+        }
     }
-  
-    .role-dropdown {
-      border-radius: 20px;
-    }
-  
-    .role-dropdown option {
-      background: white;
-      color: black;
-      border: none;
-      outline: none;
-    }
-  }
-  
+}

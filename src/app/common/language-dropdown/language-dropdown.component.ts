@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-language-dropdown',
   templateUrl: './language-dropdown.component.html',
-  styleUrls: ['./language-dropdown.component.css'],
+  styleUrls: ['./language-dropdown.component.scss'],
 })
 export class LanguageDropdownComponent {
   @Input() selectedLanguage: string = 'en'; // Default language

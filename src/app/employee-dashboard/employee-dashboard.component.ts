@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './employee-dashboard.component.html',
-  styleUrls: ['./employee-dashboard.component.css']
+  styleUrls: ['./employee-dashboard.component.scss']
 })
 export class EmployeeDashboardComponent {
   isToggled: boolean = false; // Sidebar state

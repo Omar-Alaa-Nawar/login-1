@@ -10,7 +10,7 @@ import { SharedModule } from '../shared.module';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule, SharedModule],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
   step: number = 1; // Tracks the current step of the registration process

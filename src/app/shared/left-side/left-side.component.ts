@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true, // This makes it a standalone component
   imports: [],
   templateUrl: './left-side.component.html',
-  styleUrl: './left-side.component.css'
+  styleUrl: './left-side.component.scss'
 })
 export class LeftSideComponent {
 

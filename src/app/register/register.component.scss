@@ -1,0 +1,418 @@
+/* Variables for Colors and Fonts */
+$btn-color: #F04D1F;
+$btn-hover-color: #D8431B;
+$btn-disabled-color: #D8431B;
+$btn-disabled-opacity: 0.7;
+$input-focus-color: #2929F5;
+$progress-bar-color: #4caf50;
+$radio-checked-bg: #66b3ff;
+$radio-checked-border: white;
+$radio-focus-outline: #2929F5;
+
+$font-family-main: 'Roundo', sans-serif;
+$font-family-alt: 'Archia', sans-serif;
+
+/* General Button Styling */
+.btn {
+  font-family: $font-family-main;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+
+/* Success Message Styling */
+.success-message {
+  background-color: #4caf50; /* Green background for success */
+  color: white; /* White text */
+  font-size: 16px; /* Font size */
+  font-weight: 600; /* Bold text */
+  padding: 12px 20px; /* Padding */
+  border-radius: 8px; /* Rounded corners */
+  width: auto; /* Allow the message to be as wide as necessary */
+  max-width: 400px; /* Limit max width for the message */
+  margin: 10px auto; /* Center the message */
+  text-align: center; /* Center the text */
+  display: block; /* Make it block-level for proper spacing */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  transition: opacity 0.3s ease; /* Smooth transition for fading out */
+}
+
+/* Show the success message when triggered */
+.success-message.show {
+  opacity: 1; /* Ensure the message is visible */
+}
+
+/* Hide the success message */
+.success-message.hide {
+  opacity: 0; /* Hide the message */
+  pointer-events: none; /* Disable interaction */
+}
+
+/* Success message hover effect */
+.success-message:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+  &:hover:not(.btn-disabled) {
+    background-color: $btn-hover-color;
+  }
+
+  &.btn-disabled {
+    background-color: $btn-disabled-color !important;
+    color: white;
+    cursor: not-allowed;
+    opacity: $btn-disabled-opacity;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &.btn-orange {
+    background-color: $btn-color;
+    color: white;
+
+    &:hover {
+      background-color: $btn-hover-color;
+    }
+  }
+}
+
+/* Next Button Specific Styling */
+.next-button {
+  background-color: $btn-color;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 20px;
+  width: 120px;
+  height: 48px;
+  line-height: 48px;
+}
+
+/* Create Account Button Specific Styling */
+.create-account-button {
+  background-color: $btn-color;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 20px;
+  width: 120px;
+  height: 48px;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+/* Hover Effect for Buttons */
+.btn:hover:not(.btn-disabled) {
+  background-color: $btn-hover-color;
+}
+
+/* Disabled Button State */
+.btn-disabled {
+  background-color: $btn-disabled-color !important;
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Focus State for Buttons */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Dynamic Button State */
+.btn-orange {
+  background-color: $btn-color;
+  color: white;
+}
+
+.btn-orange:hover {
+  background-color: $btn-hover-color;
+}
+
+/* Apply Figma Font Globally */
+body, .card-body {
+  font-family: $font-family-main;
+}
+
+label {
+  font-family: $font-family-main;
+  font-size: 14px;
+}
+
+.step-text {
+  font-family: $font-family-main;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Progress Bar */
+.progress {
+  height: 12px;
+  background-color: #f0f0f0;
+
+  .progress-bar {
+    background-color: $progress-bar-color;
+  }
+}
+
+/* Radio Buttons */
+.radio-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.radio-container {
+  position: relative;
+  padding: 10px 20px;
+  background-color: white;
+  border: 2px solid #444444;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+
+  &:focus-within {
+    outline: 3px solid $radio-focus-outline;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    background-color: white;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &:before {
+    top: -7px;
+    border-radius: 0 0 30px 30px;
+  }
+
+  &:after {
+    bottom: -7px;
+    border-radius: 30px 30px 0 0;
+  }
+
+  input[type="radio"] {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:checked {
+      background-color: $radio-checked-bg;
+      border: 2px solid $radio-checked-border;
+    }
+  }
+
+  label {
+    font-family: $font-family-main;
+    color: grey;
+    font-size: 16px;
+  }
+
+  input[type="radio"]:checked + label {
+    color: grey;
+  }
+}
+
+/* Floating Labels */
+.floating-label {
+  position: absolute;
+  top: -8px;
+  left: -2px;
+  color: #6D6D6D;
+  font-family: $font-family-alt;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Input Styling */
+.input-container {
+  position: relative;
+  border: 1px solid #B0B0B0;
+  border-radius: 8px 0 0 0;
+  padding-top: 25px;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+  width: 559px;
+  height: 66px;
+}
+
+.input-box {
+  background-color: #FFFFFF;
+  color: #171717;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  border-radius: 4px;
+  transition: border 0.3s ease;
+
+  &:focus {
+    border: 1.5px solid $input-focus-color;
+    outline: none;
+  }
+
+  &:focus ~ .floating-label,
+  &:not(:placeholder-shown) ~ .floating-label {
+    top: 3px;
+    left: 8px;
+    font-size: 0.7rem;
+    color: #000000;
+    background-color: #ffffff;
+    padding: 0 4px;
+  }
+}
+
+/* Password Requirements */
+.password-requirements {
+  margin-top: 1rem;
+
+  .requirements-text {
+    margin-bottom: 0.5rem;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: $font-family-alt;
+    line-height: 24px;
+    text-align: left;
+  }
+
+  .requirements-list {
+    display: flex;
+    justify-content: space-between;
+
+    .left-requirements,
+    .right-requirements {
+      list-style-type: none;
+      padding-left: 0;
+
+      li {
+        color: gray;
+        margin-bottom: 0.5rem;
+        font-size: 16px;
+        font-family: $font-family-alt;
+        font-weight: 500;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+
+        &::before {
+          content: '•';
+          color: black;
+          margin-right: 8px;
+        }
+
+        &.fulfilled {
+          color: #198632;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+/* Header Styling for Step Titles */
+.header-step {
+  font-family: $font-family-main;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-align: left; /* Align headers to the left */
+  margin-left: -3px; /* Move header further to the left */
+  padding-left: 0; /* Remove any left padding */
+  margin-bottom: 20px;
+  width: 100%; /* Ensure full width for proper alignment */
+}
+
+/* Back Button Styling */
+.back-button {
+  font-family: $font-family-main;
+  font-size: 16px;
+  color: $btn-color;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding-left: 0; /* Align with header */
+  margin-left: 0;
+
+  &:hover {
+    color: $btn-hover-color;
+  }
+
+  i {
+    margin-right: 5px;
+  }
+}
+
+/* Back to Login Button */
+.back-to-login {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-family: $font-family-main;
+  font-size: 14px;
+  font-weight: 600;
+  color: $btn-color;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $btn-hover-color;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .input-container {
+    width: 100%;
+  }
+
+  .input-box {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .next-button,
+  .create-account-button {
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  .header-step {
+    font-size: 20px;
+    padding-left: 15px; /* Adjust padding for smaller screens */
+  }
+}

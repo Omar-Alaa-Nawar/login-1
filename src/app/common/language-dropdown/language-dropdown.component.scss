@@ -156,15 +156,13 @@
   /* Tiny space between selector and dropdown */
   width: 180px;
   height: auto;
-  border: 0.1px  #ddd; /* Light border around the dropdown */
-  /* Adjust to the height of the content */
+  border: 0.1px #ddd; /* Light border around the dropdown */
   background: #FFFFFF;
   /* White background */
   border-radius: 12px; /* Smooth rounded corners */
   visibility: hidden; /* Hidden by default */
   opacity: 0;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1); /* Light shadow */
-  /* Light shadows */
   border-radius: 8px;
   /* Rounded corners */
   z-index: 10;
@@ -174,6 +172,7 @@
   display: block;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 .language-selector.open + .language-dropdown-wrapper {
   opacity: 1;
   visibility: visible;
@@ -190,19 +189,23 @@
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
 }
+
 .language-dropdown-wrapper .language-dropdown-option.selected {
   background: #e0eaff; /* Light blue for active state */
   color: #0a0a0a; /* Primary color for text */
   font-weight: normal; /* Emphasize the selected option */
 }
+
 /* Show dropdown when visible */
-.language-selector.open+.language-dropdown-wrapper {
+.language-selector.open + .language-dropdown-wrapper {
   opacity: 1;
   visibility: visible;
 }
+
 .language-dropdown-wrapper.open {
   transform: translateX(-50%) translateY(10px); /* Slight downward animation */
 }
+
 /* Hover effect for dropdown options */
 .language-dropdown-wrapper .language-dropdown option:hover {
   background: #007bff;
@@ -236,7 +239,8 @@
   border-radius: 8px; /* Rounded corners for options */
   margin: 4px 8px; /* Add slight spacing around options */
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-  cursor: pointer; /* Change cursor to pointer */}
+  cursor: pointer; /* Change cursor to pointer */
+}
 
 /* Hover effect remains intact */
 .language-dropdown-option:hover {
@@ -247,9 +251,8 @@
 /* Style for selected language option */
 .language-dropdown-option.selected {
   background-color: #080808;
-  color: #333; 
+  color: #333;
   font-weight: bold;
-  
 }
 
 .language-dropdown-option.hovered-option {
@@ -295,8 +298,8 @@
   /* Bold text for the selected language */
   color: #333;
 }
-/* General font styles */
 
+/* General font styles */
 .selected-language {
   font-weight: normal; /* Default font weight */
   font-size: 16px; /* Default font size */
