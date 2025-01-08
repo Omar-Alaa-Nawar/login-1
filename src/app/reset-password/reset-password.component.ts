@@ -10,7 +10,7 @@ import { SharedModule } from '../shared.module'; // Import SharedModule to acces
   standalone: true,
   imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule], // Use SharedModule to access LanguageDropdownComponent
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css'],
+  styleUrls: ['./reset-password.component.scss'],
 })
 export class ResetPasswordComponent {
   email: string = '';

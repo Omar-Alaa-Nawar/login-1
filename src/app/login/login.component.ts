@@ -10,7 +10,7 @@ import { SharedModule } from '../shared.module';
   standalone: true,
   imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   loginData = {
