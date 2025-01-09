@@ -6,11 +6,10 @@ import { LeftSideComponent } from '../shared/left-side/left-side.component';
 import { SharedModule } from '../shared.module';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+    selector: 'app-login',
+    imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule],
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   loginData = {

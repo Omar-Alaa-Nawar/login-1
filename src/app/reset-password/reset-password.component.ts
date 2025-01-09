@@ -6,11 +6,10 @@ import { LeftSideComponent } from '../shared/left-side/left-side.component';
 import { SharedModule } from '../shared.module'; // Import SharedModule to access LanguageDropdownComponent
 
 @Component({
-  selector: 'app-reset-password',
-  standalone: true,
-  imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule], // Use SharedModule to access LanguageDropdownComponent
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss'],
+    selector: 'app-reset-password',
+    imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule], // Use SharedModule to access LanguageDropdownComponent
+    templateUrl: './reset-password.component.html',
+    styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent {
   email: string = '';

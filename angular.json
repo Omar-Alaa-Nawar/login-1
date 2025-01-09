@@ -26,6 +26,8 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+
+              "./node_modules/primeicons/primeicons.css", 
               "src/styles.css"
             ],
             "scripts": [
@@ -97,7 +99,7 @@
   },
   "schematics": {
     "@schematics/angular:component": {
-      "style": "scss"
+      "style": "css"
     }
   },
   "cli": {

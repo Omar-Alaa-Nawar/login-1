@@ -127,6 +127,21 @@
         <h1 class="mt-4">Welcome to the Admin Dashboard</h1>
         <p>Manage users, settings, and view reports here.</p>
       </div>
+      <!-- Your Admin Dashboard Content -->
+
+<!-- Trigger Modal Button -->
+<button pButton type="button" label="Open Modal" (click)="openModal()"></button>
+
+<!-- Modal Component -->
+<app-modal *ngIf="showModal"
+           [title]="'Confirm Action'"
+           [content]="'Are you sure you want to proceed with this action?'"
+           [cancelBtnText]="'Cancel'"
+           [confirmBtnText]="'Confirm'"
+           (cancelEvent)="onCancel()"
+           (confirmEvent)="onConfirm()">
+</app-modal>
+
     </div>
   </div>
 </div>

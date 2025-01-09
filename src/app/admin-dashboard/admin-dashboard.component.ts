@@ -2,39 +2,55 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { ModalComponent } from '../shared/modal/modal.component'; // Import the ModalComponent
 
 @Component({
-  selector: 'app-admin-dashboard',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.scss']
+    selector: 'app-admin-dashboard',
+    imports: [CommonModule, RouterModule, ModalComponent],  // Add ModalComponent to imports
+    templateUrl: './admin-dashboard.component.html',
+    styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent {
-  isToggled: boolean = false; // Track the state of the sidebar
-  isNavbarCollapsed: boolean = true; // Track the state of the navbar collapse
-  activeItem: string = 'dashboard'; // Track the active navbar item (default to 'dashboard')
-  
-  constructor(private router: Router) {} // Inject Router
+  isToggled: boolean = false;
+  isNavbarCollapsed: boolean = true;
+  activeItem: string = 'dashboard';
 
-  // Toggle the sidebar's visibility
+  // Modal visibility flag
+  showModal: boolean = false;
+
+  constructor(private router: Router) {}
+
   toggleSidebar(): void {
-    this.isToggled = !this.isToggled; // Toggle the sidebar state
+    this.isToggled = !this.isToggled;
   }
 
-  // Toggle the navbar's collapsed state
   toggleNavbar(): void {
-    this.isNavbarCollapsed = !this.isNavbarCollapsed; // Toggle the navbar state
+    this.isNavbarCollapsed = !this.isNavbarCollapsed;
   }
 
-  // Set the active item based on the selected navbar or sidebar link
   setActiveItem(item: string): void {
-    this.activeItem = item; // Update the active item to the selected one
-    console.log(`Active item set to: ${item}`); // Debugging
+    this.activeItem = item;
+    console.log(`Active item set to: ${item}`);
   }
 
-  // Method to sign out the user
   signOut(): void {
-    this.router.navigate(['/login']); // Navigate to login
+    this.router.navigate(['/login']);
+  }
+
+  // Open the modal
+  openModal() {
+    this.showModal = true;
+  }
+
+  // Handle cancel action
+  onCancel() {
+    this.showModal = false;
+    console.log('Action canceled');
+  }
+
+  // Handle confirm action
+  onConfirm() {
+    this.showModal = false;
+    console.log('Action confirmed');
   }
 }

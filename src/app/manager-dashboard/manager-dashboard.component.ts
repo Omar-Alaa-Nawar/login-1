@@ -6,11 +6,10 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-manager-dashboard',
-  standalone: true,
-  imports: [CommonModule,RouterModule ],
-  templateUrl: './manager-dashboard.component.html',
-  styleUrls: ['./manager-dashboard.component.scss']
+    selector: 'app-manager-dashboard',
+    imports: [CommonModule, RouterModule],
+    templateUrl: './manager-dashboard.component.html',
+    styleUrls: ['./manager-dashboard.component.scss']
 })
 export class ManagerDashboardComponent {
   isToggled: boolean = false; // Sidebar state

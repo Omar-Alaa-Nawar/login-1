@@ -6,11 +6,10 @@ import { Router } from '@angular/router';
 import { SharedModule } from '../shared.module';
 
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, SharedModule],
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+    selector: 'app-register',
+    imports: [CommonModule, FormsModule, RouterModule, SharedModule],
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
   step: number = 1; // Tracks the current step of the registration process

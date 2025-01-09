@@ -2,9 +2,10 @@ import {  Input, Output, EventEmitter } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-role-dropdown',
-  templateUrl: './role-dropdown.component.html',
-  styleUrls: ['./role-dropdown.component.scss']
+    selector: 'app-role-dropdown',
+    templateUrl: './role-dropdown.component.html',
+    styleUrls: ['./role-dropdown.component.scss'],
+    standalone: false
 })
 
 export class RoleDropdownComponent {

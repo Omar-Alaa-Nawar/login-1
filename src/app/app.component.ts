@@ -4,11 +4,10 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  standalone: true,
-  imports: [CommonModule, RouterModule]  // Make sure RouterModule is in the imports array
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    imports: [CommonModule, RouterModule] // Make sure RouterModule is in the imports array
 })
 export class AppComponent {
   title = 'HRMS Dashboard';
