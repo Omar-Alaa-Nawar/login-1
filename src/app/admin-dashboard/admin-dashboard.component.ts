@@ -49,7 +49,7 @@ export class AdminDashboardComponent {
     console.log('Action canceled');
   }
 
-  // Handle confirm action (sign out)
+  /// Handle confirm action (sign out)
   onConfirm() {
     this.showModal = false;
     this.router.navigate(['/login']);
