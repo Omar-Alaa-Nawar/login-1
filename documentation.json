@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "User",
-            "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
+            "id": "interface-User-23c11020a2831beb3fa02ee911a75b64009c31bb46f73a01145c2560cb13b7f7e641105b678bd8fb01a5a199117001f3da4a78351d29d85d213ed7b82982091f",
             "file": "src/stories/user.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface User {\n  name: string;\n}\n",
+            "sourceCode": "export interface User {\r\n  name: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "name",
@@ -660,7 +660,7 @@
     "components": [
         {
             "name": "AdminDashboardComponent",
-            "id": "component-AdminDashboardComponent-7d048a448f248baa898804812d336146f8fc749dc63d2e44bcf6b67feb86365dd14760c1649956aee762b7b894344db6cb28ae1a4932c8277da1d0065d3e4e75",
+            "id": "component-AdminDashboardComponent-2a0e5dee2fa8bcaf9ffe8205f6ff30f240f97efe6406d3bc4545caa61233dfb5cdfbdf60d21be7648ec504ba2ead8ea4b69904ab4cbb4fd8036a917658d42655",
             "file": "src/app/admin-dashboard/admin-dashboard.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -712,9 +712,50 @@
                     "optional": false,
                     "description": "",
                     "line": 14
+                },
+                {
+                    "name": "showModal",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "onCancel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onConfirm",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "openModal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
                 {
                     "name": "setActiveItem",
                     "args": [
@@ -759,7 +800,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 26,
+                    "line": 27,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -769,7 +810,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 23,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -778,7 +819,7 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [
                 {
                     "name": "CommonModule",
@@ -787,12 +828,16 @@
                 {
                     "name": "RouterModule",
                     "type": "module"
+                },
+                {
+                    "name": "ModalComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { RouterModule } from '@angular/router';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-admin-dashboard',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule],\r\n  templateUrl: './admin-dashboard.component.html',\r\n  styleUrls: ['./admin-dashboard.component.scss']\r\n})\r\nexport class AdminDashboardComponent {\r\n  isToggled: boolean = false; // Track the state of the sidebar\r\n  isNavbarCollapsed: boolean = true; // Track the state of the navbar collapse\r\n  activeItem: string = 'dashboard'; // Track the active navbar item (default to 'dashboard')\r\n  \r\n  constructor(private router: Router) {} // Inject Router\r\n\r\n  // Toggle the sidebar's visibility\r\n  toggleSidebar(): void {\r\n    this.isToggled = !this.isToggled; // Toggle the sidebar state\r\n  }\r\n\r\n  // Toggle the navbar's collapsed state\r\n  toggleNavbar(): void {\r\n    this.isNavbarCollapsed = !this.isNavbarCollapsed; // Toggle the navbar state\r\n  }\r\n\r\n  // Set the active item based on the selected navbar or sidebar link\r\n  setActiveItem(item: string): void {\r\n    this.activeItem = item; // Update the active item to the selected one\r\n    console.log(`Active item set to: ${item}`); // Debugging\r\n  }\r\n\r\n  // Method to sign out the user\r\n  signOut(): void {\r\n    this.router.navigate(['/login']); // Navigate to login\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { RouterModule } from '@angular/router';\r\nimport { Router } from '@angular/router';\r\nimport { ModalComponent } from '../shared/modal/modal.component'; // Import the ModalComponent\r\n\r\n@Component({\r\n  selector: 'app-admin-dashboard',\r\n  imports: [CommonModule, RouterModule, ModalComponent],  // Add ModalComponent to imports\r\n  templateUrl: './admin-dashboard.component.html',\r\n  styleUrls: ['./admin-dashboard.component.scss']\r\n})\r\nexport class AdminDashboardComponent {\r\n  isToggled: boolean = false;\r\n  isNavbarCollapsed: boolean = true;\r\n  activeItem: string = 'dashboard';\r\n\r\n  // Modal visibility flag\r\n  showModal: boolean = false;\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  toggleSidebar(): void {\r\n    this.isToggled = !this.isToggled;\r\n  }\r\n\r\n  toggleNavbar(): void {\r\n    this.isNavbarCollapsed = !this.isNavbarCollapsed;\r\n  }\r\n\r\n  setActiveItem(item: string): void {\r\n    this.activeItem = item;\r\n    console.log(`Active item set to: ${item}`);\r\n  }\r\n\r\n  // Open the modal for sign-out\r\n  signOut(): void {\r\n    this.openModal();\r\n  }\r\n\r\n  // Open the modal\r\n  openModal() {\r\n    this.showModal = true;\r\n  }\r\n\r\n  // Handle cancel action\r\n  onCancel() {\r\n    this.showModal = false;\r\n    console.log('Action canceled');\r\n  }\r\n\r\n  /// Handle confirm action (sign out)\r\n  onConfirm() {\r\n    this.showModal = false;\r\n    this.router.navigate(['/login']);\r\n    console.log('Action confirmed, user signed out');\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -814,7 +859,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 16,
+                "line": 19,
                 "jsdoctags": [
                     {
                         "name": "router",
@@ -828,11 +873,11 @@
                 ]
             },
             "extends": [],
-            "templateData": "<div class=\"container-fluid\">\r\n  <div class=\"row flex-nowrap\">\r\n    <!-- Sidebar -->\r\n    <div class=\"col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark\">\r\n      <div class=\"d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100\">\r\n        <a href=\"/\" class=\"d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none\">\r\n          <span class=\"fs-5 d-none d-sm-inline\">Admin Menu</span>\r\n        </a>\r\n        <ul class=\"nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start\" id=\"menu\">\r\n          <li class=\"nav-item\">\r\n            <a href=\"#\" class=\"nav-link align-middle px-0\" (click)=\"setActiveItem('userManagement')\">\r\n              <i class=\"fs-4 bi-people-fill\"></i> <span class=\"ms-1 d-none d-sm-inline\">User Management</span>\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"nav-link px-0 align-middle\" (click)=\"setActiveItem('reports')\">\r\n              <i class=\"fs-4 bi-file-earmark-bar-graph\"></i> <span class=\"ms-1 d-none d-sm-inline\">Reports</span>\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"nav-link px-0 align-middle\" (click)=\"setActiveItem('systemLogs')\">\r\n              <i class=\"fs-4 bi-clipboard-data\"></i> <span class=\"ms-1 d-none d-sm-inline\">System Logs</span>\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"nav-link px-0 align-middle\" (click)=\"setActiveItem('supportRequests')\">\r\n              <i class=\"fs-4 bi-envelope-fill\"></i> <span class=\"ms-1 d-none d-sm-inline\">Support Requests</span>\r\n            </a>\r\n          </li>\r\n        </ul>\r\n        <hr>\r\n        <div class=\"dropdown pb-4\">\r\n          <a href=\"#\" class=\"d-flex align-items-center text-white text-decoration-none dropdown-toggle\" id=\"dropdownUser1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\r\n            <img src=\"assets/admin3.png\" alt=\"User\" width=\"30\" height=\"30\" class=\"rounded-circle\">\r\n            <span class=\"d-none d-sm-inline mx-1\">Admin</span>\r\n          </a>\r\n          <ul class=\"dropdown-menu dropdown-menu-dark text-small shadow\">\r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('profile'); $event.preventDefault();\">Profile</a></li>\r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('adminSettings'); $event.preventDefault();\">Admin Settings</a></li>\r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('generalSettings'); $event.preventDefault();\">General Settings</a></li>\r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('userPermissions'); $event.preventDefault();\">User Permissions</a></li>\r\n            <li>\r\n              <hr class=\"dropdown-divider\">\r\n            </li>\r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"signOut()\">Sign out</a></li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Main Content -->\r\n    <div class=\"col py-0\">\r\n      <!-- Navbar -->\r\n      <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark mb-0\">\r\n        <div class=\"container-fluid\">\r\n          <a class=\"navbar-brand\" href=\"#\">Admin Dashboard</a>\r\n          <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <i class=\"fas fa-bars text-light\"></i>\r\n          </button>\r\n\r\n          <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n            <ul class=\"navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0\">\r\n              <li class=\"nav-item text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link active\" aria-current=\"page\" href=\"#!\" (click)=\"setActiveItem('dashboard')\">\r\n                  <div>\r\n                    <img src=\"assets/dashboard.png\" alt=\"Dashboard\" width=\"24\" height=\"24\" class=\"mb-1\" />\r\n                    Dashboard\r\n                  </div>\r\n                </a>\r\n              </li>\r\n              <li class=\"nav-item text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link\" href=\"#!\" (click)=\"setActiveItem('userManagement')\">\r\n                  <div>\r\n                    <img src=\"assets/team.png\" alt=\"Users\" width=\"24\" height=\"24\" class=\"mb-1\" />\r\n                    Users\r\n                  </div>\r\n                </a>\r\n              </li>\r\n              <li class=\"nav-item text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link\" href=\"#!\" (click)=\"setActiveItem('reports')\">\r\n                  <div>\r\n                    <img src=\"assets/seo-report.png\" alt=\"Reports\" width=\"24\" height=\"24\" class=\"mb-1\" />\r\n                    Reports\r\n                  </div>\r\n                </a>\r\n              </li>\r\n              <!-- Add Settings button with dropdown -->\r\n              <li class=\"nav-item dropdown text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdownSettings\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\r\n                  <img src=\"assets/cogwheel.png\" alt=\"Settings\" width=\"24\" height=\"24\" class=\"mb-1\" /> <!-- Path to the cogwheel image -->\r\n                  Settings\r\n                </a>\r\n                <ul class=\"dropdown-menu dropdown-menu-dark\" aria-labelledby=\"navbarDropdownSettings\">\r\n                  <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('adminSettings'); $event.preventDefault();\">Admin Settings</a></li>\r\n                  <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('generalSettings'); $event.preventDefault();\">General Settings</a></li>\r\n                  <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('userPermissions'); $event.preventDefault();\">User Permissions</a></li>\r\n                </ul>\r\n              </li>\r\n            </ul>\r\n\r\n            <ul class=\"navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0\">\r\n              <li class=\"nav-item text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link\" href=\"#!\" (click)=\"setActiveItem('notifications')\">\r\n                  <div>\r\n                    <i class=\"fas fa-bell fa-lg mb-1\"></i>\r\n                    <span class=\"badge rounded-pill badge-notification bg-info\">3</span>\r\n                  </div>\r\n                  Notifications\r\n                </a>\r\n              </li>\r\n              <li class=\"nav-item text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link\" href=\"#!\" (click)=\"setActiveItem('messages')\">\r\n                  <div>\r\n                    <i class=\"fas fa-envelope fa-lg mb-1\"></i>\r\n                    <span class=\"badge rounded-pill badge-notification bg-primary\">2</span>\r\n                  </div>\r\n                  Messages\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n      </nav>\r\n\r\n      <!-- Page Content Placeholder -->\r\n      <div class=\"container\">\r\n        <h1 class=\"mt-4\">Welcome to the Admin Dashboard</h1>\r\n        <p>Manage users, settings, and view reports here.</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+            "templateData": "<div class=\"container-fluid\">\r\n  <div class=\"row flex-nowrap\">\r\n    <!-- Sidebar -->\r\n    <div class=\"col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark\">\r\n      <div class=\"d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100\">\r\n        <a href=\"/\" class=\"d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none\">\r\n          <span class=\"fs-5 d-none d-sm-inline\">Admin Menu</span>\r\n        </a>\r\n        <ul class=\"nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start\" id=\"menu\">\r\n          <li class=\"nav-item\">\r\n            <a href=\"#\" class=\"nav-link align-middle px-0\" (click)=\"setActiveItem('userManagement')\">\r\n              <i class=\"fs-4 bi-people-fill\"></i> <span class=\"ms-1 d-none d-sm-inline\">User Management</span>\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"nav-link px-0 align-middle\" (click)=\"setActiveItem('reports')\">\r\n              <i class=\"fs-4 bi-file-earmark-bar-graph\"></i> <span class=\"ms-1 d-none d-sm-inline\">Reports</span>\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"nav-link px-0 align-middle\" (click)=\"setActiveItem('systemLogs')\">\r\n              <i class=\"fs-4 bi-clipboard-data\"></i> <span class=\"ms-1 d-none d-sm-inline\">System Logs</span>\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"nav-link px-0 align-middle\" (click)=\"setActiveItem('supportRequests')\">\r\n              <i class=\"fs-4 bi-envelope-fill\"></i> <span class=\"ms-1 d-none d-sm-inline\">Support Requests</span>\r\n            </a>\r\n          </li>\r\n        </ul>\r\n        <hr>\r\n        <div class=\"dropdown pb-4\">\r\n          <a href=\"#\" class=\"d-flex align-items-center text-white text-decoration-none dropdown-toggle\" id=\"dropdownUser1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\r\n            <img src=\"assets/admin3.png\" alt=\"User\" width=\"30\" height=\"30\" class=\"rounded-circle\">\r\n            <span class=\"d-none d-sm-inline mx-1\">Admin</span>\r\n          </a>\r\n          <ul class=\"dropdown-menu dropdown-menu-dark text-small shadow\">\r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('profile'); $event.preventDefault();\">Profile</a></li>\r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('adminSettings'); $event.preventDefault();\">Admin Settings</a></li>\r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('generalSettings'); $event.preventDefault();\">General Settings</a></li>\r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('userPermissions'); $event.preventDefault();\">User Permissions</a></li>\r\n            <li>\r\n              <hr class=\"dropdown-divider\">\r\n            </li>\r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"openModal(); $event.preventDefault();\">Sign out</a></li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Main Content -->\r\n    <div class=\"col py-0\">\r\n      <!-- Navbar -->\r\n      <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark mb-0\">\r\n        <div class=\"container-fluid\">\r\n          <a class=\"navbar-brand\" href=\"#\">Admin Dashboard</a>\r\n          <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <i class=\"fas fa-bars text-light\"></i>\r\n          </button>\r\n\r\n          <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n            <ul class=\"navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0\">\r\n              <li class=\"nav-item text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link active\" aria-current=\"page\" href=\"#!\" (click)=\"setActiveItem('dashboard')\">\r\n                  <div>\r\n                    <img src=\"assets/dashboard.png\" alt=\"Dashboard\" width=\"24\" height=\"24\" class=\"mb-1\" />\r\n                    Dashboard\r\n                  </div>\r\n                </a>\r\n              </li>\r\n              <!-- Add other items here -->\r\n            </ul>\r\n\r\n            <ul class=\"navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0\">\r\n              <!-- Notifications and Messages -->\r\n            </ul>\r\n          </div>\r\n        </div>\r\n      </nav>\r\n\r\n      <!-- Page Content Placeholder -->\r\n      <div class=\"container\">\r\n        <h1 class=\"mt-4\">Welcome to the Admin Dashboard</h1>\r\n        <p>Manage users, settings, and view reports here.</p>\r\n      </div>\r\n      \r\n      <!-- Modal Component -->\r\n      <app-modal *ngIf=\"showModal\"\r\n                 [title]=\"'Confirm Sign Out'\"\r\n                 [content]=\"'Are you sure you want to sign out?'\"\r\n                 [cancelBtnText]=\"'Cancel'\"\r\n                 [confirmBtnText]=\"'Confirm'\"\r\n                 (cancelEvent)=\"onCancel()\"\r\n                 (confirmEvent)=\"onConfirm()\">\r\n      </app-modal>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-b53bc5adb39de7ba99e57653e8c0fc9c7b3bb84073300a66e18b35700a9454dc8ab228a0c3aa5f4798a9dc80bf7c2def4e1ae1cbbad9383e18256b1d8497a91c",
+            "id": "component-AppComponent-ef4e38e4e14e7651eb93824ebc6678da3dcec3b67908c1e33a643c6e5fa9a4acebaa42b76d60010038e8f1255febb9310defec3440767d4b42a5ac543e0936e4",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -861,7 +906,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 13
                 }
             ],
             "methodsClass": [
@@ -871,7 +916,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 19,
+                    "line": 18,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -880,7 +925,7 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [
                 {
                     "name": "CommonModule",
@@ -894,7 +939,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { RouterModule } from '@angular/router'; // Import RouterModule here\r\nimport { CommonModule } from '@angular/common';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.css'],\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule]  // Make sure RouterModule is in the imports array\r\n})\r\nexport class AppComponent {\r\n  title = 'HRMS Dashboard';\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  // Handle logout and clear the localStorage\r\n  onLogout() {\r\n    localStorage.removeItem('role');  // Clear role from localStorage\r\n    this.router.navigate(['/login']);  // Redirect to login page after logout\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { RouterModule } from '@angular/router'; // Import RouterModule here\r\nimport { CommonModule } from '@angular/common';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n    selector: 'app-root',\r\n    templateUrl: './app.component.html',\r\n    styleUrls: ['./app.component.css'],\r\n    imports: [CommonModule, RouterModule] // Make sure RouterModule is in the imports array\r\n})\r\nexport class AppComponent {\r\n  title = 'HRMS Dashboard';\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  // Handle logout and clear the localStorage\r\n  onLogout() {\r\n    localStorage.removeItem('role');  // Clear role from localStorage\r\n    this.router.navigate(['/login']);  // Redirect to login page after logout\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -916,7 +961,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 14,
+                "line": 13,
                 "jsdoctags": [
                     {
                         "name": "router",
@@ -934,7 +979,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-d7bf0323e6da130e2609e2af0117b4a8d7cd874132206af50bf43dfc37044485fe50f2867ea76525730dd195b9b95a43802a12dadc6ad5cd7bf2faa07f19f0da",
+            "id": "component-ButtonComponent-5747b2121bdc472b32e41e4e47db44dbd7601fe73e9c7b3d0f82e7d1aaf97be0d13d4880fee19b0e4d511178aa52a24a5a9ea3ee0034d204ffd659c0aae43e41",
             "file": "src/stories/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -968,16 +1013,16 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 760,
-                            "end": 773,
+                            "pos": 793,
+                            "end": 807,
                             "kind": 327,
                             "id": 0,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "tagName": {
-                                "pos": 761,
-                                "end": 769,
+                                "pos": 794,
+                                "end": 802,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1044,11 +1089,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: ` <button\n  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>`,\n  styleUrls: ['./button.css'],\n})\nexport class ButtonComponent {\n  /** Is this the principal call to action on the page? */\n  @Input()\n  primary = false;\n\n  /** What background color to use */\n  @Input()\n  backgroundColor?: string;\n\n  /** How large should the button be? */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /** Optional click handler */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'storybook-button',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  template: ` <button\r\n  type=\"button\"\r\n  (click)=\"onClick.emit($event)\"\r\n  [ngClass]=\"classes\"\r\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\r\n>\r\n  {{ label }}\r\n</button>`,\r\n  styleUrls: ['./button.css'],\r\n})\r\nexport class ButtonComponent {\r\n  /** Is this the principal call to action on the page? */\r\n  @Input()\r\n  primary = false;\r\n\r\n  /** What background color to use */\r\n  @Input()\r\n  backgroundColor?: string;\r\n\r\n  /** How large should the button be? */\r\n  @Input()\r\n  size: 'small' | 'medium' | 'large' = 'medium';\r\n\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input()\r\n  label = 'Button';\r\n\r\n  /** Optional click handler */\r\n  @Output()\r\n  onClick = new EventEmitter<Event>();\r\n\r\n  public get classes(): string[] {\r\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\r\n\r\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".storybook-button {\n  display: inline-block;\n  cursor: pointer;\n  border: 0;\n  border-radius: 3em;\n  font-weight: 700;\n  line-height: 1;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n.storybook-button--primary {\n  background-color: #1ea7fd;\n  color: white;\n}\n.storybook-button--secondary {\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n  background-color: transparent;\n  color: #333;\n}\n.storybook-button--small {\n  padding: 10px 16px;\n  font-size: 12px;\n}\n.storybook-button--medium {\n  padding: 11px 20px;\n  font-size: 14px;\n}\n.storybook-button--large {\n  padding: 12px 24px;\n  font-size: 16px;\n}\n",
+                    "data": ".storybook-button {\r\n  display: inline-block;\r\n  cursor: pointer;\r\n  border: 0;\r\n  border-radius: 3em;\r\n  font-weight: 700;\r\n  line-height: 1;\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n}\r\n.storybook-button--primary {\r\n  background-color: #1ea7fd;\r\n  color: white;\r\n}\r\n.storybook-button--secondary {\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\r\n  background-color: transparent;\r\n  color: #333;\r\n}\r\n.storybook-button--small {\r\n  padding: 10px 16px;\r\n  font-size: 12px;\r\n}\r\n.storybook-button--medium {\r\n  padding: 11px 20px;\r\n  font-size: 14px;\r\n}\r\n.storybook-button--large {\r\n  padding: 12px 24px;\r\n  font-size: 16px;\r\n}\r\n",
                     "styleUrl": "./button.css"
                 }
             ],
@@ -1068,7 +1113,7 @@
         },
         {
             "name": "EmployeeDashboardComponent",
-            "id": "component-EmployeeDashboardComponent-5e3b3492491853f2a7a3ece1575ad2bcd6520fcdc707eca01613591b816fa0f56bb21dfcabea4dbe8cb4c13c9f63934b1fadb00661b41244f3b746648ffc46c0",
+            "id": "component-EmployeeDashboardComponent-1291464fbc3f107aa6cd3daf9ede4d75f145159866ee68d66fb6984e30c55613bb3327041891505af7720b665979654a8253199bf4cddf761199495ee3059d54",
             "file": "src/app/employee-dashboard/employee-dashboard.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1097,7 +1142,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 15
                 },
                 {
                     "name": "isNavbarCollapsed",
@@ -1108,7 +1153,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 14
                 },
                 {
                     "name": "isSettingsDropdownOpen",
@@ -1119,7 +1164,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 16
                 },
                 {
                     "name": "isToggled",
@@ -1130,7 +1175,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 13
                 }
             ],
             "methodsClass": [
@@ -1147,7 +1192,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 32,
+                    "line": 31,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1168,7 +1213,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1178,7 +1223,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 26,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1195,7 +1240,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 37,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1216,7 +1261,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 22,
+                    "line": 21,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1225,7 +1270,7 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [
                 {
                     "name": "CommonModule",
@@ -1239,7 +1284,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { RouterModule } from '@angular/router';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-employee-dashboard',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule],\r\n  templateUrl: './employee-dashboard.component.html',\r\n  styleUrls: ['./employee-dashboard.component.scss']\r\n})\r\nexport class EmployeeDashboardComponent {\r\n  isToggled: boolean = false; // Sidebar state\r\n  isNavbarCollapsed: boolean = true; // Navbar collapse state\r\n  activeItem: string = 'home'; // Active item for navigation\r\n  isSettingsDropdownOpen: boolean = false; // Dropdown state for settings\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  // Toggle the sidebar visibility\r\n  toggleSidebar(): void {\r\n    this.isToggled = !this.isToggled;\r\n  }\r\n\r\n  // Toggle navbar collapse state\r\n  toggleNavbar(): void {\r\n    this.isNavbarCollapsed = !this.isNavbarCollapsed;\r\n  }\r\n\r\n  // Update active item\r\n  setActiveItem(item: string): void {\r\n    this.activeItem = item;\r\n    console.log(`Active item set to: ${item}`);\r\n  }\r\n\r\n  // Open or close settings dropdown\r\n  toggleSettingsDropdown(event: MouseEvent): void {\r\n    event.stopPropagation(); // Prevent event from bubbling up and triggering signOut\r\n    this.isSettingsDropdownOpen = !this.isSettingsDropdownOpen;\r\n  }\r\n\r\n  // Sign out method\r\n  signOut(): void {\r\n    this.router.navigate(['/login']); // Navigate to login\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { RouterModule } from '@angular/router';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\n    selector: 'app-employee-dashboard',\n    imports: [CommonModule, RouterModule],\n    templateUrl: './employee-dashboard.component.html',\n    styleUrls: ['./employee-dashboard.component.scss']\n})\r\nexport class EmployeeDashboardComponent {\r\n  isToggled: boolean = false; // Sidebar state\r\n  isNavbarCollapsed: boolean = true; // Navbar collapse state\r\n  activeItem: string = 'home'; // Active item for navigation\r\n  isSettingsDropdownOpen: boolean = false; // Dropdown state for settings\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  // Toggle the sidebar visibility\r\n  toggleSidebar(): void {\r\n    this.isToggled = !this.isToggled;\r\n  }\r\n\r\n  // Toggle navbar collapse state\r\n  toggleNavbar(): void {\r\n    this.isNavbarCollapsed = !this.isNavbarCollapsed;\r\n  }\r\n\r\n  // Update active item\r\n  setActiveItem(item: string): void {\r\n    this.activeItem = item;\r\n    console.log(`Active item set to: ${item}`);\r\n  }\r\n\r\n  // Open or close settings dropdown\r\n  toggleSettingsDropdown(event: MouseEvent): void {\r\n    event.stopPropagation(); // Prevent event from bubbling up and triggering signOut\r\n    this.isSettingsDropdownOpen = !this.isSettingsDropdownOpen;\r\n  }\r\n\r\n  // Sign out method\r\n  signOut(): void {\r\n    this.router.navigate(['/login']); // Navigate to login\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1261,7 +1306,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 17,
+                "line": 16,
                 "jsdoctags": [
                     {
                         "name": "router",
@@ -1279,7 +1324,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-48b9abe37706bc42f20cfa97ed9f943678344ea7d254c0c82183c657750c2191b43486fe730c778627b2ea6aa0e2f33a7abcf3ce08b68ad18b062ad99ea97acb",
+            "id": "component-HeaderComponent-35575735b3444c6f049822f5234963ce3b046795ea9cdf6a15e8c7d72acd8ededb78ca25c4e1fbb5f0416c5855203a87ae0483f5d065c2dfa68d5329e347a84b",
             "file": "src/stories/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1352,11 +1397,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { ButtonComponent } from './button.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-header',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  template: `<header>\n  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>`,\n  styleUrls: ['./header.css'],\n})\nexport class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { ButtonComponent } from './button.component';\r\nimport type { User } from './user';\r\n\r\n@Component({\r\n  selector: 'storybook-header',\r\n  standalone: true,\r\n  imports: [CommonModule, ButtonComponent],\r\n  template: `<header>\r\n  <div class=\"storybook-header\">\r\n    <div>\r\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\r\n        <g fill=\"none\" fillRule=\"evenodd\">\r\n          <path\r\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\r\n            fill=\"#FFF\"\r\n          />\r\n          <path\r\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\r\n            fill=\"#555AB9\"\r\n          />\r\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\r\n        </g>\r\n      </svg>\r\n      <h1>Acme</h1>\r\n    </div>\r\n    <div>\r\n      <div *ngIf=\"user\">\r\n        <span class=\"welcome\">\r\n          Welcome, <b>{{ user.name }}</b\r\n          >!\r\n        </span>\r\n        <storybook-button\r\n          *ngIf=\"user\"\r\n          size=\"small\"\r\n          (onClick)=\"onLogout.emit($event)\"\r\n          label=\"Log out\"\r\n        ></storybook-button>\r\n      </div>\r\n      <div *ngIf=\"!user\">\r\n        <storybook-button\r\n          *ngIf=\"!user\"\r\n          size=\"small\"\r\n          class=\"margin-left\"\r\n          (onClick)=\"onLogin.emit($event)\"\r\n          label=\"Log in\"\r\n        ></storybook-button>\r\n        <storybook-button\r\n          *ngIf=\"!user\"\r\n          size=\"small\"\r\n          [primary]=\"true\"\r\n          class=\"margin-left\"\r\n          (onClick)=\"onCreateAccount.emit($event)\"\r\n          label=\"Sign up\"\r\n        ></storybook-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</header>`,\r\n  styleUrls: ['./header.css'],\r\n})\r\nexport class HeaderComponent {\r\n  @Input()\r\n  user: User | null = null;\r\n\r\n  @Output()\r\n  onLogin = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onLogout = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onCreateAccount = new EventEmitter<Event>();\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".storybook-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-header svg {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header h1 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 6px 0 6px 10px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 1;\n}\n\n.storybook-header button + button {\n  margin-left: 10px;\n}\n\n.storybook-header .welcome {\n  margin-right: 10px;\n  color: #333;\n  font-size: 14px;\n}\n",
+                    "data": ".storybook-header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\r\n  padding: 15px 20px;\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.storybook-header svg {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.storybook-header h1 {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin: 6px 0 6px 10px;\r\n  font-weight: 700;\r\n  font-size: 20px;\r\n  line-height: 1;\r\n}\r\n\r\n.storybook-header button + button {\r\n  margin-left: 10px;\r\n}\r\n\r\n.storybook-header .welcome {\r\n  margin-right: 10px;\r\n  color: #333;\r\n  font-size: 14px;\r\n}\r\n",
                     "styleUrl": "./header.css"
                 }
             ],
@@ -1365,7 +1410,7 @@
         },
         {
             "name": "LanguageDropdownComponent",
-            "id": "component-LanguageDropdownComponent-3079ecac44c52aa84e18f965317a6bac8ff6dd6b18bea52f77ba7f90e5ac8ea02f3d6213d9eff1228d176b17e6e4f39d3092bd270b0ea6ba24a79bb39c7f2049",
+            "id": "component-LanguageDropdownComponent-62607d9663f09b3a8b3ce537deaa71326cd15ccfdb2ef221c940e50d654fac0bdaadd4d1f539fb64de3c9aaab2d4bfad25f55d231ad3a2a8b5e6a68f4fd47a24",
             "file": "src/app/common/language-dropdown/language-dropdown.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1388,7 +1433,7 @@
                     "defaultValue": "'en'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 9,
+                    "line": 10,
                     "type": "string",
                     "decorators": []
                 }
@@ -1399,7 +1444,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "line": 11,
                     "type": "EventEmitter"
                 }
             ],
@@ -1413,7 +1458,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 13
                 },
                 {
                     "name": "hoveredLanguage",
@@ -1424,7 +1469,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 14
                 },
                 {
                     "name": "languages",
@@ -1435,7 +1480,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 17
                 }
             ],
             "methodsClass": [
@@ -1452,7 +1497,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 41,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1480,7 +1525,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 28,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1508,7 +1553,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 35,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1529,7 +1574,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 24,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1543,7 +1588,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-language-dropdown',\r\n  templateUrl: './language-dropdown.component.html',\r\n  styleUrls: ['./language-dropdown.component.scss'],\r\n})\r\nexport class LanguageDropdownComponent {\r\n  @Input() selectedLanguage: string = 'en'; // Default language\r\n  @Output() selectedLanguageChange = new EventEmitter<string>();\r\n\r\n  dropdownVisible: boolean = false;\r\n  hoveredLanguage: string | null = null; // To track the hovered language\r\n\r\n  // Language options\r\n  languages = [\r\n    { value: 'en', label: 'English' },\r\n    { value: 'fr', label: 'French' },\r\n    { value: 'ar', label: 'Arabic' },\r\n  ];\r\n\r\n  // Toggle the visibility of the dropdown\r\n  toggleDropdown(): void {\r\n    this.dropdownVisible = !this.dropdownVisible;\r\n  }\r\n\r\n  // Handle selection change\r\n  onLanguageChange(lang: string): void {\r\n    this.selectedLanguage = lang;\r\n    this.selectedLanguageChange.emit(lang);\r\n    this.dropdownVisible = false;  // Hide dropdown after selection\r\n  }\r\n\r\n  // Set the hovered language for styling\r\n  setHoveredLanguage(lang: string | null): void {\r\n    this.hoveredLanguage = lang;\r\n  }\r\n\r\n  // Get the language label by its code (added method)\r\n  getLanguageLabel(langCode: string): string {\r\n    const language = this.languages.find(lang => lang.value === langCode);\r\n    return language ? language.label : '';\r\n  }\r\n}",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\n    selector: 'app-language-dropdown',\n    templateUrl: './language-dropdown.component.html',\n    styleUrls: ['./language-dropdown.component.scss'],\n    standalone: false\n})\r\nexport class LanguageDropdownComponent {\r\n  @Input() selectedLanguage: string = 'en'; // Default language\r\n  @Output() selectedLanguageChange = new EventEmitter<string>();\r\n\r\n  dropdownVisible: boolean = false;\r\n  hoveredLanguage: string | null = null; // To track the hovered language\r\n\r\n  // Language options\r\n  languages = [\r\n    { value: 'en', label: 'English' },\r\n    { value: 'fr', label: 'French' },\r\n    { value: 'ar', label: 'Arabic' },\r\n  ];\r\n\r\n  // Toggle the visibility of the dropdown\r\n  toggleDropdown(): void {\r\n    this.dropdownVisible = !this.dropdownVisible;\r\n  }\r\n\r\n  // Handle selection change\r\n  onLanguageChange(lang: string): void {\r\n    this.selectedLanguage = lang;\r\n    this.selectedLanguageChange.emit(lang);\r\n    this.dropdownVisible = false;  // Hide dropdown after selection\r\n  }\r\n\r\n  // Set the hovered language for styling\r\n  setHoveredLanguage(lang: string | null): void {\r\n    this.hoveredLanguage = lang;\r\n  }\r\n\r\n  // Get the language label by its code (added method)\r\n  getLanguageLabel(langCode: string): string {\r\n    const language = this.languages.find(lang => lang.value === langCode);\r\n    return language ? language.label : '';\r\n  }\r\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1557,7 +1602,7 @@
         },
         {
             "name": "LeftSideComponent",
-            "id": "component-LeftSideComponent-1a8cb1192f55a52117f026edb4c92cd1639143c0064a1bdd290ae54d65c7e1acba9daeed5bebc71d2a4980e52abd98662cbae6f948823d1b8f890e9df1e7a57f",
+            "id": "component-LeftSideComponent-2eefbfa4b1c4cca6fe32e21d4e4d53174e576329524567ae7b1b4b1e2c63ff092ba76d4f5b04d73066dec30e151da6c318f430e4dcc271ca92dbae39d1b2c3f9",
             "file": "src/app/shared/left-side/left-side.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1580,12 +1625,12 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-left-side',\r\n  standalone: true, // This makes it a standalone component\r\n  imports: [],\r\n  templateUrl: './left-side.component.html',\r\n  styleUrl: './left-side.component.scss'\r\n})\r\nexport class LeftSideComponent {\r\n\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n    selector: 'app-left-side', // This makes it a standalone component\r\n    imports: [],\r\n    templateUrl: './left-side.component.html',\r\n    styleUrl: './left-side.component.scss'\r\n})\r\nexport class LeftSideComponent {\r\n\r\n}\r\n",
             "styleUrl": "./left-side.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1595,7 +1640,7 @@
         },
         {
             "name": "LoginComponent",
-            "id": "component-LoginComponent-2d8b22a1cc034831918c8ebcbe58c10666b4ed6cf5606720c7920203e885e00b87b596e4c78322bfcb11e0d805bfaa495e70491697c83e8a6a00710c5959e152",
+            "id": "component-LoginComponent-cce11d9d0bb127685d4e5460eb54dafcf72585d6725fb63ca0cc222bc58ab5e596b04941c308453615c77df841fa425b17ba22715ff5add630704cae1fbc9660",
             "file": "src/app/login/login.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1624,7 +1669,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 26
+                    "line": 25
                 },
                 {
                     "name": "isChangePasswordFlow",
@@ -1635,7 +1680,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 25
+                    "line": 24
                 },
                 {
                     "name": "isEmailFocused",
@@ -1646,7 +1691,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 29
+                    "line": 28
                 },
                 {
                     "name": "isPasswordFocused",
@@ -1657,7 +1702,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 29
                 },
                 {
                     "name": "loginData",
@@ -1668,7 +1713,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 15
                 },
                 {
                     "name": "message",
@@ -1679,7 +1724,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 22
                 },
                 {
                     "name": "showConfirmPassword",
@@ -1690,7 +1735,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 28
+                    "line": 27
                 },
                 {
                     "name": "showPassword",
@@ -1701,7 +1746,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 27
+                    "line": 26
                 },
                 {
                     "name": "showSuccessMessage",
@@ -1712,7 +1757,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 24
+                    "line": 23
                 }
             ],
             "methodsClass": [
@@ -1722,7 +1767,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 65,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1732,7 +1777,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1742,7 +1787,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 35,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1752,7 +1797,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1769,7 +1814,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 80,
+                    "line": 79,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1797,7 +1842,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 70,
+                    "line": 69,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1818,7 +1863,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 61,
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1828,7 +1873,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 109,
+                    "line": 108,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1838,7 +1883,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 95,
+                    "line": 94,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1848,7 +1893,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 90,
+                    "line": 89,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1858,7 +1903,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 100,
+                    "line": 99,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1867,7 +1912,7 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [
                 {
                     "name": "CommonModule",
@@ -1889,11 +1934,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { Router } from '@angular/router';\r\nimport { LeftSideComponent } from '../shared/left-side/left-side.component';\r\nimport { SharedModule } from '../shared.module';\r\n\r\n@Component({\r\n  selector: 'app-login',\r\n  standalone: true,\r\n  imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule],\r\n  templateUrl: './login.component.html',\r\n  styleUrls: ['./login.component.scss'],\r\n})\r\nexport class LoginComponent {\r\n  loginData = {\r\n    email: '',\r\n    password: '',\r\n    confirmPassword: '', // Add confirmPassword here\r\n    selectedLanguage: 'en',\r\n    confirmEmail: '' // Add confirmEmail if required\r\n  };\r\n  message: string = '';\r\n  showSuccessMessage: boolean = false;\r\n  isChangePasswordFlow: boolean = false;\r\n  errorMessage: string = '';\r\n  showPassword: boolean = false;\r\n  showConfirmPassword: boolean = false; // Add showConfirmPassword\r\n  isEmailFocused = false;\r\n  isPasswordFocused = false;\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  // Login method (existing)\r\n  login() {\r\n    const users = JSON.parse(localStorage.getItem('users') || '[]');\r\n    const storedUser = users.find(\r\n      (user: any) =>\r\n        user.email === this.loginData.email &&\r\n        user.password === this.loginData.password\r\n    );\r\n\r\n    if (storedUser) {\r\n      localStorage.setItem('role', storedUser.role);\r\n      localStorage.setItem('isAuthenticated', 'true');\r\n      this.router.navigate([`/${storedUser.role}-dashboard`]);\r\n    } else {\r\n      this.message = 'Invalid email or password.';\r\n    }\r\n  }\r\n\r\n  // New method to handle password reset\r\n  moveToResetPassword() {\r\n    this.router.navigate(['/reset-password']);\r\n  }\r\n\r\n  forgotPassword() {\r\n    this.moveToResetPassword(); // Use the method above\r\n  }\r\n\r\n  onRegisterClick() {\r\n    this.router.navigate(['/register']);\r\n  }\r\n\r\n  clearMessage() {\r\n    this.message = '';\r\n  }\r\n\r\n  // Handle focus event\r\n  onFocus(event: FocusEvent) {\r\n    const target = event.target as HTMLInputElement;\r\n    if (target.id === 'typeEmailX') {\r\n      this.isEmailFocused = true;\r\n    } else if (target.id === 'typePasswordX') {\r\n      this.isPasswordFocused = true;\r\n    }\r\n  }\r\n\r\n  // Handle blur event\r\n  onBlur(event: FocusEvent) {\r\n    const target = event.target as HTMLInputElement;\r\n    if (target.id === 'typeEmailX') {\r\n      this.isEmailFocused = false;\r\n    } else if (target.id === 'typePasswordX') {\r\n      this.isPasswordFocused = false;\r\n    }\r\n  }\r\n\r\n  // Toggle password visibility\r\n  togglePasswordVisibility() {\r\n    this.showPassword = !this.showPassword;\r\n  }\r\n\r\n  // Toggle confirm password visibility\r\n  toggleConfirmPasswordVisibility() {\r\n    this.showConfirmPassword = !this.showConfirmPassword;\r\n  }\r\n\r\n  // Validate password\r\n  validatePassword() {\r\n    if (this.loginData.password.length < 6) {\r\n      this.errorMessage = 'Password must be at least 6 characters.';\r\n    } else {\r\n      this.errorMessage = '';\r\n    }\r\n  }\r\n\r\n  // You can add password requirements (for example)\r\n  passwordRequirements() {\r\n    return \"Password should be at least 6 characters, contain a number, and a special character.\";\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { Router } from '@angular/router';\r\nimport { LeftSideComponent } from '../shared/left-side/left-side.component';\r\nimport { SharedModule } from '../shared.module';\r\n\r\n@Component({\r\n    selector: 'app-login',\r\n    imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule],\r\n    templateUrl: './login.component.html',\r\n    styleUrls: ['./login.component.scss']\r\n})\r\nexport class LoginComponent {\r\n  loginData = {\r\n    email: '',\r\n    password: '',\r\n    confirmPassword: '', // Add confirmPassword here\r\n    selectedLanguage: 'en',\r\n    confirmEmail: '' // Add confirmEmail if required\r\n  };\r\n  message: string = '';\r\n  showSuccessMessage: boolean = false;\r\n  isChangePasswordFlow: boolean = false;\r\n  errorMessage: string = '';\r\n  showPassword: boolean = false;\r\n  showConfirmPassword: boolean = false; // Add showConfirmPassword\r\n  isEmailFocused = false;\r\n  isPasswordFocused = false;\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  // Login method (existing)\r\n  login() {\r\n    const users = JSON.parse(localStorage.getItem('users') || '[]');\r\n    const storedUser = users.find(\r\n      (user: any) =>\r\n        user.email === this.loginData.email &&\r\n        user.password === this.loginData.password\r\n    );\r\n\r\n    if (storedUser) {\r\n      localStorage.setItem('role', storedUser.role);\r\n      localStorage.setItem('isAuthenticated', 'true');\r\n      this.router.navigate([`/${storedUser.role}-dashboard`]);\r\n    } else {\r\n      this.message = 'Invalid email or password.';\r\n    }\r\n  }\r\n\r\n  // New method to handle password reset\r\n  moveToResetPassword() {\r\n    this.router.navigate(['/reset-password']);\r\n  }\r\n\r\n  forgotPassword() {\r\n    this.moveToResetPassword(); // Use the method above\r\n  }\r\n\r\n  onRegisterClick() {\r\n    this.router.navigate(['/register']);\r\n  }\r\n\r\n  clearMessage() {\r\n    this.message = '';\r\n  }\r\n\r\n  // Handle focus event\r\n  onFocus(event: FocusEvent) {\r\n    const target = event.target as HTMLInputElement;\r\n    if (target.id === 'typeEmailX') {\r\n      this.isEmailFocused = true;\r\n    } else if (target.id === 'typePasswordX') {\r\n      this.isPasswordFocused = true;\r\n    }\r\n  }\r\n\r\n  // Handle blur event\r\n  onBlur(event: FocusEvent) {\r\n    const target = event.target as HTMLInputElement;\r\n    if (target.id === 'typeEmailX') {\r\n      this.isEmailFocused = false;\r\n    } else if (target.id === 'typePasswordX') {\r\n      this.isPasswordFocused = false;\r\n    }\r\n  }\r\n\r\n  // Toggle password visibility\r\n  togglePasswordVisibility() {\r\n    this.showPassword = !this.showPassword;\r\n  }\r\n\r\n  // Toggle confirm password visibility\r\n  toggleConfirmPasswordVisibility() {\r\n    this.showConfirmPassword = !this.showConfirmPassword;\r\n  }\r\n\r\n  // Validate password\r\n  validatePassword() {\r\n    if (this.loginData.password.length < 6) {\r\n      this.errorMessage = 'Password must be at least 6 characters.';\r\n    } else {\r\n      this.errorMessage = '';\r\n    }\r\n  }\r\n\r\n  // You can add password requirements (for example)\r\n  passwordRequirements() {\r\n    return \"Password should be at least 6 characters, contain a number, and a special character.\";\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/* SCSS File: login.component.scss */\r\n\r\n// Variables (optional, for reusability)\r\n$input-background-color: #f9f9f9;\r\n$input-border-color: #ccc;\r\n$primary-color: #FF8C00;\r\n$text-color: #121212;\r\n$error-color: #f04d1f;\r\n\r\n// Form and Input Styling\r\n.card-body {\r\n  padding: 4rem 2rem;\r\n}\r\n\r\nh2 {\r\n  margin-bottom: 10px !important;\r\n  color: $text-color !important;\r\n}\r\n\r\np {\r\n  margin-bottom: 20px !important;\r\n  color: #555 !important;\r\n}\r\n\r\n// Floating Label Styling\r\n.floating-label {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 12px;\r\n  font-size: 14px;\r\n  color: #888 !important;\r\n  transition: all 0.3s ease;\r\n  pointer-events: none;\r\n  transform: translateY(-50%);\r\n}\r\n\r\n.form-control.form-control-lg {\r\n  background-color: $input-background-color !important;\r\n  border: 1px solid $input-border-color !important;\r\n  color: $text-color !important;\r\n  font-family: 'Roundo', sans-serif !important;\r\n  padding: 0px 12px !important;\r\n  font-size: 18px !important;\r\n  border-radius: 8px !important;\r\n  width: 100% !important;\r\n  text-align: left !important;\r\n  height: 50px !important;\r\n  line-height: 50px !important;\r\n  display: block;\r\n  box-sizing: border-box;\r\n  transition: padding-top 0.3s ease;\r\n\r\n  &.input-focused {\r\n    border-color: $primary-color !important;\r\n    box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25) !important;\r\n  }\r\n\r\n  &:focus + .floating-label,\r\n  &:not(:placeholder-shown) + .floating-label {\r\n    top: -10px;\r\n    font-size: 12px;\r\n    color: $primary-color !important;\r\n  }\r\n}\r\n\r\n// Buttons\r\n.next-button {\r\n  background-color: $primary-color !important;\r\n  color: white !important;\r\n  font-family: 'Roundo', sans-serif !important;\r\n  font-size: 16px !important;\r\n  font-weight: bold !important;\r\n  height: 48px !important;\r\n  border: none !important;\r\n  border-radius: 8px !important;\r\n  cursor: pointer !important;\r\n  transition: all 0.3s ease !important;\r\n\r\n  &:hover {\r\n    background-color: darken($primary-color, 10%) !important;\r\n  }\r\n\r\n  &:disabled {\r\n    background-color: #f5f5f5 !important;\r\n    color: #aaa !important;\r\n    border: 1px solid $input-border-color !important;\r\n  }\r\n}\r\n\r\n.btn-link {\r\n  color: $error-color !important;\r\n  font-family: 'Roundo', sans-serif !important;\r\n  font-size: 14px !important;\r\n\r\n  &:hover {\r\n    text-decoration: none !important;\r\n    color: $error-color !important;\r\n  }\r\n}\r\n\r\n// Responsive Adjustments\r\n@media (max-width: 768px) {\r\n  .col-md-7 {\r\n    padding-left: 0 !important;\r\n    padding-top: 20px !important;\r\n  }\r\n\r\n  .col-md-5 {\r\n    margin-bottom: 20px !important;\r\n  }\r\n}\r\n\r\n// Validation Error Message Styling\r\n.text-danger {\r\n  font-size: 12px;\r\n  margin-top: 5px;\r\n}\r\n",
+                    "data": "/* SCSS File: login.component.scss */\r\n\r\n// Variables (optional, for reusability)\r\n$input-background-color: #f9f9f9;\r\n$input-border-color: #ccc;\r\n$primary-color: #FF8C00;\r\n$text-color: #121212;\r\n$error-color: #f04d1f;\r\n\r\n// Form and Input Styling\r\n.card-body {\r\n  padding: 4rem 2rem;\r\n}\r\n\r\nh2 {\r\n  margin-bottom: 10px !important;\r\n  color: $text-color !important;\r\n}\r\n\r\np {\r\n  margin-bottom: 20px !important;\r\n  color: #555 !important;\r\n}\r\n\r\n// Floating Label Styling\r\n.floating-label {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 12px;\r\n  font-size: 14px;\r\n  color: #888 !important;\r\n  transition: all 0.3s ease;\r\n  pointer-events: none;\r\n  transform: translateY(-50%);\r\n}\r\n\r\n.form-control.form-control-lg {\r\n  background-color: $input-background-color !important;\r\n  border: 1px solid $input-border-color !important;\r\n  color: $text-color !important;\r\n  font-family: 'Roundo', sans-serif !important;\r\n  padding: 0px 12px !important;\r\n  font-size: 18px !important;\r\n  border-radius: 8px !important;\r\n  width: 100% !important;\r\n  text-align: left !important;\r\n  height: 50px !important;\r\n  line-height: 50px !important;\r\n  display: block;\r\n  box-sizing: border-box;\r\n  transition: padding-top 0.3s ease;\r\n\r\n  &.input-focused {\r\n    border-color: $primary-color !important;\r\n    box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25) !important;\r\n  }\r\n\r\n  &:focus + .floating-label,\r\n  &:not(:placeholder-shown) + .floating-label {\r\n    top: -10px;\r\n    font-size: 12px;\r\n    color: $primary-color !important;\r\n  }\r\n}\r\n\r\n// Buttons\r\n.next-button {\r\n  background-color: $primary-color !important;\r\n  color: white !important;\r\n  font-family: 'Roundo', sans-serif !important;\r\n  font-size: 16px !important;\r\n  font-weight: bold !important;\r\n  height: 48px !important;\r\n  border: none !important;\r\n  border-radius: 8px !important;\r\n  cursor: pointer !important;\r\n  transition: all 0.3s ease !important;\r\n\r\n  &:hover {\r\n    background-color: darken($primary-color, 10%) !important;\r\n  }\r\n\r\n  &:disabled {\r\n    background-color: #f5f5f5 !important;\r\n    color: #aaa !important;\r\n    border: 1px solid $input-border-color !important;\r\n  }\r\n}\r\n\r\n.btn-link {\r\n  color: $error-color !important;\r\n  font-family: 'Roundo', sans-serif !important;\r\n  font-size: 14px !important;\r\n\r\n  &:hover {\r\n    text-decoration: none !important;\r\n    color: $error-color !important;\r\n  }\r\n}\r\n\r\n// Responsive Adjustments\r\n@media (max-width: 768px) {\r\n  .col-md-7 {\r\n    padding-left: 0 !important;\r\n    padding-top: 20px !important;\r\n  }\r\n\r\n  .col-md-5 {\r\n    margin-bottom: 20px !important;\r\n  }\r\n}\r\n\r\n// Validation Error Message Styling\r\n.text-danger {\r\n  font-size: 12px;\r\n  margin-top: 5px;\r\n}",
                     "styleUrl": "./login.component.scss"
                 }
             ],
@@ -1911,7 +1956,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 30,
+                "line": 29,
                 "jsdoctags": [
                     {
                         "name": "router",
@@ -1925,11 +1970,11 @@
                 ]
             },
             "extends": [],
-            "templateData": "<section class=\"vh-100 d-flex align-items-center\" style=\"background-color: #ffffff; color: #121212;\">\r\n  <div class=\"row w-100 m-0\">\r\n    <!-- Login Form on the Left -->\r\n    <div class=\"col-12 col-md-7 col-lg-7 col-xl-8 p-0 d-flex justify-content-start align-items-center\">\r\n      <div class=\"col-12 col-md-9 col-lg-9 p-4 text-start\">\r\n        <!-- Language Dropdown -->\r\n        <div class=\"mb-4\">\r\n          <app-language-dropdown [(selectedLanguage)]=\"loginData.selectedLanguage\"></app-language-dropdown>\r\n        </div>\r\n\r\n        <h2 class=\"fw-bold mb-2 text-uppercase\">Welcome Back!</h2>\r\n        <p>\r\n          Don’t have an account?\r\n          <button type=\"button\" (click)=\"onRegisterClick()\" class=\"btn btn-link\">Create Account</button>\r\n        </p>\r\n\r\n        <form (ngSubmit)=\"login()\" #loginForm=\"ngForm\">\r\n          <!-- Email Field -->\r\n          <div class=\"form-floating mb-3\">\r\n            <input\r\n              type=\"email\"\r\n              id=\"typeEmailX\"\r\n              class=\"form-control form-control-lg\"\r\n              [(ngModel)]=\"loginData.email\"\r\n              name=\"email\"\r\n              #email=\"ngModel\"\r\n              required\r\n              placeholder=\"Your Email\"\r\n              (focus)=\"onFocus($event)\"\r\n              (blur)=\"onBlur($event)\"\r\n              [ngClass]=\"{'input-focused': isEmailFocused}\" />\r\n            <label for=\"typeEmailX\" class=\"floating-label\"> Email</label>\r\n            <div *ngIf=\"email.invalid && email.touched\" class=\"text-danger\">\r\n              Valid email is required.\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Password Field -->\r\n          <div class=\"form-floating mb-3\">\r\n            <input\r\n              type=\"password\"\r\n              id=\"typePasswordX\"\r\n              class=\"form-control form-control-lg\"\r\n              [(ngModel)]=\"loginData.password\"\r\n              name=\"password\"\r\n              #password=\"ngModel\"\r\n              required\r\n              placeholder=\"Password\"\r\n              (focus)=\"onFocus($event)\"\r\n              (blur)=\"onBlur($event)\"\r\n              [ngClass]=\"{'input-focused': isPasswordFocused}\" />\r\n            <label for=\"typePasswordX\" class=\"floating-label\">Password</label>\r\n            <div *ngIf=\"password.invalid && password.touched\" class=\"text-danger\">\r\n              Password is required.\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Login Button -->\r\n          <button\r\n            type=\"submit\"\r\n            class=\"btn next-button\"\r\n            [disabled]=\"!loginForm.valid\"\r\n          >\r\n            Login\r\n          </button>\r\n\r\n          <!-- Forgot Password Link -->\r\n          <p class=\"small\">\r\n            <button\r\n              type=\"button\"\r\n              (click)=\"forgotPassword()\"\r\n              class=\"btn btn-link\"\r\n            >\r\n              Forgot Password?\r\n            </button>\r\n          </p>\r\n\r\n          <p *ngIf=\"message\" class=\"text-danger mt-3\">{{ message }}</p>\r\n        </form>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Right Side: LeftSideComponent -->\r\n    <div class=\"col-12 col-md-5 col-lg-5 col-xl-4 p-0\">\r\n      <app-left-side></app-left-side>\r\n    </div>\r\n  </div>\r\n</section>\r\n"
+            "templateData": "<section class=\"vh-100 d-flex align-items-center\" style=\"background-color: #ffffff; color: #121212;\">\r\n  <div class=\"row w-100 m-0\">\r\n    <!-- Login Form on the Left -->\r\n    <div class=\"col-12 col-md-7 col-lg-7 col-xl-8 p-0 d-flex justify-content-start align-items-center\">\r\n      <div class=\"col-12 col-md-9 col-lg-9 p-4 text-start\">\r\n        <!-- Language Dropdown -->\r\n        <div class=\"mb-4\">\r\n          <app-language-dropdown [(selectedLanguage)]=\"loginData.selectedLanguage\"></app-language-dropdown>\r\n        </div>\r\n\r\n        <h2 class=\"fw-bold mb-2 text-uppercase\">Welcome Back!</h2>\r\n        <p>\r\n          Don’t have an account?\r\n          <button type=\"button\" (click)=\"onRegisterClick()\" class=\"btn btn-link\">Create Account</button>\r\n        </p>\r\n\r\n        <form (ngSubmit)=\"login()\" #loginForm=\"ngForm\">\r\n          <!-- Email Field -->\r\n          <div class=\"form-floating mb-3\">\r\n            <input\r\n              type=\"email\"\r\n              id=\"typeEmailX\"\r\n              class=\"form-control form-control-lg\"\r\n              [(ngModel)]=\"loginData.email\"\r\n              name=\"email\"\r\n              #email=\"ngModel\"\r\n              required\r\n              placeholder=\"Your Email\"\r\n              (focus)=\"onFocus($event)\"\r\n              (blur)=\"onBlur($event)\"\r\n              [ngClass]=\"{'input-focused': isEmailFocused}\" />\r\n            <label for=\"typeEmailX\" class=\"floating-label\"> Email</label>\r\n            <div *ngIf=\"email.invalid && email.touched\" class=\"text-danger\">\r\n              Valid email is required.\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Password Field -->\r\n          <div class=\"form-floating mb-3\">\r\n            <input\r\n              type=\"password\"\r\n              id=\"typePasswordX\"\r\n              class=\"form-control form-control-lg\"\r\n              [(ngModel)]=\"loginData.password\"\r\n              name=\"password\"\r\n              #password=\"ngModel\"\r\n              required\r\n              placeholder=\"Password\"\r\n              (focus)=\"onFocus($event)\"\r\n              (blur)=\"onBlur($event)\"\r\n              [ngClass]=\"{'input-focused': isPasswordFocused}\" />\r\n            <label for=\"typePasswordX\" class=\"floating-label\">Password</label>\r\n            <div *ngIf=\"password.invalid && password.touched\" class=\"text-danger\">\r\n              Password is required.\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Login Button -->\r\n          <button\r\n            type=\"submit\"\r\n            class=\"btn next-button\"\r\n            [disabled]=\"!loginForm.valid\"\r\n          >\r\n            Login\r\n          </button>\r\n\r\n          <!-- Forgot Password Link -->\r\n          <p class=\"small\">\r\n            <button\r\n              type=\"button\"\r\n              (click)=\"forgotPassword()\"\r\n              class=\"btn btn-link\"\r\n            >\r\n              Forgot Password?\r\n            </button>\r\n          </p>\r\n\r\n          <p *ngIf=\"message\" class=\"text-danger mt-3\">{{ message }}</p>\r\n        </form>\r\n\r\n\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Right Side: LeftSideComponent -->\r\n    <div class=\"col-12 col-md-5 col-lg-5 col-xl-4 p-0\">\r\n      <app-left-side></app-left-side>\r\n    </div>\r\n  </div>\r\n</section>\r\n"
         },
         {
             "name": "ManagerDashboardComponent",
-            "id": "component-ManagerDashboardComponent-f7b896a2acdbb6d7e8a0d668d69aa73eb81226901be6f562dfdc71a9b69a6b08a688b2c5cfbd0379bbd9005cd8c885bff7b111c1564cb222e5ca57ab8673b7ea",
+            "id": "component-ManagerDashboardComponent-67da64db25431ee403ddb559730a80680e8d9d2bb4f8f134a1666256cbe6ad135762ed1d2f490b6cdf2901361012682a0d66c98023740fb2cd270d3cfb2e0cbe",
             "file": "src/app/manager-dashboard/manager-dashboard.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1958,7 +2003,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 17
                 },
                 {
                     "name": "isNavbarCollapsed",
@@ -1969,7 +2014,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 16
                 },
                 {
                     "name": "isSettingsDropdownOpen",
@@ -1980,7 +2025,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19
+                    "line": 18
                 },
                 {
                     "name": "isToggled",
@@ -1991,7 +2036,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 15
                 }
             ],
             "methodsClass": [
@@ -2008,7 +2053,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2029,7 +2074,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2039,7 +2084,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 29,
+                    "line": 28,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2049,7 +2094,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2059,7 +2104,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 23,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2068,7 +2113,7 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [
                 {
                     "name": "CommonModule",
@@ -2082,7 +2127,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { RouterModule } from '@angular/router';\r\nimport { AppComponent } from '../app.component';\r\nimport { Router } from '@angular/router';\r\n\r\n\r\n@Component({\r\n  selector: 'app-manager-dashboard',\r\n  standalone: true,\r\n  imports: [CommonModule,RouterModule ],\r\n  templateUrl: './manager-dashboard.component.html',\r\n  styleUrls: ['./manager-dashboard.component.scss']\r\n})\r\nexport class ManagerDashboardComponent {\r\n  isToggled: boolean = false; // Sidebar state\r\n  isNavbarCollapsed: boolean = true; // Navbar collapse state\r\n  activeItem: string = 'home'; // Active navigation item\r\n  isSettingsDropdownOpen: boolean = false; // Track the state of settings dropdown\r\n\r\n  constructor(private router: Router)  {}\r\n\r\n  // Toggle the sidebar visibility\r\n  toggleSidebar(): void {\r\n    this.isToggled = !this.isToggled;\r\n  }\r\n\r\n  // Toggle navbar collapse state\r\n  toggleNavbar(): void {\r\n    this.isNavbarCollapsed = !this.isNavbarCollapsed;\r\n  }\r\n\r\n  // Update the active navigation item\r\n  setActiveItem(item: string): void {\r\n    this.activeItem = item;\r\n  }\r\n\r\n  // Toggle the settings dropdown visibility\r\n  toggleSettingsDropdown(): void {\r\n    this.isSettingsDropdownOpen = !this.isSettingsDropdownOpen;\r\n  }\r\n\r\n  // Sign out and navigate back to the login screen\r\n  signOut(): void {\r\n    this.router.navigate(['/login']);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { RouterModule } from '@angular/router';\r\nimport { AppComponent } from '../app.component';\r\nimport { Router } from '@angular/router';\r\n\r\n\r\n@Component({\n    selector: 'app-manager-dashboard',\n    imports: [CommonModule, RouterModule],\n    templateUrl: './manager-dashboard.component.html',\n    styleUrls: ['./manager-dashboard.component.scss']\n})\r\nexport class ManagerDashboardComponent {\r\n  isToggled: boolean = false; // Sidebar state\r\n  isNavbarCollapsed: boolean = true; // Navbar collapse state\r\n  activeItem: string = 'home'; // Active navigation item\r\n  isSettingsDropdownOpen: boolean = false; // Track the state of settings dropdown\r\n\r\n  constructor(private router: Router)  {}\r\n\r\n  // Toggle the sidebar visibility\r\n  toggleSidebar(): void {\r\n    this.isToggled = !this.isToggled;\r\n  }\r\n\r\n  // Toggle navbar collapse state\r\n  toggleNavbar(): void {\r\n    this.isNavbarCollapsed = !this.isNavbarCollapsed;\r\n  }\r\n\r\n  // Update the active navigation item\r\n  setActiveItem(item: string): void {\r\n    this.activeItem = item;\r\n  }\r\n\r\n  // Toggle the settings dropdown visibility\r\n  toggleSettingsDropdown(): void {\r\n    this.isSettingsDropdownOpen = !this.isSettingsDropdownOpen;\r\n  }\r\n\r\n  // Sign out and navigate back to the login screen\r\n  signOut(): void {\r\n    this.router.navigate(['/login']);\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2104,7 +2149,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 19,
+                "line": 18,
                 "jsdoctags": [
                     {
                         "name": "router",
@@ -2121,8 +2166,216 @@
             "templateData": "<div class=\"container-fluid\">\r\n  <div class=\"row flex-nowrap\">\r\n    <!-- Sidebar -->\r\n    <div class=\"col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark\">\r\n      <div class=\"d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100\">\r\n        <a href=\"/\" class=\"d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none\">\r\n          <span class=\"fs-5 d-none d-sm-inline\">Manager Menu</span>\r\n        </a>\r\n        <ul class=\"nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start\" id=\"menu\">\r\n          <li class=\"nav-item\">\r\n            <a href=\"#\" class=\"nav-link align-middle px-0\" (click)=\"setActiveItem('teamOverview')\">\r\n              <span class=\"ms-1 d-none d-sm-inline\">Team Overview</span>\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"nav-link px-0 align-middle\" (click)=\"setActiveItem('attendanceManagement')\">\r\n              <i class=\"fs-4 bi-calendar-check\"></i> <span class=\"ms-1 d-none d-sm-inline\">Attendance</span>\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"nav-link px-0 align-middle\" (click)=\"setActiveItem('taskAssignment')\">\r\n              <i class=\"fs-4 bi-briefcase\"></i> <span class=\"ms-1 d-none d-sm-inline\">Task Assignment</span>\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"nav-link px-0 align-middle\" (click)=\"setActiveItem('performanceReview')\">\r\n              <i class=\"fs-4 bi-bar-chart-line\"></i> <span class=\"ms-1 d-none d-sm-inline\">Performance</span>\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a href=\"#\" class=\"nav-link px-0 align-middle\" (click)=\"setActiveItem('requests')\">\r\n              <i class=\"fs-4 bi-envelope\"></i> <span class=\"ms-1 d-none d-sm-inline\">Requests</span>\r\n            </a>\r\n          </li>\r\n        </ul>\r\n        <hr>\r\n        <div class=\"dropdown pb-4\">\r\n          <a href=\"#\" class=\"d-flex align-items-center text-white text-decoration-none dropdown-toggle\" id=\"dropdownUser1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\r\n            <img src=\"assets/manager1.png\" alt=\"User\" width=\"30\" height=\"30\" class=\"rounded-circle\">\r\n            <span class=\"d-none d-sm-inline mx-1\">Manager</span>\r\n          </a>\r\n          <ul class=\"dropdown-menu dropdown-menu-dark text-small shadow\">\r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('profile')\">Profile</a></li>\r\n            <li><hr class=\"dropdown-divider\"></li>\r\n           \r\n            <li><a class=\"dropdown-item\" href=\"#\" (click)=\"signOut()\">Sign out</a></li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Main Content -->\r\n    <div class=\"col py-0\">\r\n      <!-- Navbar -->\r\n      <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark mb-0\">\r\n        <div class=\"container-fluid\">\r\n          <a class=\"navbar-brand\" href=\"#\">Manager Dashboard</a>\r\n          <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <i class=\"fas fa-bars text-light\"></i>\r\n          </button>\r\n\r\n          <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n            <ul class=\"navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0\">\r\n              <li class=\"nav-item text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link active\" aria-current=\"page\" href=\"#!\" (click)=\"setActiveItem('home')\">\r\n                  <div>\r\n                    <img src=\"assets/home (1).png\" alt=\"Home\" width=\"24\" height=\"24\" class=\"mb-1\" />\r\n                    Home\r\n                  </div>\r\n                </a>\r\n              </li>\r\n              <li class=\"nav-item text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link\" href=\"#!\" (click)=\"setActiveItem('teamOverview')\">\r\n                  <div>\r\n                    <img src=\"assets/united.png\" alt=\"Team\" width=\"24\" height=\"24\" class=\"mb-1\" />\r\n                    Team\r\n                  </div>\r\n                </a>\r\n              </li>\r\n              <li class=\"nav-item text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link\" href=\"#!\" (click)=\"setActiveItem('reports')\">\r\n                  <div>\r\n                    <img src=\"assets/seo-report.png\" alt=\"Reports\" width=\"24\" height=\"24\" class=\"mb-1\" />\r\n                    Reports\r\n                  </div>\r\n                </a>\r\n              </li>\r\n              <li class=\"nav-item dropdown text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdownSettings\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\r\n                  <img src=\"assets/cogwheel.png\" alt=\"Settings\" width=\"24\" height=\"24\" class=\"mb-1\" /> <!-- Path to the cogwheel image -->\r\n                  Settings\r\n                </a>\r\n                <!-- Settings dropdown menu -->\r\n                <ul class=\"dropdown-menu dropdown-menu-dark\" aria-labelledby=\"navbarDropdownSettings\">\r\n                  <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('Change Password')\">Change Password</a></li>\r\n                  <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('settingsProfile')\">Profile Settings</a></li>\r\n                  <li><a class=\"dropdown-item\" href=\"#\" (click)=\"setActiveItem('settingsPrivacy')\">Privacy Settings</a></li>\r\n                </ul>\r\n              </li>\r\n            </ul>\r\n\r\n            <!-- Right-side navigation items -->\r\n            <ul class=\"navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0\">\r\n              <li class=\"nav-item text-center mx-2 mx-lg-1\">\r\n                <a class=\"nav-link\" href=\"#!\" (click)=\"setActiveItem('notifications')\">\r\n                  <div>\r\n                    <i class=\"fas fa-bell fa-lg mb-1\"></i>\r\n                    <span class=\"badge rounded-pill badge-notification bg-info\">5</span>\r\n                  </div>\r\n                  Notifications\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n      </nav>\r\n\r\n      <!-- Main content section when reset password is not shown -->\r\n      <div class=\"container mt-4\" >\r\n        <h1>Welcome to the Manager Dashboard</h1>\r\n        <p>Oversee team tasks, manage attendance, assign projects, and review performance metrics for better team management and productivity.</p>\r\n      </div>\r\n\r\n\r\n\r\n    </div>\r\n  </div>\r\n</div>"
         },
         {
+            "name": "ModalComponent",
+            "id": "component-ModalComponent-68171c3381d124b96c2730bacfbaa85cb2b21425ab059328bfa17b4ac79a3eec12a6834ff908761ea1ab56ee383b89157b88ff16b713d6e1f37a09b970efe4d1",
+            "file": "src/app/modal/modal.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-modal",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./modal.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-modal',\r\n  imports: [],\r\n  templateUrl: './modal.component.html',\r\n  styleUrl: './modal.component.scss'\r\n})\r\nexport class ModalComponent {\r\n\r\n}\r\n",
+            "styleUrl": "./modal.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>modal works!</p>\r\n"
+        },
+        {
+            "name": "ModalComponent",
+            "id": "component-ModalComponent-de02804ca342fca88925c8956726c78416cb916b21e5db333639523cf1194be0b85a0186d4206da4c886cfa94f2e9637f97ffac9844f448b36744f415de22a63-1",
+            "file": "src/app/shared/modal/modal.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-modal",
+            "styleUrls": [
+                "./modal.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./modal.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "cancelBtnText",
+                    "defaultValue": "'Cancel'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "confirmBtnText",
+                    "defaultValue": "'Confirm'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "content",
+                    "defaultValue": "'Do you want to continue with this action?'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'Are you sure?'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "cancelEvent",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "confirmEvent",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "showButtonContainer",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "showModal",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "closeModal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onCancel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onConfirm",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "openModal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "SharedModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { SharedModule } from '../../shared.module';\r\n\r\n@Component({\r\n  selector: 'app-modal',\r\n  imports: [SharedModule],\r\n  templateUrl: './modal.component.html',\r\n  styleUrls: ['./modal.component.scss']\r\n})\r\nexport class ModalComponent {\r\n  @Input() title: string = 'Are you sure?';\r\n  @Input() content: string = 'Do you want to continue with this action?';\r\n  @Input() cancelBtnText: string = 'Cancel';\r\n  @Input() confirmBtnText: string = 'Confirm';\r\n  @Output() cancelEvent = new EventEmitter<void>();\r\n  @Output() confirmEvent = new EventEmitter<void>();\r\n\r\n  showModal: boolean = false;\r\n  showButtonContainer: boolean = false;\r\n\r\n  openModal() {\r\n    this.showModal = true;\r\n    this.showButtonContainer = true;\r\n  }\r\n\r\n  closeModal() {\r\n    this.showModal = false;\r\n    this.showButtonContainer = false;\r\n  }\r\n\r\n  onCancel() {\r\n    this.cancelEvent.emit();\r\n    this.closeModal();\r\n  }\r\n\r\n  onConfirm() {\r\n    this.confirmEvent.emit();\r\n    this.closeModal();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "// Variables for button colors\r\n$button-border-radius: 20px;\r\n$button-text-color: #ffffff; // White text\r\n$button-padding: 10px 20px;\r\n$button-font-size: 1rem;\r\n$button-hover-scale: 1.05;\r\n$button-active-scale: 0.95;\r\n\r\n// Primary blue color for \"Open Modal\" button\r\n$open-modal-color: #007bff; // Primary blue color\r\n$confirm-button-color: #28a745; // Green color for confirm\r\n$cancel-button-color: #dc3545;  // Red color for cancel\r\n\r\n// Styling for modal button (open modal button)\r\n.modal-button {\r\n  display: inline-block;\r\n  background-color: $open-modal-color;\r\n  color: $button-text-color;\r\n  border: none;\r\n  border-radius: $button-border-radius;\r\n  padding: $button-padding;\r\n  font-size: $button-font-size;\r\n  font-weight: bold;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  transition: background-color 0.3s ease, transform 0.2s ease;\r\n\r\n  &:hover {\r\n    background-color: darken($open-modal-color, 10%);\r\n    transform: scale($button-hover-scale);\r\n  }\r\n\r\n  &:active {\r\n    background-color: darken($open-modal-color, 20%);\r\n    transform: scale($button-active-scale);\r\n  }\r\n}\r\n\r\n// Button container (horizontal buttons)\r\n.button-container {\r\n  display: flex;\r\n  flex-direction: column;         // Arrange elements vertically (text above buttons)\r\n  justify-content: center;        // Center items vertically\r\n  align-items: center;            // Center items horizontally\r\n  gap: 5px;                       // Small gap between text and buttons\r\n  padding: 10px 15px;             // Slight padding to give it some space\r\n  border-radius: $button-border-radius;\r\n  background-color: #f1f1f1;      // Light gray background for the container\r\n  box-shadow: none;               // Remove shadow to keep the container minimal\r\n  width: fit-content;             // Ensure the container adjusts to the button size\r\n  margin: 0;                      // Remove margin to keep it compact\r\n  z-index: 1000;                  // Ensure the container is on top if needed\r\n}\r\n\r\n// Text above the buttons (confirmation text)\r\n.confirmation-text {\r\n  font-size: 1rem;                // Standard font size\r\n  color: #333;                    // Dark text color\r\n  margin-bottom: 10px;            // Space between the text and the buttons\r\n  text-align: center;             // Center align the text\r\n  font-weight: bold;              // Make the text bold for emphasis\r\n}\r\n\r\n// Button wrapper to keep buttons side by side and adjust their order\r\n.button-wrapper {\r\n  display: flex;                  // Keep buttons in a row\r\n  gap: 10px;                      // Space between the buttons\r\n  justify-content: flex-start;    // Align buttons to the left side of the container\r\n}\r\n\r\n// Smaller individual buttons inside the container\r\n.button-container button {\r\n  min-width: auto;                // Remove min-width to match \"Open Modal\" button size\r\n  padding: 5px 10px;              // Reduced padding to make buttons smaller\r\n  font-size: 0.8rem;              // Smaller font size to match the Open Modal button size\r\n  border: none;\r\n  border-radius: $button-border-radius;\r\n  color: $button-text-color;\r\n  cursor: pointer;\r\n  transition: background-color 0.3s ease, transform 0.2s ease;\r\n\r\n  // Confirm button (green)\r\n  &.confirm-button {\r\n    background-color: $confirm-button-color;\r\n\r\n    &:hover {\r\n      background-color: darken($confirm-button-color, 10%);\r\n      transform: scale(1.05); // Slight zoom-in effect on hover\r\n    }\r\n\r\n    &:active {\r\n      background-color: darken($confirm-button-color, 20%);\r\n      transform: scale(0.95); // Slight zoom-out effect on click\r\n    }\r\n  }\r\n\r\n  // Cancel button (red)\r\n  &.cancel-button {\r\n    background-color: $cancel-button-color;\r\n\r\n    &:hover {\r\n      background-color: darken($cancel-button-color, 10%);\r\n      transform: scale(1.05); // Slight zoom-in effect on hover\r\n    }\r\n\r\n    &:active {\r\n      background-color: darken($cancel-button-color, 20%);\r\n      transform: scale(0.95); // Slight zoom-out effect on click\r\n    }\r\n  }\r\n}\r\n\r\n// Ensure modal dialog and its buttons are not blocked by backdrop\r\n.p-dialog-mask {\r\n  z-index: 1000 !important; // Lower than the modal itself, but higher than page content\r\n}\r\n\r\n.p-dialog {\r\n  z-index: 10001; // Ensure the modal itself is above everything else\r\n}\r\n\r\n.modal-button {\r\n  z-index: 999; // Button should be below modal\r\n}\r\n\r\n// Modal button container styling\r\n.button-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  gap: 5px;\r\n  padding: 10px 15px;\r\n  background-color: #f1f1f1;\r\n  border-radius: 20px;\r\n  width: fit-content;\r\n  z-index: 10002; // Ensure buttons are above the modal backdrop\r\n}\r\n\r\n// Button styling (Confirm, Cancel buttons)\r\n.button-container button {\r\n  z-index: 10002; // Ensure buttons inside modal are clickable\r\n}\r\n",
+                    "styleUrl": "./modal.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "ModalComponent-1",
+            "templateData": "<!-- Button to open the modal -->\r\n<button type=\"button\" class=\"modal-button\" (click)=\"openModal()\">Open Modal</button>\r\n\r\n<!-- Button container (Confirm and Cancel buttons) -->\r\n<div *ngIf=\"showButtonContainer\" class=\"button-container\">\r\n  <!-- Text above the buttons -->\r\n  <p class=\"confirmation-text\">Are you sure you want to continue?</p>\r\n\r\n  <!-- Buttons -->\r\n  <div class=\"button-wrapper\">\r\n    <button type=\"button\" pButton class=\"confirm-button\" label=\"{{ confirmBtnText }}\" (click)=\"onConfirm()\"></button>\r\n    <button type=\"button\" pButton class=\"cancel-button\" label=\"{{ cancelBtnText }}\" (click)=\"onCancel()\"></button>\r\n  </div>\r\n</div>\r\n\r\n<!-- Modal dialog -->\r\n<p-dialog [(visible)]=\"showModal\" [modal]=\"true\" [closable]=\"false\" [transitionOptions]=\"'0ms'\">\r\n  <!-- Header -->\r\n  <ng-template pTemplate=\"header\">\r\n    <h3>{{ title }}</h3>\r\n    <i class=\"pi pi-times p-dialog-header-icon\" (click)=\"closeModal()\"></i>\r\n  </ng-template>\r\n\r\n  <!-- Content -->\r\n  <div class=\"p-dialog-content\">\r\n    <p>{{ content }}</p>\r\n  </div>\r\n\r\n  <!-- Footer -->\r\n  <ng-template pTemplate=\"footer\">\r\n    <div class=\"button-container\">\r\n      <button type=\"button\" pButton class=\"confirm-button\" label=\"{{ confirmBtnText }}\" (click)=\"onConfirm()\"></button>\r\n      <button type=\"button\" pButton class=\"cancel-button\" label=\"{{ cancelBtnText }}\" (click)=\"onCancel()\"></button>\r\n    </div>\r\n  </ng-template>\r\n</p-dialog>\r\n"
+        },
+        {
             "name": "NotFoundComponent",
-            "id": "component-NotFoundComponent-b05d86819f4f61376641c6735fdefdfc1f97e6046d5d85ce6b6087947eefa33d8bdf8aea6b60a945ac5ba43c322c0719eb3f8e5ff7254a234a37f6a6e3a05a24",
+            "id": "component-NotFoundComponent-3966f7383079c4e8e2abdef8eb6873b8eddd7e1928df487e9e5d54a4416b644773632ce6f8631036d7558d2a35991ddddc2e4e1649cd96d89ad3b52937eae00a",
             "file": "src/app/not-found/not-found.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2145,12 +2398,12 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-not-found',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './not-found.component.html',\r\n  styleUrl:  './not-found.component.scss'\r\n})\r\nexport class NotFoundComponent {\r\n\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\n    selector: 'app-not-found',\n    imports: [],\n    templateUrl: './not-found.component.html',\n    styleUrl: './not-found.component.scss'\n})\r\nexport class NotFoundComponent {\r\n\r\n}\r\n",
             "styleUrl": "./not-found.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2160,7 +2413,7 @@
         },
         {
             "name": "PageComponent",
-            "id": "component-PageComponent-21dd6eb370b4983b5c21c84d40e6f54d266a9d9af9889e6e76b35c43058bd53b3e451bad089d5adf4bea46647ba10265a2fa8cb15630398e75636307d4817fc6",
+            "id": "component-PageComponent-79bfb042a722f49579739dfd01d8f1b67681d0272a72a283c14edeb22f0462775c80ba4f7c1eb0fa4bd5fa1844083da0140980e75b5500cd98cc26421ec6d569",
             "file": "src/stories/page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2241,11 +2494,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HeaderComponent } from './header.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-page',\n  standalone: true,\n  imports: [CommonModule, HeaderComponent],\n  template: `<article>\n  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>`,\n  styleUrls: ['./page.css'],\n})\nexport class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { HeaderComponent } from './header.component';\r\nimport type { User } from './user';\r\n\r\n@Component({\r\n  selector: 'storybook-page',\r\n  standalone: true,\r\n  imports: [CommonModule, HeaderComponent],\r\n  template: `<article>\r\n  <storybook-header\r\n    [user]=\"user\"\r\n    (onLogout)=\"doLogout()\"\r\n    (onLogin)=\"doLogin()\"\r\n    (onCreateAccount)=\"doCreateAccount()\"\r\n  ></storybook-header>\r\n  <section class=\"storybook-page\">\r\n    <h2>Pages in Storybook</h2>\r\n    <p>\r\n      We recommend building UIs with a\r\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\r\n        <strong>component-driven</strong>\r\n      </a>\r\n      process starting with atomic components and ending with pages.\r\n    </p>\r\n    <p>\r\n      Render pages with mock data. This makes it easy to build and review page states without\r\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\r\n      in Storybook:\r\n    </p>\r\n    <ul>\r\n      <li>\r\n        Use a higher-level connected component. Storybook helps you compose such data from the\r\n        \"args\" of child component stories\r\n      </li>\r\n      <li>\r\n        Assemble data in the page component from your services. You can mock these services out\r\n        using Storybook.\r\n      </li>\r\n    </ul>\r\n    <p>\r\n      Get a guided tutorial on component-driven development at\r\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\r\n        Storybook tutorials\r\n      </a>\r\n      . Read more in the\r\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\r\n      .\r\n    </p>\r\n    <div class=\"tip-wrapper\">\r\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\r\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\r\n        <g fill=\"none\" fillRule=\"evenodd\">\r\n          <path\r\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\r\n            id=\"a\"\r\n            fill=\"#999\"\r\n          />\r\n        </g>\r\n      </svg>\r\n      Viewports addon in the toolbar\r\n    </div>\r\n  </section>\r\n</article>`,\r\n  styleUrls: ['./page.css'],\r\n})\r\nexport class PageComponent {\r\n  user: User | null = null;\r\n\r\n  doLogout() {\r\n    this.user = null;\r\n  }\r\n\r\n  doLogin() {\r\n    this.user = { name: 'Jane Doe' };\r\n  }\r\n\r\n  doCreateAccount() {\r\n    this.user = { name: 'Jane Doe' };\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".storybook-page {\n  margin: 0 auto;\n  padding: 48px 20px;\n  max-width: 600px;\n  color: #333;\n  font-size: 14px;\n  line-height: 24px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-page h2 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 0 0 4px;\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 1;\n}\n\n.storybook-page p {\n  margin: 1em 0;\n}\n\n.storybook-page a {\n  color: #1ea7fd;\n  text-decoration: none;\n}\n\n.storybook-page ul {\n  margin: 1em 0;\n  padding-left: 30px;\n}\n\n.storybook-page li {\n  margin-bottom: 8px;\n}\n\n.storybook-page .tip {\n  display: inline-block;\n  vertical-align: top;\n  margin-right: 10px;\n  border-radius: 1em;\n  background: #e7fdd8;\n  padding: 4px 12px;\n  color: #66bf3c;\n  font-weight: 700;\n  font-size: 11px;\n  line-height: 12px;\n}\n\n.storybook-page .tip-wrapper {\n  margin-top: 40px;\n  margin-bottom: 40px;\n  font-size: 13px;\n  line-height: 20px;\n}\n\n.storybook-page .tip-wrapper svg {\n  display: inline-block;\n  vertical-align: top;\n  margin-top: 3px;\n  margin-right: 4px;\n  width: 12px;\n  height: 12px;\n}\n\n.storybook-page .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "data": ".storybook-page {\r\n  margin: 0 auto;\r\n  padding: 48px 20px;\r\n  max-width: 600px;\r\n  color: #333;\r\n  font-size: 14px;\r\n  line-height: 24px;\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.storybook-page h2 {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin: 0 0 4px;\r\n  font-weight: 700;\r\n  font-size: 32px;\r\n  line-height: 1;\r\n}\r\n\r\n.storybook-page p {\r\n  margin: 1em 0;\r\n}\r\n\r\n.storybook-page a {\r\n  color: #1ea7fd;\r\n  text-decoration: none;\r\n}\r\n\r\n.storybook-page ul {\r\n  margin: 1em 0;\r\n  padding-left: 30px;\r\n}\r\n\r\n.storybook-page li {\r\n  margin-bottom: 8px;\r\n}\r\n\r\n.storybook-page .tip {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-right: 10px;\r\n  border-radius: 1em;\r\n  background: #e7fdd8;\r\n  padding: 4px 12px;\r\n  color: #66bf3c;\r\n  font-weight: 700;\r\n  font-size: 11px;\r\n  line-height: 12px;\r\n}\r\n\r\n.storybook-page .tip-wrapper {\r\n  margin-top: 40px;\r\n  margin-bottom: 40px;\r\n  font-size: 13px;\r\n  line-height: 20px;\r\n}\r\n\r\n.storybook-page .tip-wrapper svg {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 3px;\r\n  margin-right: 4px;\r\n  width: 12px;\r\n  height: 12px;\r\n}\r\n\r\n.storybook-page .tip-wrapper svg path {\r\n  fill: #1ea7fd;\r\n}\r\n",
                     "styleUrl": "./page.css"
                 }
             ],
@@ -2254,7 +2507,7 @@
         },
         {
             "name": "RegisterComponent",
-            "id": "component-RegisterComponent-fa6d6e38881141a780ca6e2d0692fbf6f797af8f04eac89b319b5be8cf91d6893193d808f764e8b091f4f8e9c671f6e984121b929f9fbcafbf9871b74791ffdb",
+            "id": "component-RegisterComponent-d6d14dc3786e17f5772276a5e5b0fc05a071cd2186a9f87d276dada3d1d333a866b60afd517aa995a995a43a983ee247bca55e995f4ae36c0261d90fb0644d73",
             "file": "src/app/register/register.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2283,7 +2536,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 19
                 },
                 {
                     "name": "errorMessage",
@@ -2294,7 +2547,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19
+                    "line": 18
                 },
                 {
                     "name": "hasLowercase",
@@ -2305,7 +2558,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 22
+                    "line": 21
                 },
                 {
                     "name": "hasNumber",
@@ -2316,7 +2569,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 24
+                    "line": 23
                 },
                 {
                     "name": "hasUppercase",
@@ -2327,7 +2580,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 22
                 },
                 {
                     "name": "message",
@@ -2338,7 +2591,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 17
                 },
                 {
                     "name": "passwordLength",
@@ -2349,7 +2602,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 20
                 },
                 {
                     "name": "registerData",
@@ -2360,7 +2613,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 27
+                    "line": 26
                 },
                 {
                     "name": "registrationSuccess",
@@ -2371,7 +2624,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 16
                 },
                 {
                     "name": "step",
@@ -2382,7 +2635,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 15
                 }
             ],
             "methodsClass": [
@@ -2392,7 +2645,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 153,
+                    "line": 152,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2402,7 +2655,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 197,
+                    "line": 196,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2412,7 +2665,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 192,
+                    "line": 191,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2429,7 +2682,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 141,
+                    "line": 140,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2450,7 +2703,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 166,
+                    "line": 165,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2460,7 +2713,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2470,7 +2723,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 148,
+                    "line": 147,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2487,7 +2740,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2508,7 +2761,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 82,
+                    "line": 81,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2526,7 +2779,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 89,
+                    "line": 88,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2547,7 +2800,7 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [
                 {
                     "name": "CommonModule",
@@ -2569,7 +2822,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule, NgForm } from '@angular/forms';\r\nimport { RouterModule } from '@angular/router';\r\nimport { Router } from '@angular/router';\r\nimport { SharedModule } from '../shared.module';\r\n\r\n@Component({\r\n  selector: 'app-register',\r\n  standalone: true,\r\n  imports: [CommonModule, FormsModule, RouterModule, SharedModule],\r\n  templateUrl: './register.component.html',\r\n  styleUrls: ['./register.component.scss']\r\n})\r\nexport class RegisterComponent {\r\n  step: number = 1; // Tracks the current step of the registration process\r\n  registrationSuccess: boolean = false; // Flag to indicate successful registration\r\n  message: string = ''; // To store success or error messages\r\n  errorMessage: string = ''; // To store error messages\r\n  emailExists: boolean = false; // Flag to track if the email is already registered\r\n  passwordLength: boolean = false; // Flag to track password length requirement\r\n  hasLowercase: boolean = false; // Flag for lowercase character requirement\r\n  hasUppercase: boolean = false; // Flag for uppercase character requirement\r\n  hasNumber: boolean = false; // Flag for number requirement\r\n\r\n  // Register data with selectedLanguage\r\n  registerData = {\r\n    name: '',\r\n    email: '',\r\n    company: '',\r\n    role: '',\r\n    employees: '',\r\n    industry: '',\r\n    password: '',\r\n    confirmPassword: '',\r\n    otherRole: '',\r\n    selectedLanguage: 'en'  // Default language\r\n  };\r\n\r\n  constructor(private router: Router) { }\r\n\r\n    // Update to use RoleSelectorComponent data\r\n    onRoleChange(selectedRole: string): void {\r\n      this.registerData.role = selectedRole;\r\n    }\r\n\r\n  // Proceed to the next step of the registration process\r\n  nextStep() {\r\n    this.errorMessage = ''; // Reset error message at each step\r\n\r\n    // Validate Step 1 fields (Name, Email, Company, Role)\r\n    if (this.step === 1) {\r\n      if (this.registerData.name && this.registerData.email && this.registerData.company && this.registerData.role) {\r\n        this.step++;\r\n      } else {\r\n        this.errorMessage = 'Please fill all fields in Step 1.';\r\n      }\r\n    }\r\n\r\n    // Validate Step 2 fields (Employees, Industry)\r\n    else if (this.step === 2) {\r\n      if (this.registerData.employees && this.registerData.industry) {\r\n        this.step++;\r\n      } else {\r\n        this.errorMessage = 'Please fill all fields in Step 2.';\r\n      }\r\n    }\r\n\r\n    // Validate Step 3 fields (Password, Confirm Password, Email)\r\n    else if (this.step === 3) {\r\n      if (this.registerData.password !== this.registerData.confirmPassword) {\r\n        this.errorMessage = 'Passwords do not match. Please try again.';\r\n      } else if (this.isEmailRegistered(this.registerData.email)) {\r\n        this.errorMessage = 'This email is already registered. Please use a different email.';\r\n      } else {\r\n        this.register(); // Save to local storage when the last step is valid\r\n      }\r\n    }\r\n  }\r\n\r\n  // Go to the previous step of the registration process\r\n  previousStep() {\r\n    if (this.step > 1) {\r\n      this.step--;\r\n    }\r\n  }\r\n\r\n  // Register the user and save to local storage\r\n  register(form?: NgForm) {\r\n    console.log(\"Registration process started.\");\r\n\r\n    // Check if passwords match before proceeding\r\n    if (this.registerData.password !== this.registerData.confirmPassword) {\r\n      this.errorMessage = 'Passwords do not match. Please try again.';\r\n      return; // Stop the registration process if passwords do not match\r\n    }\r\n\r\n    // Check if the email is already registered\r\n    if (this.isEmailRegistered(this.registerData.email)) {\r\n      this.errorMessage = 'This email is already registered. Please use a different email.';\r\n      return; // Stop the registration process if the email is already registered\r\n    }\r\n\r\n    // If validation passes, proceed to save the data\r\n    const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');\r\n\r\n    // Add new user to the list\r\n    existingUsers.push(this.registerData);\r\n    localStorage.setItem('users', JSON.stringify(existingUsers));\r\n\r\n    console.log(\"Registration successful. Navigating to login.\");\r\n    this.registrationSuccess = true; // Set success flag to show the success message\r\n    this.message = 'Registration successful! Your information has been saved.'; // Set success message\r\n\r\n    // Clear the form after successful registration\r\n    this.registerData = {\r\n      name: '',\r\n      email: '',\r\n      company: '',\r\n      role: '',\r\n      employees: '',\r\n      industry: '',\r\n      password: '',\r\n      confirmPassword: '',\r\n      otherRole: '',\r\n      selectedLanguage: 'en', // Default language\r\n    };\r\n\r\n    // Reset the form state\r\n    if (form) {\r\n      form.reset();\r\n    }\r\n\r\n    // Redirect to login page after registration\r\n    setTimeout(() => {\r\n      this.router.navigate(['/login']);\r\n    }, 3000); // Delay navigation to allow user to see the success message\r\n  }\r\n\r\n  // Check if the email is already registered\r\n  isEmailRegistered(email: string): boolean {\r\n    const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');\r\n    // Check if the email matches any user's email\r\n    return existingUsers.some((user: { email: string }) => user.email === email);\r\n  }\r\n\r\n  // Check email as the user types\r\n  onEmailChange() {\r\n    this.emailExists = this.isEmailRegistered(this.registerData.email);\r\n  }\r\n\r\n  // Check password requirements as the user types\r\n  checkPasswordStrength() {\r\n    this.passwordLength = this.registerData.password.length >= 8;\r\n    this.hasLowercase = /[a-z]/.test(this.registerData.password);\r\n    this.hasUppercase = /[A-Z]/.test(this.registerData.password);\r\n    this.hasNumber = /\\d/.test(this.registerData.password);\r\n  }\r\n\r\n  // Getter for all password requirements\r\n  get allRequirementsFulfilled(): boolean {\r\n    return this.passwordLength && this.hasLowercase && this.hasUppercase && this.hasNumber;\r\n  }\r\n\r\n// Validate \"Next\" button state\r\nisNextStepValid(): boolean {\r\n  if (this.step === 1) {\r\n    // Ensure that all required fields are filled and email is not already registered\r\n    return (\r\n      this.registerData.name !== '' &&\r\n      this.registerData.email !== '' &&\r\n      this.registerData.company !== '' &&\r\n      this.registerData.role !== '' &&\r\n      !this.emailExists\r\n    );\r\n  } else if (this.step === 2) {\r\n    // Ensure that employees and industry are filled\r\n    return this.registerData.employees !== '' && this.registerData.industry !== '';\r\n  } else if (this.step === 3) {\r\n    // Ensure passwords match and all password requirements are fulfilled\r\n    return (\r\n      this.registerData.password === this.registerData.confirmPassword &&\r\n      this.allRequirementsFulfilled &&\r\n      !this.emailExists\r\n    );\r\n  }\r\n  return false;\r\n}\r\n\r\n\r\n  // Validate \"Create Account\" button state\r\n  isCreateAccountValid(): boolean {\r\n    return this.registerData.password === this.registerData.confirmPassword && this.allRequirementsFulfilled && !this.emailExists;\r\n  }\r\n\r\n  // Navigate to login page\r\n  goToLogin() {\r\n    this.router.navigate(['/login']);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule, NgForm } from '@angular/forms';\r\nimport { RouterModule } from '@angular/router';\r\nimport { Router } from '@angular/router';\r\nimport { SharedModule } from '../shared.module';\r\n\r\n@Component({\n    selector: 'app-register',\n    imports: [CommonModule, FormsModule, RouterModule, SharedModule],\n    templateUrl: './register.component.html',\n    styleUrls: ['./register.component.scss']\n})\r\nexport class RegisterComponent {\r\n  step: number = 1; // Tracks the current step of the registration process\r\n  registrationSuccess: boolean = false; // Flag to indicate successful registration\r\n  message: string = ''; // To store success or error messages\r\n  errorMessage: string = ''; // To store error messages\r\n  emailExists: boolean = false; // Flag to track if the email is already registered\r\n  passwordLength: boolean = false; // Flag to track password length requirement\r\n  hasLowercase: boolean = false; // Flag for lowercase character requirement\r\n  hasUppercase: boolean = false; // Flag for uppercase character requirement\r\n  hasNumber: boolean = false; // Flag for number requirement\r\n\r\n  // Register data with selectedLanguage\r\n  registerData = {\r\n    name: '',\r\n    email: '',\r\n    company: '',\r\n    role: '',\r\n    employees: '',\r\n    industry: '',\r\n    password: '',\r\n    confirmPassword: '',\r\n    otherRole: '',\r\n    selectedLanguage: 'en'  // Default language\r\n  };\r\n\r\n  constructor(private router: Router) { }\r\n\r\n    // Update to use RoleSelectorComponent data\r\n    onRoleChange(selectedRole: string): void {\r\n      this.registerData.role = selectedRole;\r\n    }\r\n\r\n  // Proceed to the next step of the registration process\r\n  nextStep() {\r\n    this.errorMessage = ''; // Reset error message at each step\r\n\r\n    // Validate Step 1 fields (Name, Email, Company, Role)\r\n    if (this.step === 1) {\r\n      if (this.registerData.name && this.registerData.email && this.registerData.company && this.registerData.role) {\r\n        this.step++;\r\n      } else {\r\n        this.errorMessage = 'Please fill all fields in Step 1.';\r\n      }\r\n    }\r\n\r\n    // Validate Step 2 fields (Employees, Industry)\r\n    else if (this.step === 2) {\r\n      if (this.registerData.employees && this.registerData.industry) {\r\n        this.step++;\r\n      } else {\r\n        this.errorMessage = 'Please fill all fields in Step 2.';\r\n      }\r\n    }\r\n\r\n    // Validate Step 3 fields (Password, Confirm Password, Email)\r\n    else if (this.step === 3) {\r\n      if (this.registerData.password !== this.registerData.confirmPassword) {\r\n        this.errorMessage = 'Passwords do not match. Please try again.';\r\n      } else if (this.isEmailRegistered(this.registerData.email)) {\r\n        this.errorMessage = 'This email is already registered. Please use a different email.';\r\n      } else {\r\n        this.register(); // Save to local storage when the last step is valid\r\n      }\r\n    }\r\n  }\r\n\r\n  // Go to the previous step of the registration process\r\n  previousStep() {\r\n    if (this.step > 1) {\r\n      this.step--;\r\n    }\r\n  }\r\n\r\n  // Register the user and save to local storage\r\n  register(form?: NgForm) {\r\n    console.log(\"Registration process started.\");\r\n\r\n    // Check if passwords match before proceeding\r\n    if (this.registerData.password !== this.registerData.confirmPassword) {\r\n      this.errorMessage = 'Passwords do not match. Please try again.';\r\n      return; // Stop the registration process if passwords do not match\r\n    }\r\n\r\n    // Check if the email is already registered\r\n    if (this.isEmailRegistered(this.registerData.email)) {\r\n      this.errorMessage = 'This email is already registered. Please use a different email.';\r\n      return; // Stop the registration process if the email is already registered\r\n    }\r\n\r\n    // If validation passes, proceed to save the data\r\n    const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');\r\n\r\n    // Add new user to the list\r\n    existingUsers.push(this.registerData);\r\n    localStorage.setItem('users', JSON.stringify(existingUsers));\r\n\r\n    console.log(\"Registration successful. Navigating to login.\");\r\n    this.registrationSuccess = true; // Set success flag to show the success message\r\n    this.message = 'Registration successful! Your information has been saved.'; // Set success message\r\n\r\n    // Clear the form after successful registration\r\n    this.registerData = {\r\n      name: '',\r\n      email: '',\r\n      company: '',\r\n      role: '',\r\n      employees: '',\r\n      industry: '',\r\n      password: '',\r\n      confirmPassword: '',\r\n      otherRole: '',\r\n      selectedLanguage: 'en', // Default language\r\n    };\r\n\r\n    // Reset the form state\r\n    if (form) {\r\n      form.reset();\r\n    }\r\n\r\n    // Redirect to login page after registration\r\n    setTimeout(() => {\r\n      this.router.navigate(['/login']);\r\n    }, 3000); // Delay navigation to allow user to see the success message\r\n  }\r\n\r\n  // Check if the email is already registered\r\n  isEmailRegistered(email: string): boolean {\r\n    const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');\r\n    // Check if the email matches any user's email\r\n    return existingUsers.some((user: { email: string }) => user.email === email);\r\n  }\r\n\r\n  // Check email as the user types\r\n  onEmailChange() {\r\n    this.emailExists = this.isEmailRegistered(this.registerData.email);\r\n  }\r\n\r\n  // Check password requirements as the user types\r\n  checkPasswordStrength() {\r\n    this.passwordLength = this.registerData.password.length >= 8;\r\n    this.hasLowercase = /[a-z]/.test(this.registerData.password);\r\n    this.hasUppercase = /[A-Z]/.test(this.registerData.password);\r\n    this.hasNumber = /\\d/.test(this.registerData.password);\r\n  }\r\n\r\n  // Getter for all password requirements\r\n  get allRequirementsFulfilled(): boolean {\r\n    return this.passwordLength && this.hasLowercase && this.hasUppercase && this.hasNumber;\r\n  }\r\n\r\n// Validate \"Next\" button state\r\nisNextStepValid(): boolean {\r\n  if (this.step === 1) {\r\n    // Ensure that all required fields are filled and email is not already registered\r\n    return (\r\n      this.registerData.name !== '' &&\r\n      this.registerData.email !== '' &&\r\n      this.registerData.company !== '' &&\r\n      this.registerData.role !== '' &&\r\n      !this.emailExists\r\n    );\r\n  } else if (this.step === 2) {\r\n    // Ensure that employees and industry are filled\r\n    return this.registerData.employees !== '' && this.registerData.industry !== '';\r\n  } else if (this.step === 3) {\r\n    // Ensure passwords match and all password requirements are fulfilled\r\n    return (\r\n      this.registerData.password === this.registerData.confirmPassword &&\r\n      this.allRequirementsFulfilled &&\r\n      !this.emailExists\r\n    );\r\n  }\r\n  return false;\r\n}\r\n\r\n\r\n  // Validate \"Create Account\" button state\r\n  isCreateAccountValid(): boolean {\r\n    return this.registerData.password === this.registerData.confirmPassword && this.allRequirementsFulfilled && !this.emailExists;\r\n  }\r\n\r\n  // Navigate to login page\r\n  goToLogin() {\r\n    this.router.navigate(['/login']);\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2591,7 +2844,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 38,
+                "line": 37,
                 "jsdoctags": [
                     {
                         "name": "router",
@@ -2612,7 +2865,7 @@
                         "name": "allRequirementsFulfilled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 161
+                        "line": 160
                     }
                 }
             },
@@ -2620,7 +2873,7 @@
         },
         {
             "name": "ResetPasswordComponent",
-            "id": "component-ResetPasswordComponent-00f88089cf3785f6c6e6b013bc213221b2620225022198e1e195ad2a23c8cded444517955aac05f28d338254320bbea5e0e417df9143581e6b8e40852fc9e375",
+            "id": "component-ResetPasswordComponent-aa0bb8e10a22342cffe8343ca4eb7595ab99235725534851fa06e893495fd92cc7690ba7f9585b75bc6bd0a229a688a63a0116ba553eb16aa4ca960383e0391a",
             "file": "src/app/reset-password/reset-password.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2649,7 +2902,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 17
                 },
                 {
                     "name": "email",
@@ -2660,7 +2913,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 15
                 },
                 {
                     "name": "errorMessage",
@@ -2671,7 +2924,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19
+                    "line": 18
                 },
                 {
                     "name": "isChangePasswordFlow",
@@ -2682,7 +2935,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 22
+                    "line": 21
                 },
                 {
                     "name": "password",
@@ -2693,7 +2946,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 16
                 },
                 {
                     "name": "passwordMatchError",
@@ -2704,7 +2957,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 19
                 },
                 {
                     "name": "passwordRequirements",
@@ -2715,7 +2968,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 25
+                    "line": 24
                 },
                 {
                     "name": "selectedLanguage",
@@ -2726,7 +2979,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 22
                 },
                 {
                     "name": "showConfirmPassword",
@@ -2737,7 +2990,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 33
+                    "line": 32
                 },
                 {
                     "name": "showPassword",
@@ -2748,7 +3001,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 31
                 },
                 {
                     "name": "showSuccessMessage",
@@ -2759,7 +3012,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 20
                 }
             ],
             "methodsClass": [
@@ -2769,7 +3022,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 63,
+                    "line": 62,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2779,7 +3032,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 83,
+                    "line": 82,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2796,7 +3049,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 37,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2817,7 +3070,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 89,
+                    "line": 88,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2827,7 +3080,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2837,7 +3090,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2847,7 +3100,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 53,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2856,7 +3109,7 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [
                 {
                     "name": "CommonModule",
@@ -2878,7 +3131,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { Router } from '@angular/router';\r\nimport { LeftSideComponent } from '../shared/left-side/left-side.component';\r\nimport { SharedModule } from '../shared.module'; // Import SharedModule to access LanguageDropdownComponent\r\n\r\n@Component({\r\n  selector: 'app-reset-password',\r\n  standalone: true,\r\n  imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule], // Use SharedModule to access LanguageDropdownComponent\r\n  templateUrl: './reset-password.component.html',\r\n  styleUrls: ['./reset-password.component.scss'],\r\n})\r\nexport class ResetPasswordComponent {\r\n  email: string = '';\r\n  password: string = '';\r\n  confirmPassword: string = '';\r\n  errorMessage: string = '';\r\n  passwordMatchError: string = '';\r\n  showSuccessMessage: boolean = false;\r\n  isChangePasswordFlow: boolean = false;\r\n  selectedLanguage: string = 'en'; // Add selectedLanguage property\r\n\r\n  passwordRequirements = {\r\n    length: false,\r\n    number: false,\r\n    lowercase: false,\r\n    uppercase: false,\r\n  };\r\n\r\n  showPassword: boolean = false;\r\n  showConfirmPassword: boolean = false;\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  // Language change handler\r\n  onLanguageChange(newLanguage: string) {\r\n    this.selectedLanguage = newLanguage;\r\n    console.log(`Language changed to: ${newLanguage}`);\r\n  }\r\n\r\n  // Toggle password visibility\r\n  togglePasswordVisibility() {\r\n    this.showPassword = !this.showPassword;\r\n  }\r\n\r\n  // Toggle confirm password visibility\r\n  toggleConfirmPasswordVisibility() {\r\n    this.showConfirmPassword = !this.showConfirmPassword;\r\n  }\r\n\r\n  // Check password requirements\r\n  validatePassword() {\r\n    const password = this.password;\r\n\r\n    this.passwordRequirements.length = password.length >= 8;\r\n    this.passwordRequirements.number = /[0-9]/.test(password);\r\n    this.passwordRequirements.lowercase = /[a-z]/.test(password);\r\n    this.passwordRequirements.uppercase = /[A-Z]/.test(password);\r\n  }\r\n\r\n  confirmEmail() {\r\n    const trimmedEmail = this.email.trim();\r\n  \r\n    if (!trimmedEmail) {\r\n      this.errorMessage = 'Please enter your email.';\r\n      return;\r\n    }\r\n  \r\n    const users = JSON.parse(localStorage.getItem('users') || '[]');\r\n    const user = users.find((u: any) => u.email === trimmedEmail);\r\n  \r\n    if (user) {\r\n      this.errorMessage = '';\r\n      this.showSuccessMessage = true;\r\n      // Do not automatically switch to the next step\r\n    } else {\r\n      this.errorMessage = 'Email not found.';\r\n    }\r\n  }\r\n  \r\n  moveToResetPassword() {\r\n    this.showSuccessMessage = false;\r\n    this.isChangePasswordFlow = true;\r\n  }\r\n  \r\n\r\n  resetPassword() {\r\n    const trimmedPassword = this.password.trim();\r\n    const trimmedConfirmPassword = this.confirmPassword.trim();\r\n\r\n    if (!trimmedPassword || !trimmedConfirmPassword) {\r\n      this.errorMessage = 'Please fill in all fields.';\r\n      return;\r\n    }\r\n\r\n    if (trimmedPassword !== trimmedConfirmPassword) {\r\n      this.passwordMatchError = 'Passwords do not match.';\r\n      return;\r\n    }\r\n\r\n    if (\r\n      !this.passwordRequirements.length ||\r\n      !this.passwordRequirements.number ||\r\n      !this.passwordRequirements.lowercase ||\r\n      !this.passwordRequirements.uppercase\r\n    ) {\r\n      this.errorMessage = 'Your password does not meet the required criteria.';\r\n      return;\r\n    }\r\n\r\n    const users = JSON.parse(localStorage.getItem('users') || '[]');\r\n    const user = users.find((u: any) => u.email === this.email.trim());\r\n\r\n    if (user) {\r\n      user.password = trimmedPassword;\r\n      localStorage.setItem('users', JSON.stringify(users));\r\n      this.router.navigate(['/login']);\r\n    } else {\r\n      this.errorMessage = 'Something went wrong. Please try again.';\r\n    }\r\n  }\r\n\r\n}",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { Router } from '@angular/router';\r\nimport { LeftSideComponent } from '../shared/left-side/left-side.component';\r\nimport { SharedModule } from '../shared.module'; // Import SharedModule to access LanguageDropdownComponent\r\n\r\n@Component({\n    selector: 'app-reset-password',\n    imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule], // Use SharedModule to access LanguageDropdownComponent\n    templateUrl: './reset-password.component.html',\n    styleUrls: ['./reset-password.component.scss']\n})\r\nexport class ResetPasswordComponent {\r\n  email: string = '';\r\n  password: string = '';\r\n  confirmPassword: string = '';\r\n  errorMessage: string = '';\r\n  passwordMatchError: string = '';\r\n  showSuccessMessage: boolean = false;\r\n  isChangePasswordFlow: boolean = false;\r\n  selectedLanguage: string = 'en'; // Add selectedLanguage property\r\n\r\n  passwordRequirements = {\r\n    length: false,\r\n    number: false,\r\n    lowercase: false,\r\n    uppercase: false,\r\n  };\r\n\r\n  showPassword: boolean = false;\r\n  showConfirmPassword: boolean = false;\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  // Language change handler\r\n  onLanguageChange(newLanguage: string) {\r\n    this.selectedLanguage = newLanguage;\r\n    console.log(`Language changed to: ${newLanguage}`);\r\n  }\r\n\r\n  // Toggle password visibility\r\n  togglePasswordVisibility() {\r\n    this.showPassword = !this.showPassword;\r\n  }\r\n\r\n  // Toggle confirm password visibility\r\n  toggleConfirmPasswordVisibility() {\r\n    this.showConfirmPassword = !this.showConfirmPassword;\r\n  }\r\n\r\n  // Check password requirements\r\n  validatePassword() {\r\n    const password = this.password;\r\n\r\n    this.passwordRequirements.length = password.length >= 8;\r\n    this.passwordRequirements.number = /[0-9]/.test(password);\r\n    this.passwordRequirements.lowercase = /[a-z]/.test(password);\r\n    this.passwordRequirements.uppercase = /[A-Z]/.test(password);\r\n  }\r\n\r\n  confirmEmail() {\r\n    const trimmedEmail = this.email.trim();\r\n  \r\n    if (!trimmedEmail) {\r\n      this.errorMessage = 'Please enter your email.';\r\n      return;\r\n    }\r\n  \r\n    const users = JSON.parse(localStorage.getItem('users') || '[]');\r\n    const user = users.find((u: any) => u.email === trimmedEmail);\r\n  \r\n    if (user) {\r\n      this.errorMessage = '';\r\n      this.showSuccessMessage = true;\r\n      // Do not automatically switch to the next step\r\n    } else {\r\n      this.errorMessage = 'Email not found.';\r\n    }\r\n  }\r\n  \r\n  moveToResetPassword() {\r\n    this.showSuccessMessage = false;\r\n    this.isChangePasswordFlow = true;\r\n  }\r\n  \r\n\r\n  resetPassword() {\r\n    const trimmedPassword = this.password.trim();\r\n    const trimmedConfirmPassword = this.confirmPassword.trim();\r\n\r\n    if (!trimmedPassword || !trimmedConfirmPassword) {\r\n      this.errorMessage = 'Please fill in all fields.';\r\n      return;\r\n    }\r\n\r\n    if (trimmedPassword !== trimmedConfirmPassword) {\r\n      this.passwordMatchError = 'Passwords do not match.';\r\n      return;\r\n    }\r\n\r\n    if (\r\n      !this.passwordRequirements.length ||\r\n      !this.passwordRequirements.number ||\r\n      !this.passwordRequirements.lowercase ||\r\n      !this.passwordRequirements.uppercase\r\n    ) {\r\n      this.errorMessage = 'Your password does not meet the required criteria.';\r\n      return;\r\n    }\r\n\r\n    const users = JSON.parse(localStorage.getItem('users') || '[]');\r\n    const user = users.find((u: any) => u.email === this.email.trim());\r\n\r\n    if (user) {\r\n      user.password = trimmedPassword;\r\n      localStorage.setItem('users', JSON.stringify(users));\r\n      this.router.navigate(['/login']);\r\n    } else {\r\n      this.errorMessage = 'Something went wrong. Please try again.';\r\n    }\r\n  }\r\n\r\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2900,7 +3153,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 33,
+                "line": 32,
                 "jsdoctags": [
                     {
                         "name": "router",
@@ -2918,7 +3171,7 @@
         },
         {
             "name": "RoleDropdownComponent",
-            "id": "component-RoleDropdownComponent-c4fdf989b0057e402f5c0300d04dd0a33d02d06d5a5e549b2204b845909d293218a592c2b6ebbd80c0d91d6ed563ff0bfab71260218e7d3dfe5020c44cdb1fcc",
+            "id": "component-RoleDropdownComponent-fab998c3949420279ecd59820ded23ba81229ed99ee0d739889bae270ec4c3271acd40ae735bac60be40df61bd6b1316e5aa7b03eca3e8277297e1405dcc0161",
             "file": "src/app/role-dropdown/role-dropdown.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2941,7 +3194,7 @@
                     "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "line": 12,
                     "type": "string | null",
                     "decorators": []
                 }
@@ -2952,7 +3205,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
+                    "line": 13,
                     "type": "EventEmitter"
                 }
             ],
@@ -2966,7 +3219,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 15
                 },
                 {
                     "name": "roles",
@@ -2977,7 +3230,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 18
                 }
             ],
             "methodsClass": [
@@ -2994,7 +3247,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3022,7 +3275,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 30,
+                    "line": 31,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3043,7 +3296,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 25,
+                    "line": 26,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -3057,7 +3310,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {  Input, Output, EventEmitter } from '@angular/core';\r\nimport { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-role-dropdown',\r\n  templateUrl: './role-dropdown.component.html',\r\n  styleUrls: ['./role-dropdown.component.scss']\r\n})\r\n\r\nexport class RoleDropdownComponent {\r\n  @Input() selectedRole: string | null = null; // Default role is unselected\r\n  @Output() selectedRoleChange = new EventEmitter<string>();\r\n\r\n  dropdownVisible: boolean = false;\r\n\r\n  // Role options\r\n  roles = [\r\n    { value: 'admin', label: 'Admin' },\r\n    { value: 'manager', label: 'Manager' },\r\n    { value: 'employee', label: 'Employee' },\r\n    { value: 'other', label: 'Other' },\r\n  ];\r\n\r\n  // Toggle the visibility of the dropdown\r\n  toggleDropdown(): void {\r\n    this.dropdownVisible = !this.dropdownVisible;\r\n  }\r\n\r\n// RoleDropdownComponent TypeScript\r\nonRoleChange(role: string): void {\r\n  this.selectedRole = role; // Update the selected role\r\n  this.selectedRoleChange.emit(role); // Emit the updated role to parent component\r\n  this.dropdownVisible = false; // Close dropdown after selection\r\n}\r\n\r\n  // Get the label of the currently selected role\r\n  getRoleLabel(roleCode: string | null): string {\r\n    const role = this.roles.find((r) => r.value === roleCode);\r\n    return role ? role.label : 'Select Role';\r\n  }\r\n}\r\n",
+            "sourceCode": "import {  Input, Output, EventEmitter } from '@angular/core';\r\nimport { Component } from '@angular/core';\r\n\r\n@Component({\n    selector: 'app-role-dropdown',\n    templateUrl: './role-dropdown.component.html',\n    styleUrls: ['./role-dropdown.component.scss'],\n    standalone: false\n})\r\n\r\nexport class RoleDropdownComponent {\r\n  @Input() selectedRole: string | null = null; // Default role is unselected\r\n  @Output() selectedRoleChange = new EventEmitter<string>();\r\n\r\n  dropdownVisible: boolean = false;\r\n\r\n  // Role options\r\n  roles = [\r\n    { value: 'admin', label: 'Admin' },\r\n    { value: 'manager', label: 'Manager' },\r\n    { value: 'employee', label: 'Employee' },\r\n    { value: 'other', label: 'Other' },\r\n  ];\r\n\r\n  // Toggle the visibility of the dropdown\r\n  toggleDropdown(): void {\r\n    this.dropdownVisible = !this.dropdownVisible;\r\n  }\r\n\r\n// RoleDropdownComponent TypeScript\r\nonRoleChange(role: string): void {\r\n  this.selectedRole = role; // Update the selected role\r\n  this.selectedRoleChange.emit(role); // Emit the updated role to parent component\r\n  this.dropdownVisible = false; // Close dropdown after selection\r\n}\r\n\r\n  // Get the label of the currently selected role\r\n  getRoleLabel(roleCode: string | null): string {\r\n    const role = this.roles.find((r) => r.value === roleCode);\r\n    return role ? role.label : 'Select Role';\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -3073,13 +3326,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-c1fa7c781ebad73e865ffddcdca4b1da79a024fd2d995fe9835cea1c9531ac3c57f927c07fc38d0e0c0a0f0f25719963327b83865683d7d2653cb63a2232461f",
+            "id": "module-AppModule-0bb832744c34a15812c18e68cf99b7ab3ec5cfce096372d437bf3f90f75b57c05f52b8433e56fb90efed97a64df101dfa391d69dd1022130a5a47de34784e5ff",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { SharedModule } from './shared.module';\r\nimport { NgSelectModule } from '@ng-select/ng-select'; // Add this line\r\nimport { LeftSideComponent } from './shared/left-side/left-side.component';\r\nimport { bootstrapApplication } from '@angular/platform-browser';\r\nimport { AppComponent } from './app.component'; // Make sure to import AppComponent here\r\n\r\n// AppModule no longer declares AppComponent or others; those are handled by bootstrapApplication\r\n@NgModule({\r\n  imports: [\r\n    BrowserModule,\r\n    FormsModule,\r\n    NgSelectModule, // Add NgSelectModule here\r\n    SharedModule,  // Import SharedModule to have LanguageDropdownComponent available\r\n    LeftSideComponent,  // Import LeftSideComponent\r\n  ],\r\n  providers: [],\r\n})\r\nexport class AppModule {}\r\n\r\n// Bootstrap using bootstrapApplication\r\nbootstrapApplication(AppComponent);\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { SharedModule } from './shared.module';\r\nimport { NgSelectModule } from '@ng-select/ng-select'; // Add this line\r\nimport { LeftSideComponent } from './shared/left-side/left-side.component';\r\nimport { bootstrapApplication } from '@angular/platform-browser';\r\nimport { AppComponent } from './app.component'; // Make sure to import AppComponent here\r\nimport { DialogModule } from 'primeng/dialog';\r\nimport { ButtonModule } from 'primeng/button';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Corrected path\r\n\r\n\r\n// AppModule no longer declares AppComponent or others; those are handled by bootstrapApplication\r\n@NgModule({\r\n  imports: [\r\n    BrowserModule,\r\n    FormsModule,\r\n    NgSelectModule, // Add NgSelectModule here\r\n    SharedModule,  // Import SharedModule to have LanguageDropdownComponent available\r\n    LeftSideComponent, // Import LeftSideComponent\r\n    DialogModule, // Import PrimeNG DialogModule\r\n    ButtonModule, // Import PrimeNG ButtonModule\r\n    BrowserAnimationsModule, // <-- Added for animations\r\n  ],\r\n  providers: [\r\n     \r\n  ],\r\n})\r\nexport class AppModule {}\r\n\r\n// Bootstrap using bootstrapApplication\r\nbootstrapApplication(AppComponent);\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -3152,13 +3405,13 @@
         },
         {
             "name": "SharedModule",
-            "id": "module-SharedModule-f5f02a10022c3a1faaed40fb0105f0a706259bcb231d9bc10ff4929dcf9939c9859381faa9fadc5e56efe3ac644e81ce56a1283902c613a1c1a814b3652eb00c",
+            "id": "module-SharedModule-f84d07e96b054269685a1b5439190451a30265ab46845f2e9cb1c8e5e9a19be9f0f7b54db577f31a417dfcca24a86d55586705d8bfab98518005e64cbf1086d2",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/shared.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule as AngularCommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { LanguageDropdownComponent } from './common/language-dropdown/language-dropdown.component';\r\nimport { RoleDropdownComponent } from './role-dropdown/role-dropdown.component';\r\n@NgModule({\r\n  declarations: [LanguageDropdownComponent,RoleDropdownComponent],\r\n  imports: [AngularCommonModule, FormsModule],\r\n  exports: [LanguageDropdownComponent, AngularCommonModule,RoleDropdownComponent]\r\n})\r\nexport class SharedModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule as AngularCommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\n// Import the necessary PrimeNG modules\r\nimport { DialogModule } from 'primeng/dialog';\r\nimport { ButtonModule } from 'primeng/button'; // If you're using pButton \r\n\r\n// Import your components\r\nimport { LanguageDropdownComponent } from './common/language-dropdown/language-dropdown.component';\r\nimport { RoleDropdownComponent } from './role-dropdown/role-dropdown.component';\r\n\r\n@NgModule({\r\n  declarations: [LanguageDropdownComponent, RoleDropdownComponent],\r\n  imports: [\r\n    AngularCommonModule,\r\n    FormsModule,\r\n    DialogModule,  // Add DialogModule here\r\n    ButtonModule,  // Add ButtonModule if you use pButton\r\n  ],\r\n  exports: [\r\n    LanguageDropdownComponent,\r\n    AngularCommonModule,\r\n    RoleDropdownComponent,\r\n    DialogModule,  // Export DialogModule if you want to use it in other modules\r\n    ButtonModule,  // Export ButtonModule if needed\r\n  ]\r\n})\r\nexport class SharedModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -3211,7 +3464,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
-                "defaultValue": "{\r\n  providers: [\r\n    provideZoneChangeDetection({ eventCoalescing: true }),\r\n    provideRouter(routes),  // Using the exported routes from app.routes.ts\r\n    provideClientHydration()  // Optional: for client-side hydration\r\n  ]\r\n}"
+                "defaultValue": "{\r\n  providers: [\r\n    provideZoneChangeDetection({ eventCoalescing: true }),\r\n    provideRouter(routes),  // Using the exported routes from app.routes.ts\r\n    provideClientHydration(),  // Optional: for client-side hydration\r\n    provideAnimationsAsync(),\r\n    providePrimeNG({\r\n      theme: {\r\n        preset: Aura\r\n      }\r\n    })\r\n  ]\r\n}"
             },
             {
                 "name": "bootstrap",
@@ -3257,7 +3510,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
-                    "defaultValue": "{\r\n  providers: [\r\n    provideZoneChangeDetection({ eventCoalescing: true }),\r\n    provideRouter(routes),  // Using the exported routes from app.routes.ts\r\n    provideClientHydration()  // Optional: for client-side hydration\r\n  ]\r\n}"
+                    "defaultValue": "{\r\n  providers: [\r\n    provideZoneChangeDetection({ eventCoalescing: true }),\r\n    provideRouter(routes),  // Using the exported routes from app.routes.ts\r\n    provideClientHydration(),  // Optional: for client-side hydration\r\n    provideAnimationsAsync(),\r\n    providePrimeNG({\r\n      theme: {\r\n        preset: Aura\r\n      }\r\n    })\r\n  ]\r\n}"
                 }
             ],
             "src/main.server.ts": [
@@ -3301,7 +3554,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 3,
+        "count": 2,
         "status": "low",
         "files": [
             {
@@ -3310,7 +3563,7 @@
                 "linktype": "component",
                 "name": "AdminDashboardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/9",
+                "coverageCount": "0/13",
                 "status": "low"
             },
             {
@@ -3443,6 +3696,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/modal/modal.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ModalComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/not-found/not-found.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -3494,6 +3756,15 @@
                 "name": "LeftSideComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/modal/modal.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ModalComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
                 "status": "low"
             },
             {
