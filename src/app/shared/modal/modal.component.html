@@ -1,9 +1,36 @@
-<p-dialog [(visible)]="showModal" [modal]="true" [closable]="false" [style]="{'position': 'fixed', 'bottom': '10px', 'right': '10px'}">
+<!-- Button to open the modal -->
+<button type="button" class="modal-button" (click)="openModal()">Open Modal</button>
+
+<!-- Button container (Confirm and Cancel buttons) -->
+<div *ngIf="showButtonContainer" class="button-container">
+  <!-- Text above the buttons -->
+  <p class="confirmation-text">Are you sure you want to continue?</p>
+
+  <!-- Buttons -->
+  <div class="button-wrapper">
+    <button type="button" pButton class="confirm-button" label="{{ confirmBtnText }}" (click)="onConfirm()"></button>
+    <button type="button" pButton class="cancel-button" label="{{ cancelBtnText }}" (click)="onCancel()"></button>
+  </div>
+</div>
+
+<!-- Modal dialog -->
+<p-dialog [(visible)]="showModal" [modal]="true" [closable]="false" [transitionOptions]="'0ms'">
+  <!-- Header -->
+  <ng-template pTemplate="header">
     <h3>{{ title }}</h3>
+    <i class="pi pi-times p-dialog-header-icon" (click)="closeModal()"></i>
+  </ng-template>
+
+  <!-- Content -->
+  <div class="p-dialog-content">
     <p>{{ content }}</p>
-    <p-footer>
-      <button type="button" pButton label="{{ cancelBtnText }}" icon="pi pi-times" (click)="onCancel()"></button>
-      <button type="button" pButton label="{{ confirmBtnText }}" icon="pi pi-check" (click)="onConfirm()"></button>
-    </p-footer>
-  </p-dialog>
-  
+  </div>
+
+  <!-- Footer -->
+  <ng-template pTemplate="footer">
+    <div class="button-container">
+      <button type="button" pButton class="confirm-button" label="{{ confirmBtnText }}" (click)="onConfirm()"></button>
+      <button type="button" pButton class="cancel-button" label="{{ cancelBtnText }}" (click)="onCancel()"></button>
+    </div>
+  </ng-template>
+</p-dialog>

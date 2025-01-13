@@ -42,7 +42,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#" (click)="signOut()">Sign out</a></li>
+            <li><a class="dropdown-item" href="#" (click)="openModal(); $event.preventDefault();">Sign out</a></li>
           </ul>
         </div>
       </div>
@@ -68,55 +68,11 @@
                   </div>
                 </a>
               </li>
-              <li class="nav-item text-center mx-2 mx-lg-1">
-                <a class="nav-link" href="#!" (click)="setActiveItem('userManagement')">
-                  <div>
-                    <img src="assets/team.png" alt="Users" width="24" height="24" class="mb-1" />
-                    Users
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item text-center mx-2 mx-lg-1">
-                <a class="nav-link" href="#!" (click)="setActiveItem('reports')">
-                  <div>
-                    <img src="assets/seo-report.png" alt="Reports" width="24" height="24" class="mb-1" />
-                    Reports
-                  </div>
-                </a>
-              </li>
-              <!-- Add Settings button with dropdown -->
-              <li class="nav-item dropdown text-center mx-2 mx-lg-1">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSettings" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="assets/cogwheel.png" alt="Settings" width="24" height="24" class="mb-1" /> <!-- Path to the cogwheel image -->
-                  Settings
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownSettings">
-                  <li><a class="dropdown-item" href="#" (click)="setActiveItem('adminSettings'); $event.preventDefault();">Admin Settings</a></li>
-                  <li><a class="dropdown-item" href="#" (click)="setActiveItem('generalSettings'); $event.preventDefault();">General Settings</a></li>
-                  <li><a class="dropdown-item" href="#" (click)="setActiveItem('userPermissions'); $event.preventDefault();">User Permissions</a></li>
-                </ul>
-              </li>
+              <!-- Add other items here -->
             </ul>
 
             <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
-              <li class="nav-item text-center mx-2 mx-lg-1">
-                <a class="nav-link" href="#!" (click)="setActiveItem('notifications')">
-                  <div>
-                    <i class="fas fa-bell fa-lg mb-1"></i>
-                    <span class="badge rounded-pill badge-notification bg-info">3</span>
-                  </div>
-                  Notifications
-                </a>
-              </li>
-              <li class="nav-item text-center mx-2 mx-lg-1">
-                <a class="nav-link" href="#!" (click)="setActiveItem('messages')">
-                  <div>
-                    <i class="fas fa-envelope fa-lg mb-1"></i>
-                    <span class="badge rounded-pill badge-notification bg-primary">2</span>
-                  </div>
-                  Messages
-                </a>
-              </li>
+              <!-- Notifications and Messages -->
             </ul>
           </div>
         </div>
@@ -127,21 +83,16 @@
         <h1 class="mt-4">Welcome to the Admin Dashboard</h1>
         <p>Manage users, settings, and view reports here.</p>
       </div>
-      <!-- Your Admin Dashboard Content -->
-
-<!-- Trigger Modal Button -->
-<button pButton type="button" label="Open Modal" (click)="openModal()"></button>
-
-<!-- Modal Component -->
-<app-modal *ngIf="showModal"
-           [title]="'Confirm Action'"
-           [content]="'Are you sure you want to proceed with this action?'"
-           [cancelBtnText]="'Cancel'"
-           [confirmBtnText]="'Confirm'"
-           (cancelEvent)="onCancel()"
-           (confirmEvent)="onConfirm()">
-</app-modal>
-
+      
+      <!-- Modal Component -->
+      <app-modal *ngIf="showModal"
+                 [title]="'Confirm Sign Out'"
+                 [content]="'Are you sure you want to sign out?'"
+                 [cancelBtnText]="'Cancel'"
+                 [confirmBtnText]="'Confirm'"
+                 (cancelEvent)="onCancel()"
+                 (confirmEvent)="onConfirm()">
+      </app-modal>
     </div>
   </div>
 </div>

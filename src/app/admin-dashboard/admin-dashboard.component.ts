@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
 import { ModalComponent } from '../shared/modal/modal.component'; // Import the ModalComponent
 
 @Component({
-    selector: 'app-admin-dashboard',
-    imports: [CommonModule, RouterModule, ModalComponent],  // Add ModalComponent to imports
-    templateUrl: './admin-dashboard.component.html',
-    styleUrls: ['./admin-dashboard.component.scss']
+  selector: 'app-admin-dashboard',
+  imports: [CommonModule, RouterModule, ModalComponent],  // Add ModalComponent to imports
+  templateUrl: './admin-dashboard.component.html',
+  styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent {
   isToggled: boolean = false;
@@ -33,8 +33,9 @@ export class AdminDashboardComponent {
     console.log(`Active item set to: ${item}`);
   }
 
+  // Open the modal for sign-out
   signOut(): void {
-    this.router.navigate(['/login']);
+    this.openModal();
   }
 
   // Open the modal
@@ -48,9 +49,10 @@ export class AdminDashboardComponent {
     console.log('Action canceled');
   }
 
-  // Handle confirm action
+  // Handle confirm action (sign out)
   onConfirm() {
     this.showModal = false;
-    console.log('Action confirmed');
+    this.router.navigate(['/login']);
+    console.log('Action confirmed, user signed out');
   }
 }

@@ -8,8 +8,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app.component'; // Make sure to import AppComponent here
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Corrected path
 
 
 // AppModule no longer declares AppComponent or others; those are handled by bootstrapApplication
@@ -19,13 +18,14 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     NgSelectModule, // Add NgSelectModule here
     SharedModule,  // Import SharedModule to have LanguageDropdownComponent available
-    LeftSideComponent,
-     DialogModule, 
-     ButtonModule,
-     // Import LeftSideComponent
-  // Add ButtonModule here if you want to use pButton
+    LeftSideComponent, // Import LeftSideComponent
+    DialogModule, // Import PrimeNG DialogModule
+    ButtonModule, // Import PrimeNG ButtonModule
+    BrowserAnimationsModule, // <-- Added for animations
   ],
-  providers: [],
+  providers: [
+     
+  ],
 })
 export class AppModule {}
 
