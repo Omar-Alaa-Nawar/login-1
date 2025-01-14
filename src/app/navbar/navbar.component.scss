@@ -1,0 +1,56 @@
+ // Variables for colors
+ $primary-font-color: #AE8573;
+ $button-color: #F24E1E;
+ $button-hover: #F57345;
+ $dark-background: #1e1e1e;
+ $light-text: #ffffff;
+
+ // Navbar Styling
+ .navbar {
+   .navbar-nav {
+     .nav-link {
+       color: $primary-font-color;
+       font-weight: 500;
+       transition: color 0.3s;
+
+       &:hover {
+         color: darken($primary-font-color, 10%);
+       }
+     }
+   }
+
+   // Apply primary font color to right section buttons except "Get Started"
+   a.btn-outline-primary,
+   a.btn-link {
+     color: $primary-font-color;
+   }
+
+   span i {
+     font-size: 1.25rem;
+     margin-left: 5px;
+     transition: color 0.3s;
+   }
+
+   .btn-danger {
+     background-color: $button-color;
+     font-weight: bold;
+
+     &:hover {
+       background-color: $button-hover;
+     }
+   }
+ }
+ $primary-font-color: #AE8573;
+
+.navbar {
+  .nav-link {
+    color: $primary-font-color;
+    font-weight: 500;
+  }
+
+  span i {
+    font-size: 1.25rem;
+    color: $primary-font-color;
+    margin-left: 5px;
+  }
+}

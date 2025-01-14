@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LeftSideComponent } from '../shared/left-side/left-side.component';
 import { SharedModule } from '../shared.module';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
     selector: 'app-login',
-    imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule],
+    imports: [CommonModule, FormsModule, LeftSideComponent, SharedModule,NavbarComponent],
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
