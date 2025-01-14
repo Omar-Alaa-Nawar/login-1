@@ -15,8 +15,14 @@
     <!-- Registration Form (80%) -->
     <div class="col-12 col-md-8 col-lg-8 col-xl-8 p-0">
       <div class="row h-100 m-0">
+        
         <!-- Form Section (75% of the 70%) -->
         <div class="col-12 col-md-9 col-lg-9 p-4 text-start">
+
+                    <!-- Navbar Component -->
+                    <div class="mb-4">
+                      <app-simple-navbar></app-simple-navbar>
+                    </div>
 
           <!-- Language Dropdown Component -->
           <div *ngIf="step === 1 || step === 2 || step === 3" class="mb-4">
@@ -26,18 +32,21 @@
 
 
           <!-- Stepper Section -->
-          <div class="mb-4">
-            <div class="d-flex justify-content-between mb-3">
-              <!-- Step Number in White -->
-              <span class="step-text" style="color: black; font-size: 16px;">{{ step }} of 3</span>
-            </div>
-            <div class="progress"
-              style="height: 10px; margin-bottom: 20px; background-color: #F0F0F8; border-radius: 5px;">
-              <!-- Progress Bar with Darker Grey Background and Slightly Darker Blue Fill -->
-              <div class="progress-bar" role="progressbar" [style.width]="(step / 3) * 100 + '%'" aria-valuenow="step"
-                aria-valuemin="0" aria-valuemax="3" style="background-color: #5462FF; border-radius: 5px;">
+          <div class="stepper-container">
+            <div class="mb-4">
+              <div class="d-flex justify-content-between mb-3">
+                <!-- Step Number in Black -->
+                <span class="step-text" style="color: black; font-size: 16px;">{{ step }} of 3</span>
+              </div>
+              <div class="progress" style="height: 10px; margin-bottom: 20px; background-color: #F0F0F8; border-radius: 5px;">
+                <!-- Progress Bar with Darker Grey Background and Slightly Darker Blue Fill -->
+                <div class="progress-bar" role="progressbar" [style.width]="(step / 3) * 100 + '%'" aria-valuenow="step"
+                  aria-valuemin="0" aria-valuemax="3" style="background-color: #5462FF; border-radius: 5px;">
+                </div>
               </div>
             </div>
+          
+          
 
 <!-- Header for Step 1 -->
 <div *ngIf="step === 1" class="mb-4" style="margin-top: 60px;">

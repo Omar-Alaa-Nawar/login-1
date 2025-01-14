@@ -4,10 +4,11 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { SharedModule } from '../shared.module';
+import { SimpleNavbarComponent } from '../simple-navbar/simple-navbar.component';
 
 @Component({
     selector: 'app-register',
-    imports: [CommonModule, FormsModule, RouterModule, SharedModule],
+    imports: [CommonModule, FormsModule, RouterModule, SharedModule,SimpleNavbarComponent],
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss']
 })

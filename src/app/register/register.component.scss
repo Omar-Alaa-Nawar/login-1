@@ -11,6 +11,16 @@ $radio-focus-outline: #2929F5;
 
 $font-family-main: 'Roundo', sans-serif;
 $font-family-alt: 'Archia', sans-serif;
+.stepper-container {
+  margin-top: 55px; /* Moves the stepper down to avoid navbar overlap */
+}
+
+@media (max-width: 768px) {
+  .stepper-container {
+    margin-top: 60px; /* Adjust spacing for smaller screens */
+  }
+}
+
 
 /* General Button Styling */
 .btn {

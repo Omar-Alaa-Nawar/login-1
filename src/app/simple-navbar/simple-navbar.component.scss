@@ -1,0 +1,40 @@
+/* Variables for Colors and Fonts */
+$navbar-bg: #f4f7fa; /* Background color */
+$navbar-border: #e0e0e0; /* Light border */
+$navbar-font-family: 'Roundo', sans-serif; /* Font family for the container */
+
+/* Navbar Container */
+.navbar-container {
+  background-color: $navbar-bg;
+  border: 1px solid $navbar-border;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the logo within the container */
+  padding: 10px 20px; /* Adjust padding for a smaller size */
+  font-family: $navbar-font-family;
+  border-radius: 25px; /* Semicircular edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  position: absolute; /* Positioning the container */
+  top: 10px; /* Distance from the top of the viewport */
+  left: 10px; /* Distance from the left of the viewport */
+  z-index: 1000;
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    padding: 8px 16px; /* Adjust padding for smaller screens */
+    top: 5px; /* Adjust positioning for smaller screens */
+    left: 5px;
+  }
+}
+
+/* Logo Styling */
+.logo img {
+  max-height: 40px; /* Smaller logo size */
+  width: auto; /* Maintain aspect ratio */
+}
+
+/* Optional: Add hover effect on the logo */
+.logo img:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+  transition: transform 0.3s ease;
+}
